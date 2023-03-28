@@ -56,18 +56,28 @@ export class LoginComponent {
             this.roleActualUser = user.role;
             if(user.role == "ADMIN"){
            
-              this.toastr$.success('Bienvenido');
-              this.router$.navigate(['/adm']);
+             
+              this.router$.navigate(['/adm']).then(
+                ()=>
+                this.toastr$.success('Bienvenido')
+              );
             }
             if(user.role == "OPERATIONS"){
         
-              this.toastr$.success('Bienvenido');
-              this.router$.navigate(['/operations']);
+             
+              this.router$.navigate(['/operations']).then(
+                ()=>
+                this.toastr$.success('Bienvenido')
+
+              );
             }
             if(user.role == "LEARNER"){
         
-              this.toastr$.success('Bienvenido');
-              this.router$.navigate(['/learner']);
+             
+              this.router$.navigate(['/learner']).then(
+                ()=>
+                this.toastr$.success('Bienvenido')
+              );
             }
       
            
