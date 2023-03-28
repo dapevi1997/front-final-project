@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IsOperationsGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  role: string | null;
+
+  constructor( private router$: Router){ 
+    this.role = localStorage.getItem("role");
+  }
+  canActivate(){
+    if(this.role !== "OPERATIONS") {
+      alert("Solo para usuarios operations")
+      this.router$.navigate(['/login']);
+      return false;
+    }
     return true;
   }
   

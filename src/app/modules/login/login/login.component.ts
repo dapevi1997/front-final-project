@@ -46,9 +46,19 @@ export class LoginComponent {
             localStorage.setItem("role", user.role)
             this.roleActualUser = user.role;
             if(user.role == "ADMIN"){
-              console.log("******* In if")
+           
 
               this.router$.navigate(['/adm']);
+            }
+            if(user.role == "OPERATIONS"){
+        
+
+              this.router$.navigate(['/operations']);
+            }
+            if(user.role == "LEARNER"){
+        
+
+              this.router$.navigate(['/learner']);
             }
       
            

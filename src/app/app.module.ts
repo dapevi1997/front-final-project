@@ -8,6 +8,8 @@ import { LoginModule } from './modules/login/login.module';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 import { AdminModule } from './modules/admin/admin.module';
+import { OperationsModule } from './modules/operations/operations.module';
+import { LearnerModule } from './modules/learner/learner.module';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { AdminModule } from './modules/admin/admin.module';
     AppRoutingModule,
     HttpClientModule,
     LoginModule,
-    AdminModule
+    AdminModule,
+    OperationsModule,
+    LearnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
