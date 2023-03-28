@@ -10,6 +10,9 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { OperationsModule } from './modules/operations/operations.module';
 import { LearnerModule } from './modules/learner/learner.module';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { LearnerModule } from './modules/learner/learner.module';
     LoginModule,
     AdminModule,
     OperationsModule,
-    LearnerModule
+    LearnerModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
