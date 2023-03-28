@@ -6,3 +6,8 @@
     align-content: center;
     gap: 10px;
 }
+.contenedor-botones{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

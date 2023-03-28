@@ -1,2 +1,26 @@
-<app-navbaradmin></app-navbaradmin>
-<p>users works!</p>
+
+<div class="formulario">
+      <legend style="color: #C324BC;">Crear usuario nuevo</legend>
+      <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Nombre completo</label>
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+      </div>
+      <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Correo</label>
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="Correo">
+      </div>
+      <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Contraseña</label>
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="Contraseña">
+      </div>
+      <div class="mb-3 campo">
+        <label for="disabledSelect" class="form-label">Seleccionar rol</label>
+        <select id="disabledSelect" class="form-select">
+          <option>Roles</option>
+          <option>Administrador</option>
+          <option>Usuario</option>
+          <option>Consultor</option>
+        </select>
+      </div>
+      <button (click)="guardarUsuario()"  class="btn btn-primary">Crear usuario</button>
+  </div>

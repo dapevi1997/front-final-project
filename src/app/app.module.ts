@@ -9,6 +9,9 @@ import { LoginModule } from './modules/login/login.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { OperationsModule } from './modules/operations/operations.module';
 import { LearnerModule } from './modules/learner/learner.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -17,12 +20,15 @@ import { LearnerModule } from './modules/learner/learner.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     LoginModule,
     AdminModule,
     OperationsModule,
-    LearnerModule
+    LearnerModule,
+    NgbModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

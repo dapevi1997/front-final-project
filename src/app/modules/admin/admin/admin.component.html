@@ -4,8 +4,11 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Usuarios</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <span [routerLink]="['/adm']" class="btn btn-primary">Go somewhere</span>
+          <p class="card-text">Contenido de los usuarios.</p>
+          <div class="contenedor-botones">
+            <span [routerLink]="['/users']" class="btn btn-info">Ir a usuarios</span>
+            <span  class="btn btn-info" (click)="openVerticallyCentered(content)">Crear usuario</span>
+          </div>         
         </div>
       </div>
     </div>
@@ -13,8 +16,8 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Radar</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <span [routerLink]="['/adm']" class="btn btn-primary">Go somewhere</span>
+          <p class="card-text">Contenido de los radares.</p>
+          <span [routerLink]="['/radar']" class="btn btn-info">Ir a radares</span>
         </div>
       </div>
     </div>
@@ -22,9 +25,14 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Promedios</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <span [routerLink]="['/adm']" class="btn btn-primary">Go somewhere</span>
+            <p class="card-text">Contenido de los promedios de los estudiantes.</p>
+            <span [routerLink]="['/promedios']" class="btn btn-info">Ir a promedios</span>
           </div>
         </div>
       </div>
   </div>
+
+
+  <ng-template class="modal" #content let-modal>
+   <app-users></app-users>
+  </ng-template>
