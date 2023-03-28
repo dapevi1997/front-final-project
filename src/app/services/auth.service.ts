@@ -12,7 +12,6 @@ export class AuthService {
 
   async login(email: string, password: string) {
     await firebase.auth().signInWithEmailAndPassword(email, password).then(
-
       response => {
         firebase.auth().currentUser?.getIdToken().then(
           token => {
@@ -39,7 +38,6 @@ export class AuthService {
       this.token = "";
       localStorage.setItem("token", this.token);
       localStorage.setItem("role", "");
-
       window.location.reload();
     });
   }
