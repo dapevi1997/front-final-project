@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './modules/admin/admin.module';
 import { LoginComponent } from './modules/login/login/login.component';
+import { IsAdminGuard } from './guards/is-admin.guard';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     path:"adm",
     loadChildren: ()=>
       import("./modules/admin/admin.module").then(module=> module.AdminModule)
+
   }
 ];
 
