@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/login/login/login.component';
+import { IsAdminGuard } from './guards/is-admin.guard';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path:"login",
     component: LoginComponent
+  },
+  {
+    path:"admin",
+    canActivate: [IsAdminGuard]
   }
 ];
 
