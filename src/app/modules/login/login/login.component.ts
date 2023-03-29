@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Role } from 'src/app/interfaces/role.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { RolesService } from 'src/app/services/roles.service';
@@ -12,15 +13,23 @@ import { RolesService } from 'src/app/services/roles.service';
 })
 export class LoginComponent {
   form: FormGroup;
+  formRecoverPasswordWithEmail: FormGroup;
   role!: Role;
   roleActualUser!: string|null;
 
-  constructor(private login$: AuthService, private roles$: RolesService, private router$: Router){
+  constructor(private login$: AuthService, private roles$: RolesService, private router$: Router, private toastr$: ToastrService){
     this.roleActualUser = localStorage.getItem("role");
+
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
     });
+
+    this.formRecoverPasswordWithEmail = new FormGroup(
+      {
+        email: new FormControl(null, [Validators.required, Validators.email])
+      }
+    );
   }
 
 
@@ -47,18 +56,28 @@ export class LoginComponent {
             this.roleActualUser = user.role;
             if(user.role == "ADMIN"){
            
-
-              this.router$.navigate(['/adm']);
+             
+              this.router$.navigate(['/adm']).then(
+                ()=>
+                this.toastr$.success('Bienvenido')
+              );
             }
             if(user.role == "OPERATIONS"){
         
+             
+              this.router$.navigate(['/operations']).then(
+                ()=>
+                this.toastr$.success('Bienvenido')
 
-              this.router$.navigate(['/operations']);
+              );
             }
             if(user.role == "LEARNER"){
         
-
-              this.router$.navigate(['/learner']);
+             
+              this.router$.navigate(['/learner']).then(
+                ()=>
+                this.toastr$.success('Bienvenido')
+              );
             }
       
            
@@ -71,6 +90,19 @@ export class LoginComponent {
 
     
     
+  }
+
+  updatePasswordWithEmail(){
+    try{
+      this.login$.recoverPasswordWithEmail(this.formRecoverPasswordWithEmail.value.email)?.then(
+        (res)=>{
+          console.log("Correo enviado con éxito")
+        }
+      );
+
+    } catch(error){console.log(error)}
+
+
   }
 
 }
