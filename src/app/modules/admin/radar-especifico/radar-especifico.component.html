@@ -1,0 +1,58 @@
+<p>radar-especifico works!: {{radarItems.nombre}}</p>
+<table class="table">
+    <thead>
+      <tr>
+    
+        <th scope="col">Area de conocimiento</th>
+        <th scope="col">Descriptor</th>
+        <th scope="col">Factual</th>
+        <th scope="col">Conceptual</th>
+        <th scope="col">Procedimental</th>
+        <th scope="col">Metacogntivo</th>
+        <th scope="col">Nivel de apropiacion</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let area of radarItems.areas">
+      <tr >
+        <td>{{area.area}}</td>
+        <td>{{area.descriptor}}</td>
+        <td>{{area.factual}}</td>
+        <td>{{area.conceptual}}</td>
+        <td>{{area.procedimental}}</td>
+        <td>{{area.metacognitivo}}</td>
+        <td>{{area.nivel}}</td>     
+      </tr>
+
+    </tbody>
+  </table>
+  <span  class="btn btn-info" (click)="openVerticallyCentered(contentRadar)">Agregar área</span>
+  <ng-template class="modal" #contentRadar let-modal>
+    <div class="formulario">
+        <legend style="color: #C324BC;">Nuevo radar</legend>
+        <div class="mb-3 campo">
+          <label for="disabledTextInput" class="form-label">Area de conocimiento</label>
+          <input [(ngModel)]="areaItem.area" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="mb-3 campo">
+            <label for="disabledTextInput" class="form-label">Descriptor</label>
+            <input [(ngModel)]="areaItem.descriptor" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="mb-3 campo">
+            <label for="disabledTextInput" class="form-label">Factual</label>
+            <input [(ngModel)]="areaItem.factual" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="mb-3 campo">
+            <label for="disabledTextInput" class="form-label">Conceptual</label>
+            <input [(ngModel)]="areaItem.conceptual" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="mb-3 campo">
+            <label for="disabledTextInput" class="form-label">Procedimental</label>
+            <input [(ngModel)]="areaItem.procedimental" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        </div>
+        <div class="mb-3 campo">
+            <label for="disabledTextInput" class="form-label">Meta cognitivo</label>
+            <input [(ngModel)]="areaItem.metacognitivo" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        </div>
+        <button (click)="agregarArea()"  class="btn btn-primary">Crear radar</button>
+    </div>
+  </ng-template>
