@@ -18,6 +18,10 @@ export class RadarService {
     let direction = this.url + 'listarRadares';
     return this.http.get<RadarI[]>(direction);
   }
+  getRadarEspecifico(name:string) : Observable<RadarI> {
+    let direction = this.url + 'listarRadar/' + name;
+    return this.http.get<RadarI>(direction);
+  }
 
   crearRadar(radar:  RadarI) : Observable<RadarI>{   
     let direction = this.url+'CrearRadar';

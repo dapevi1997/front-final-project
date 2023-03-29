@@ -11,6 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
+import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.component';
 
 
 
@@ -22,7 +23,8 @@ import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
     UsersComponent,
     RadarComponent,
     PromediosComponent,
-    ListaRadaresComponent
+    ListaRadaresComponent,
+    RadarEspecificoComponent
   ],
   imports: [
     AdminRoutingModule,

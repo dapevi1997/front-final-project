@@ -4,6 +4,7 @@ import { GraficaComponent } from '../grafica/grafica.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
 import { PromediosComponent } from './promedios/promedios.component';
+import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.component';
 import { RadarComponent } from './radar/radar.component';
 import { UsersComponent } from './users/users.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path:"radar",
     component: RadarComponent
+  },
+  {
+    path:"radar-especifico",
+    component: RadarEspecificoComponent
   },
   {
     path:"lista-radares",
