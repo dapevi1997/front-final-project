@@ -8,7 +8,7 @@ import { RadarService } from 'src/app/services/radares.service';
   styleUrls: ['./lista-radares.component.css']
 })
 export class ListaRadaresComponent implements OnInit {
-  // radares:Array<string> =["radar1", "radar2","radar3"];
+
   constructor(
     private radarService : RadarService,
   ){}

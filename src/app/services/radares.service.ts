@@ -19,6 +19,11 @@ export class RadarService {
     return this.http.get<RadarI[]>(direction);
   }
 
-
+  crearRadar(radar:  RadarI) : Observable<RadarI>{   
+    let direction = this.url+'CrearRadar';
+    return this.http.post<any>(direction, radar,{
+      responseType: 'text' as 'json'
+    })       
+  }
 
 }
