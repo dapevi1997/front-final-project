@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark mb-4 purple" style="background-color: #FAF2A1;">
+    <!-- <h4 style="color: white;">{{roleActualUser == "" ? "No logueado": roleActualUser}}</h4> -->
+    <div class="container" >
+     
+  
+      <a class="navbar-brand" href="#">
+        <img
+          src="../../../../assets/SofkaU-2.png"
+          width="40"
+          height="40"
+          class="mr-1"
+        />
+        <!-- <b> Mascotas </b> -->
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <span
+              class="nav-link"
+              [routerLink]="['/adm']"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="color: #C324BC;"
+            >
+              Usuarios
+            </span>
+      
+          </li>
+          <li class="nav-item">
+            <span
+              class="nav-link"
+              [routerLink]="['/adm']"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="color: #C324BC;"
+            >
+              Radar
+            </span>    
+          </li>
+          <li class="nav-item">
+            <span
+              class="nav-link"
+              [routerLink]="['/adm']"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="color: #C324BC;"
+            >
+              Promedios
+            </span>    
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button (click)="logout()" class="btn btn-primary btnP" [routerLink]="['/login']"  style="background-color: red; border-color: white;">Logout</button>
+    <!-- <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="" style="background-color: #603E85; border-color: white;">Logout</button> -->
+  </nav>
+  
