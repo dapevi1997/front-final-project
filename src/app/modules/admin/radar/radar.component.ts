@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { MessageService } from 'primeng/api';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +12,6 @@ import { RadarI } from 'src/app/interfaces/radar.interface';
 export class RadarComponent {
   constructor(
     private modalService: NgbModal,
-    private messageService: MessageService,
     private toastr: ToastrService
   ){}
    radarItems : RadarI ={

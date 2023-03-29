@@ -15,6 +15,8 @@ import { LearnerModule } from './modules/learner/learner.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GraficaComponent } from './modules/grafica/grafica.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -22,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
+    GraficaComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminModule,
     OperationsModule,
     LearnerModule,
-
+    NgxChartsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgbModule,
