@@ -63,6 +63,12 @@ export class RadarEspecificoComponent implements OnInit {
   }
 
   agregarArea = () =>{
+    this.areaItem.nivel =(
+      Number(this.areaItem.factual)+ 
+      Number(this.areaItem.conceptual)+
+      Number(this.areaItem.procedimental)+
+      Number(this.areaItem.metacognitivo)
+      )/4
     this.radarService.agregarArea(this.areaItem).subscribe({
       next: data=>{
         this.modalService.dismissAll();
@@ -77,6 +83,10 @@ export class RadarEspecificoComponent implements OnInit {
         
       }
     })
+  }
+
+  sumatoria = () =>{
+
   }
 
 }
