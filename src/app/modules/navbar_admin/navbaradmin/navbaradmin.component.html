@@ -72,7 +72,7 @@
         </ul>
       </div>
     </div>
-    <button class="btn btn-primary btnP" routerLink="login"  style="background-color: #603E85; border-color: white;">Login</button>
+    <button (click)="logout()" class="btn btn-primary btnP" [routerLink]="['/login']"  style="background-color: red; border-color: white;">Logout</button>
     <!-- <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="" style="background-color: #603E85; border-color: white;">Logout</button> -->
   </nav>
   
