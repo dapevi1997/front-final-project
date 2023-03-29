@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RadarI } from '../interfaces/radar.interface';
+import { AreaI, RadarI } from '../interfaces/radar.interface';
 
 
 @Injectable({
@@ -26,6 +26,13 @@ export class RadarService {
   crearRadar(radar:  RadarI) : Observable<RadarI>{   
     let direction = this.url+'CrearRadar';
     return this.http.post<any>(direction, radar,{
+      responseType: 'text' as 'json'
+    })       
+  }
+
+  agregarArea(area:  AreaI) : Observable<AreaI>{   
+    let direction = this.url+'AgregarArea';
+    return this.http.post<any>(direction, area,{
       responseType: 'text' as 'json'
     })       
   }

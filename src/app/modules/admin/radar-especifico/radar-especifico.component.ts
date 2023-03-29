@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { RadarI } from 'src/app/interfaces/radar.interface';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { MessageService } from 'primeng/api';
+import {  AreaI, RadarI } from 'src/app/interfaces/radar.interface';
 import { RadarService } from 'src/app/services/radares.service';
 
 @Component({
   selector: 'app-radar-especifico',
   templateUrl: './radar-especifico.component.html',
-  styleUrls: ['./radar-especifico.component.css']
+  styleUrls: ['./radar-especifico.component.css'],
+  providers:[MessageService]
 })
 export class RadarEspecificoComponent implements OnInit {
   valores = window.location.search;
@@ -24,12 +28,29 @@ export class RadarEspecificoComponent implements OnInit {
       nivel: 0
     }]
   }
+
+  areaItem : AreaI ={
+    area:"",
+    radarNombre:this.name,
+    descriptor:"",
+    factual: 0,
+    conceptual: 0,
+    procedimental: 0,
+    metacognitivo: 0,
+    nivel: 0
+  }
   constructor(
-    private radarService : RadarService
+    private modalService: NgbModal,
+    private messageService: MessageService,
+    private radarService : RadarService,
+    private toastr: ToastrService,
   ){}
   ngOnInit(): void {
    console.log("name: "+ this.name);   
    this.traerRadar()
+  }
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
   }
   traerRadar = () =>{
     this.radarService.getRadarEspecifico(this.name).subscribe({
@@ -37,6 +58,23 @@ export class RadarEspecificoComponent implements OnInit {
         console.log("data: "+ data);
         
         this.radarItems = data;
+      }
+    })
+  }
+
+  agregarArea = () =>{
+    this.radarService.agregarArea(this.areaItem).subscribe({
+      next: data=>{
+        this.modalService.dismissAll();
+        this.toastr.success('Area agregada exitosamente!','Success');  
+         setTimeout(() => {
+         window.location.reload();
+       }, 1000);
+      },
+      error : error => {
+        console.log(error);
+        this.toastr.error('Algun error ocurrio!','Error')
+        
       }
     })
   }
