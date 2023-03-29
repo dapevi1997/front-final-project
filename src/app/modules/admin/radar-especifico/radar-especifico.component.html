@@ -2,7 +2,7 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+    
         <th scope="col">Area de conocimiento</th>
         <th scope="col">Descriptor</th>
         <th scope="col">Factual</th>
@@ -12,17 +12,15 @@
         <th scope="col">Nivel de apropiacion</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let area of radarItems.areas">
-        <th scope="row">1</th>
+    <tbody *ngFor="let area of radarItems.areas">
+      <tr >
         <td>{{area.area}}</td>
         <td>{{area.descriptor}}</td>
         <td>{{area.factual}}</td>
         <td>{{area.conceptual}}</td>
         <td>{{area.procedimental}}</td>
         <td>{{area.metacognitivo}}</td>
-        <td>{{area.nivel}}</td>
-     
+        <td>{{area.nivel}}</td>     
       </tr>
 
     </tbody>

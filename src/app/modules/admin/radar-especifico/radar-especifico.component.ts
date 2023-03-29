@@ -29,10 +29,13 @@ export class RadarEspecificoComponent implements OnInit {
   ){}
   ngOnInit(): void {
    console.log("name: "+ this.name);   
+   this.traerRadar()
   }
   traerRadar = () =>{
     this.radarService.getRadarEspecifico(this.name).subscribe({
       next: data => {
+        console.log("data: "+ data);
+        
         this.radarItems = data;
       }
     })
