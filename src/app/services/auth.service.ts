@@ -58,6 +58,31 @@ export class AuthService {
       console.log(error)
     }
   }
+  
+  async loginRegistre(email: string, password: string) {
+    let tokenAux = ""
+    const auth = getAuth();
+
+   await createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        await user.getIdToken().then((token) => {
+          //console.log(token)
+          tokenAux = token;
+        })
+
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+
+    return tokenAux;
+
+  }
 
 
 }
