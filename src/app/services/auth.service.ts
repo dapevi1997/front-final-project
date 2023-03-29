@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { getAuth, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +44,19 @@ export class AuthService {
       localStorage.setItem("role", "");
       window.location.reload();
     });
+  }
+
+  recoverPasswordWithEmail (email: string){
+    try {
+      const auth = getAuth();
+
+      return sendPasswordResetEmail(auth,email);
+
+      
+    } catch (error) {
+      return null
+      console.log(error)
+    }
   }
 
 

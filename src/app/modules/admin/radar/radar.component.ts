@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Toast } from 'ngx-toastr';
 
 @Component({
   selector: 'app-radar',
