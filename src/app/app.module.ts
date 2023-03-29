@@ -10,7 +10,8 @@ import { AdminModule } from './modules/admin/admin.module';
 import { OperationsModule } from './modules/operations/operations.module';
 import { LearnerModule } from './modules/learner/learner.module';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import {AngularFireAuth} from '@angular/fire/compat/auth';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -33,7 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LearnerModule,
 
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     NgbModule,
 
   ],
