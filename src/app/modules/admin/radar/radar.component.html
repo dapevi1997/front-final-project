@@ -1,0 +1,9 @@
+
+<div class="formulario">
+    <legend style="color: #C324BC;">Nuevo radar</legend>
+    <div class="mb-3 campo">
+      <label for="disabledTextInput" class="form-label">Nombre del radar</label>
+      <input [(ngModel)]="radarItems.nombre" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <button (click)="crearRadar()"  class="btn btn-primary">Crear radar</button>
+</div>

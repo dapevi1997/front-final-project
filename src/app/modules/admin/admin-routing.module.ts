@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
+import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
 import { PromediosComponent } from './promedios/promedios.component';
 import { RadarComponent } from './radar/radar.component';
 import { UsersComponent } from './users/users.component';
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path:"radar",
     component: RadarComponent
+  },
+  {
+    path:"lista-radares",
+    component: ListaRadaresComponent
   },
   {
     path:"users",

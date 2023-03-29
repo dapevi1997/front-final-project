@@ -8,6 +8,9 @@ import { RadarComponent } from './radar/radar.component';
 import { PromediosComponent } from './promedios/promedios.component';
 import { ToastrModule } from 'ngx-toastr';
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
 
 
 
@@ -18,11 +21,14 @@ import { ToastrModule } from 'ngx-toastr';
     NavbaradminComponent,
     UsersComponent,
     RadarComponent,
-    PromediosComponent
+    PromediosComponent,
+    ListaRadaresComponent
   ],
   imports: [
     AdminRoutingModule,
     CommonModule,
+    FormsModule,
+    NgbModule,
         
   ]
 })

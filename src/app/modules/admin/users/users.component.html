@@ -2,24 +2,24 @@
 <div class="formulario">
       <legend style="color: #C324BC;">Crear usuario nuevo</legend>
       <div class="mb-3 campo">
-        <label for="disabledTextInput" class="form-label">Nombre</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        <label  for="disabledTextInput" class="form-label">Nombre</label>
+        <input [(ngModel)]="usuarioI.nombre" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
       </div>
       <div class="mb-3 campo">
         <label for="disabledTextInput" class="form-label">Apellido</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+        <input [(ngModel)]="usuarioI.apellido" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
       </div>
       <div class="mb-3 campo">
         <label for="disabledTextInput" class="form-label">Correo</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Correo">
+        <input [(ngModel)]="usuarioI.correo" type="text" id="disabledTextInput" class="form-control" placeholder="Correo">
       </div>
       <div class="mb-3 campo">
         <label for="disabledTextInput" class="form-label">Contraseña</label>
-        <input type="text" id="disabledTextInput" class="form-control" placeholder="Contraseña">
+        <input [(ngModel)]="usuarioI.contrasena" type="text" id="disabledTextInput" class="form-control" placeholder="Contraseña">
       </div>
       <div class="mb-3 campo">
         <label for="disabledSelect" class="form-label">Seleccionar rol</label>
-        <select id="disabledSelect" class="form-select">
+        <select [(ngModel)]="usuarioI.rol" id="disabledSelect" class="form-select">
           <option>Roles</option>
           <option>Administrador</option>
           <option>Usuario</option>
