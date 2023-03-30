@@ -17,7 +17,8 @@ export class RadarComponent {
     private modalService: NgbModal,
     private toastr: ToastrService,
     private radarService : RadarService
-  ){ this.form = new FormGroup({
+  ){ 
+    this.form = new FormGroup({
     nombre: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,16}$/)]),    
   });
 }
