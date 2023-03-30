@@ -1,0 +1,29 @@
+<div class="formulario">
+    <legend style="color: #C324BC;">Crear Liga</legend>
+    <div class="mb-3 campo">
+      <label  for="disabledTextInput" class="form-label">Nombre</label>
+      <input [(ngModel)]="ligaI.nombre" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <div class="mb-3 campo">
+      <label for="disabledTextInput" class="form-label">Periodo</label>
+      <input [(ngModel)]="ligaI.periodo" type="text" id="disabledTextInput" class="form-control" placeholder="Periodo">
+    </div>
+    <div class="mb-3 campo">
+      <label for="disabledTextInput" class="form-label">Coach</label>
+      <input [(ngModel)]="ligaI.coach" type="text" id="disabledTextInput" class="form-control" placeholder="Coach">
+    </div>
+    <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Año</label>
+        <input [(ngModel)]="ligaI.anio" type="text" id="disabledTextInput" class="form-control" placeholder="Año">
+    </div>
+    <!-- <div class="mb-3 campo">
+      <label for="disabledSelect" class="form-label">Seleccionar rol</label>
+      <select [(ngModel)]="usuarioI.rol" id="disabledSelect" class="form-select">
+        <option>Roles</option>
+        <option>ADMIN</option>
+        <option>LEARNER</option>
+        <option>OPERATIONS</option>
+      </select>
+    </div> -->
+    <button (click)="crearLiga()"  class="btn btn-primary">Crear Liga</button>
+</div>

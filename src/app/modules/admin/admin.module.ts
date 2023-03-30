@@ -11,6 +11,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
+
+import { LigaComponent } from './liga/liga.component';
+
 import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.component';
 
 import { FormularioRadarComponent } from './componentes/formulario-radar/formulario-radar.component';
@@ -18,6 +21,7 @@ import { NavbaradminComponent } from './navbaradmin/navbaradmin.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+
 
 
 
@@ -30,6 +34,15 @@ import { ListUsersComponent } from './list-users/list-users.component';
     RadarComponent,
     PromediosComponent,
     ListaRadaresComponent,
+
+    LigaComponent
+
+  ],  imports: [
+    AdminRoutingModule,
+    CommonModule,
+    FormsModule,
+    NgbModule
+
     RadarEspecificoComponent,
 
     FormularioRadarComponent,
@@ -46,7 +59,6 @@ import { ListUsersComponent } from './list-users/list-users.component';
     FormsModule,
     NgbModule,
     ReactiveFormsModule
-        
   ]
 })
 export class AdminModule { }
