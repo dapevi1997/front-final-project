@@ -28,32 +28,20 @@ import { ListUsersComponent } from './list-users/list-users.component';
 
 @NgModule({
   declarations: [
-  
+
     NavbaradminComponent,
     UsersComponent,
     RadarComponent,
     PromediosComponent,
     ListaRadaresComponent,
-
-    LigaComponent
-
-  ],  imports: [
-    AdminRoutingModule,
-    CommonModule,
-    FormsModule,
-    NgbModule
-
+    LigaComponent,
     RadarEspecificoComponent,
-
     FormularioRadarComponent,
-
     HomeAdminComponent,
     AdminComponent,
-    ListUsersComponent
-  
+    ListUsersComponent,
 
-  ],
-  imports: [
+  ], imports: [
     AdminRoutingModule,
     CommonModule,
     FormsModule,
