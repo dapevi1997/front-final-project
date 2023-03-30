@@ -5,6 +5,7 @@ import { LoginComponent } from './modules/login/login/login.component';
 import { IsAdminGuard } from './guards/is-admin.guard';
 import { IsOperationsGuard } from './guards/is-operations.guard';
 import { IsLeanerGuard } from './guards/is-leaner.guard';
+import { AdminComponent } from './modules/admin/admin/admin.component';
 
 
 
@@ -22,11 +23,12 @@ const routes: Routes = [
   {
 
     path: "adm",
+
+    component: AdminComponent,
+
     canActivate: [IsAdminGuard],
     loadChildren: () =>
       import("./modules/admin/admin.module").then(module => module.AdminModule)
-
-
   },
   {
     path: "operations",
