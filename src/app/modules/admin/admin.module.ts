@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
 import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.component';
+import { FormularioRadarComponent } from './componentes/formulario-radar/formulario-radar.component';
 
 
 
@@ -24,7 +25,8 @@ import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.co
     RadarComponent,
     PromediosComponent,
     ListaRadaresComponent,
-    RadarEspecificoComponent
+    RadarEspecificoComponent,
+    FormularioRadarComponent
   ],
   imports: [
     AdminRoutingModule,

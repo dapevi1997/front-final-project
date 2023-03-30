@@ -9,7 +9,6 @@ import { RadarService } from 'src/app/services/radares.service';
   selector: 'app-radar-especifico',
   templateUrl: './radar-especifico.component.html',
   styleUrls: ['./radar-especifico.component.css'],
-  providers:[MessageService]
 })
 export class RadarEspecificoComponent implements OnInit {
   valores = window.location.search;
@@ -29,21 +28,9 @@ export class RadarEspecificoComponent implements OnInit {
     }]
   }
 
-  areaItem : AreaI ={
-    area:"",
-    radarNombre:this.name,
-    descriptor:"",
-    factual: 0,
-    conceptual: 0,
-    procedimental: 0,
-    metacognitivo: 0,
-    nivel: 0
-  }
   constructor(
     private modalService: NgbModal,
-    private messageService: MessageService,
-    private radarService : RadarService,
-    private toastr: ToastrService,
+    private radarService : RadarService,  
   ){}
   ngOnInit(): void {  
    this.traerRadar()
@@ -59,27 +46,6 @@ export class RadarEspecificoComponent implements OnInit {
     })
   }
 
-  agregarArea = () =>{
-    this.areaItem.nivel =(
-      Number(this.areaItem.factual)+ 
-      Number(this.areaItem.conceptual)+
-      Number(this.areaItem.procedimental)+
-      Number(this.areaItem.metacognitivo)
-      )/4
-    this.radarService.agregarArea(this.areaItem).subscribe({
-      next: data=>{
-        this.modalService.dismissAll();
-        this.toastr.success('Area agregada exitosamente!','Success');  
-         setTimeout(() => {
-         window.location.reload();
-       }, 1000);
-      },
-      error : error => {
-        console.log(error);
-        this.toastr.error('Algun error ocurrio!','Error')
-        
-      }
-    })
-  }
+
 
 }
