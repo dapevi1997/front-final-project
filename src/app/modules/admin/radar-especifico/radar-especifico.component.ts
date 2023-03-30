@@ -45,8 +45,7 @@ export class RadarEspecificoComponent implements OnInit {
     private radarService : RadarService,
     private toastr: ToastrService,
   ){}
-  ngOnInit(): void {
-   console.log("name: "+ this.name);   
+  ngOnInit(): void {  
    this.traerRadar()
   }
   openVerticallyCentered(content: any) {
@@ -54,9 +53,7 @@ export class RadarEspecificoComponent implements OnInit {
   }
   traerRadar = () =>{
     this.radarService.getRadarEspecifico(this.name).subscribe({
-      next: data => {
-        console.log("data: "+ data);
-        
+      next: data => {        
         this.radarItems = data;
       }
     })
@@ -83,10 +80,6 @@ export class RadarEspecificoComponent implements OnInit {
         
       }
     })
-  }
-
-  sumatoria = () =>{
-
   }
 
 }
