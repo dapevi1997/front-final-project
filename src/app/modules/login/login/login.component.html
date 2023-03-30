@@ -1,3 +1,8 @@
+<nav class="navbar bg-body-tertiary" style="background-color: #0A0947">
+  <div class="container-fluid" style="margin-left: 40%;">
+    <h1 class="navbar-brand" style="color: white;">Sistema para seguimiento de aprendices</h1>
+  </div>
+</nav>
 <br><br>
 <div class="container">
   <div class="card w-50 mx-auto">
@@ -61,8 +66,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="updatePasswordWithEmail()" data-bs-dismiss="modal">Recuperar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-dark purple btn-block mb-2" [disabled]="!formRecoverPasswordWithEmail.valid" (click)="updatePasswordWithEmail()" data-bs-dismiss="modal">Recuperar</button>
 
       </div>
 
