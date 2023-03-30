@@ -3,33 +3,14 @@
     <div class="col" *ngFor="let radar of radares">
       <div  class="card"  style="margin-top: 20px;">
         <div class="card text-bg-light mb-3" >
-          <div class="card-header">Radar</div>
-          <div class="card-body">
+          <div class="card-header title">Radares</div>
+          <div class="card-body body-content">
             <h5 class="card-title">{{radar.nombre}}</h5>
-            <a [routerLink]="['/adm/radar-especifico']" [queryParams]='{name: radar.nombre }' class="card-link">Ver radar</a>
+            <img src="../../../../assets/RadarGrafico.png" alt="">
+            <span   [routerLink]="['/adm/radar-especifico']" [queryParams]='{name: radar.nombre }' class="card-link link">Ver radar</span >
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br><br><br>
-
-<div *ngFor="let radar of radares" class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{radar.nombre}}</h5>
-    <a [routerLink]="['/radar-especifico']" [queryParams]='{name: radar.nombre }' class="card-link">Card link</a>
   </div>
 </div>
