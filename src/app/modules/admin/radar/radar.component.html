@@ -2,8 +2,15 @@
 <div class="formulario">
     <legend style="color: #C324BC;">Nuevo radar</legend>
     <div class="mb-3 campo">
+       <form [formGroup]="form">
       <label for="disabledTextInput" class="form-label">Nombre del radar</label>
-      <input [(ngModel)]="radarItems.nombre" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+      <input  formControlName="nombre" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+      <div *ngIf="form.get('nombre')?.hasError('required') && form.pristine === false" style="color: red;">El nombre
+        es requerido</div>
+        <div *ngIf="form.get('nombre')?.hasError('pattern') && form.pristine === false" style="color: red;">El nombre
+          debe ser alfa númerico</div>
+   
+      </form>
     </div>
-    <button (click)="crearRadar()"  class="btn btn-primary">Crear radar</button>
+    <button [disabled]="!form.valid" type="submit" (click)="crearRadar()"  class="btn btn-primary">Crear radar</button>
 </div>

@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RadarI } from 'src/app/interfaces/radar.interface';
 import { RadarService } from 'src/app/services/radares.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-radar',
@@ -11,17 +12,22 @@ import { RadarService } from 'src/app/services/radares.service';
   styleUrls: ['./radar.component.css']
 })
 export class RadarComponent {
+  form: FormGroup;
   constructor(
     private modalService: NgbModal,
     private toastr: ToastrService,
     private radarService : RadarService
-  ){}
+  ){ this.form = new FormGroup({
+    nombre: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,16}$/)]),    
+  });
+}
    radarItems : RadarI ={
-    nombre:"",
+    nombre:'',
     areas:[ ]
   }
 
   crearRadar = () => {
+    this.radarItems.nombre = this.form.value.nombre;
     this.radarService.crearRadar(this.radarItems).subscribe({
       next: data => {
         this.modalService.dismissAll();
