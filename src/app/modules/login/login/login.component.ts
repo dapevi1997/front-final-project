@@ -35,6 +35,7 @@ export class LoginComponent {
 
 
   async login(){
+
    
     const email = this.form.value.email;
     const password = this.form.value.password;
@@ -42,10 +43,8 @@ export class LoginComponent {
 
     await this.login$.login(email, password);
 
-    this.roles$.loadRoles().subscribe(
+   this.roles$.loadRoles().subscribe(
       role => {
-
-        
 
         let data = Object.values(role)
       
@@ -56,10 +55,13 @@ export class LoginComponent {
             this.roleActualUser = user.role;
             if(user.role == "ADMIN"){
            
-             
+             console.log(localStorage.getItem("role"))
               this.router$.navigate(['/adm']).then(
-                ()=>
-                this.toastr$.success('Bienvenido')
+                ()=>{
+                  console.log("navigate")
+                  this.toastr$.success('Bienvenido')
+                }
+               
               );
             }
             if(user.role == "OPERATIONS"){

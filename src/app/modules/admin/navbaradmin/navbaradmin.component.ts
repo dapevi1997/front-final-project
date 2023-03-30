@@ -39,9 +39,12 @@ export class NavbaradminComponent {
   }
 
   createUser(){
+    console.log(this.formCreateUser.value.email, this.formCreateUser.value.password,this.formCreateUser.value.role)
     this.authService.loginRegistre(this.formCreateUser.value.email, this.formCreateUser.value.password)
     .then(token=>{
+      console.log(token)
       this.rolService.saveRoles(this.formCreateUser.value.email, this.formCreateUser.value.role, token);
+      
       this.toastr$.success('Usuario agregado exitosamente!','Success');  
     })
   ;

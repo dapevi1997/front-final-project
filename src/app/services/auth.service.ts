@@ -5,6 +5,7 @@ import 'firebase/compat/auth';
 import { getAuth, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,10 @@ export class AuthService {
 
   constructor(private router$: Router) { }
 
+
   async login(email: string, password: string) {
+    localStorage.setItem("token", "");
+    localStorage.setItem("role", "");
 
     await firebase.auth().signInWithEmailAndPassword(email, password).then(
       response => {
@@ -21,9 +25,6 @@ export class AuthService {
           token => {
             this.token = token;
             localStorage.setItem("token", this.token)
-            //this.cookie$.set("token", this.token);
-
-           // this.router$.navigate(['/']);
           }
         );
       }
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   getIdToken() {
-   
+
     return localStorage.getItem("token");
   }
 
@@ -46,24 +47,25 @@ export class AuthService {
     });
   }
 
-  recoverPasswordWithEmail (email: string){
+  recoverPasswordWithEmail(email: string) {
     try {
       const auth = getAuth();
 
-      return sendPasswordResetEmail(auth,email);
+      return sendPasswordResetEmail(auth, email);
 
-      
+
     } catch (error) {
       return null
       console.log(error)
     }
   }
-  
+
   async loginRegistre(email: string, password: string) {
     let tokenAux = ""
     const auth = getAuth();
 
-   await createUserWithEmailAndPassword(auth, email, password)
+
+    await createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         // Signed in 
         const user = userCredential.user;
@@ -77,12 +79,13 @@ export class AuthService {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        console.log("Error creando usuario, auth.service");
       });
 
     return tokenAux;
 
   }
+
 
 
 }
