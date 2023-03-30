@@ -22,6 +22,8 @@
         <input formControlName="factual" type="number"  class="form-control" placeholder="0">
         <div *ngIf="form.get('factual')?.hasError('required') && form.pristine === false" style="color: red;">El factual
             es requerido</div>
+            <div *ngIf="form.get('factual')?.hasError('max') && form.pristine === false" style="color: red;">El metacognitivo
+              debe ser  de un dígito</div>
             <div *ngIf="form.get('factual')?.hasError('pattern') && form.pristine === false" style="color: red;">El factual
               debe ser  númerico</div>
     </div>
@@ -30,6 +32,8 @@
         <input formControlName="conceptual" type="number"  class="form-control" placeholder="0">
         <div *ngIf="form.get('conceptual')?.hasError('required') && form.pristine === false" style="color: red;">El conceptual
             es requerido</div>
+            <div *ngIf="form.get('conceptual')?.hasError('max') && form.pristine === false" style="color: red;">El metacognitivo
+              debe ser  de un dígito</div>
             <div *ngIf="form.get('conceptual')?.hasError('pattern') && form.pristine === false" style="color: red;">El conceptual
               debe ser  númerico</div>
     </div>
@@ -38,6 +42,8 @@
         <input formControlName="procedimental" type="number"  class="form-control" placeholder="0">
         <div *ngIf="form.get('procedimental')?.hasError('required') && form.pristine === false" style="color: red;">El procedimental
             es requerido</div>
+            <div *ngIf="form.get('procedimental')?.hasError('max') && form.pristine === false" style="color: red;">El metacognitivo
+              debe ser  de un dígito</div>
             <div *ngIf="form.get('procedimental')?.hasError('pattern') && form.pristine === false" style="color: red;">El procedimental
               debe ser  númerico</div>
     </div>
