@@ -19,6 +19,9 @@ const routes: Routes = [
     },
     {
       path:"list-users", component: ListUsersComponent
+    },
+    {
+      path:"list-radars", component: ListaRadaresComponent
     }
   ]
     
