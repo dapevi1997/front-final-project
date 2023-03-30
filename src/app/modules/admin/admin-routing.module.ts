@@ -25,35 +25,17 @@ const routes: Routes = [
     },
     {
       path:"radar-especifico", component: RadarEspecificoComponent
-    }
+    },
+    {
+         path:"promedios",
+         component: PromediosComponent
+    },
+    {
+         path:"grafica",
+         component: GraficaComponent
+    },
   ]
-    
   },
-  // {
-  //   path:"radar",
-  //   component: RadarComponent
-  // },
-  // {
-  //   path:"radar-especifico",
-  //   component: RadarEspecificoComponent
-  // },
-  // {
-  //   path:"lista-radares",
-  //   component: ListaRadaresComponent
-  // },
-  // {
-  //   path:"users",
-  //   component: UsersComponent
-  // },
-  // {
-  //   path:"promedios",
-  //   component: PromediosComponent
-  // },
-  // {
-  //   path:"grafica",
-  //   component: GraficaComponent
-  // },
-
 ];
 
 @NgModule({
