@@ -26,7 +26,9 @@ export class RadarComponent {
     nombre:'',
     areas:[ ]
   }
-
+cerrarModal = () => {
+  this.modalService.dismissAll();
+}
   crearRadar = () => {
     this.radarItems.nombre = this.form.value.nombre;
     this.radarService.crearRadar(this.radarItems).subscribe({

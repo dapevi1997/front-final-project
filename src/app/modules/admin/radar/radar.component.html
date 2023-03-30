@@ -12,5 +12,9 @@
    
       </form>
     </div>
-    <button [disabled]="!form.valid" type="submit" (click)="crearRadar()"  class="btn btn-primary">Crear radar</button>
+    <div class="contenedor-botones">
+      <button [disabled]="!form.valid" type="submit" (click)="crearRadar()"  class="btn btn-primary">Crear radar</button>
+      <button  (click)="cerrarModal()"  class="btn btn-danger">Cerrar</button>
+
+    </div>
 </div>

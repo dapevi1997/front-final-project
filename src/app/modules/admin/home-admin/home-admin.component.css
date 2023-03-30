@@ -4,6 +4,7 @@ body{
 .principal{
 	margin-top:50px;
 	font-family: 'Roboto';
+
 }
 
 
@@ -14,6 +15,7 @@ body{
 	background: linear-gradient(-90deg, #BF019F, #F28A57); 
 	box-shadow:1px 5px 15px #a2a2a2;
 }
+
 
 /*tarjeta 2*/
 .card-header-second{
@@ -52,4 +54,12 @@ body{
 /*Para el efecto sombra al pasar por encima el mouse*/
 .card-section:hover{
 	box-shadow:1px 1px 20px #d2d2d2;
+}
+.card-body{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+.btn{
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
