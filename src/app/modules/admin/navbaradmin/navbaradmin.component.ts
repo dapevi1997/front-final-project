@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { AuthService } from 'src/app/services/auth.service';
 import { RolesService } from '../../../services/roles.service';
 import { ToastrService } from 'ngx-toastr';
+import { group } from 'd3';
 
 @Component({
   selector: 'app-navbaradmin',
@@ -11,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavbaradminComponent {
   formCreateUser: FormGroup;
+  formCreateRadar: FormGroup;
 
   constructor(
     private authService : AuthService,
@@ -25,6 +27,11 @@ export class NavbaradminComponent {
         role: new FormControl("SELOPC", [Validators.required])
       },[this.passwordMatch("password","passwordRepeat" )]
     );
+
+    this.formCreateRadar = new FormGroup(
+      {}
+    );
+
   }
 
   logout = () => {
