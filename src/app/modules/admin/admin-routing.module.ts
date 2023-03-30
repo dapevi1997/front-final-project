@@ -1,43 +1,58 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GraficaComponent } from '../grafica/grafica.component';
-import { AdminComponent } from './admin/admin.component';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
 import { PromediosComponent } from './promedios/promedios.component';
 import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.component';
 import { RadarComponent } from './radar/radar.component';
 import { UsersComponent } from './users/users.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { ListUsersComponent } from './list-users/list-users.component';
 
 
 const routes: Routes = [
   {
     path:"",
-    component: AdminComponent
+    children:[
+    {
+      path:"", component:HomeAdminComponent
+    },
+    {
+      path:"list-users", component: ListUsersComponent
+    },
+    {
+      path:"list-radars", component: ListaRadaresComponent
+    },
+    {
+      path:"radar-especifico", component: RadarEspecificoComponent
+    }
+  ]
+    
   },
-  {
-    path:"radar",
-    component: RadarComponent
-  },
-  {
-    path:"radar-especifico",
-    component: RadarEspecificoComponent
-  },
-  {
-    path:"lista-radares",
-    component: ListaRadaresComponent
-  },
-  {
-    path:"users",
-    component: UsersComponent
-  },
-  {
-    path:"promedios",
-    component: PromediosComponent
-  },
-  {
-    path:"grafica",
-    component: GraficaComponent
-  },
+  // {
+  //   path:"radar",
+  //   component: RadarComponent
+  // },
+  // {
+  //   path:"radar-especifico",
+  //   component: RadarEspecificoComponent
+  // },
+  // {
+  //   path:"lista-radares",
+  //   component: ListaRadaresComponent
+  // },
+  // {
+  //   path:"users",
+  //   component: UsersComponent
+  // },
+  // {
+  //   path:"promedios",
+  //   component: PromediosComponent
+  // },
+  // {
+  //   path:"grafica",
+  //   component: GraficaComponent
+  // },
 
 ];
 

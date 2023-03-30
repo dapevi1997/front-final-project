@@ -1,0 +1,187 @@
+<nav class="navbar navbar-expand-lg navbar-dark mb-4 purple" style="background-color: #0A0947;">
+  <!-- <h4 style="color: white;">{{roleActualUser == "" ? "No logueado": roleActualUser}}</h4> -->
+  <div class="container">
+
+
+    <a class="navbar-brand" [routerLink]="['/adm']">
+      <img src="../../../../assets/SofkaU-2.png" width="40" height="40" class="mr-1" />
+      <!-- <b> Mascotas </b> -->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
+            Usuarios
+          </span>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/adm/list-users']">Listar usuarios</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#idCreateUser">Crear usuario</a></li>
+          </ul>
+
+        </li>
+        <li class="nav-item nav-item dropdown">
+          <span class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
+          Radar
+        </span>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" [routerLink]="['/adm/list-radars']">Ver radares</a></li>
+          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#idCreateRadar">Crear radar</a></li>
+        </ul>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" [routerLink]="['/adm']" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
+            Promedios
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button (click)="logout()" class="btn btn-primary btnP" [routerLink]="['/login']"
+    style="background-color: red; border-color: white;">Logout</button>
+  <!-- <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="" style="background-color: #603E85; border-color: white;">Logout</button> -->
+</nav>
+
+
+
+<div class="modal fade" id="idCreateUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear un usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="formCreateUser">
+          <div class="mb-3">
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="email"
+              placeholder="Correo electrónico" />
+            <div *ngIf="formCreateUser.get('email')?.hasError('required') && formCreateUser.pristine === false"
+              style="color: red;">El email
+              es requerido</div>
+            <div *ngIf="formCreateUser.get('email')?.hasError('email') && formCreateUser.pristine === false"
+              style="color: red;">Ingrese email
+              válido</div>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" aria-describedby="emailHelp" formControlName="password"
+            placeholder="Contraseña" />
+          <div *ngIf="formCreateUser.get('password')?.hasError('required') && formCreateUser.pristine === false"
+            style="color: red;">La contraseña es requerida</div>
+          </div>
+
+          <div class="mb-3">
+            <input type="password" class="form-control" placeholder="Repita contraseña" formControlName="passwordRepeat">
+            <div *ngIf="formCreateUser.get('passwordRepeat')?.hasError('required') && formCreateUser.pristine === false"
+              style="color: red;">Confirmar contraseña es requerido</div>
+            <div *ngIf="formCreateUser?.hasError('passwordMismatchError') && formCreateUser.pristine === false"
+              style="color: red;">Las contraseñas no coinciden</div>
+          </div>
+
+        
+
+
+
+
+
+
+          <select class="form-select m-0" formControlName="role" style="margin-left: 10px;" >
+            <option disabled selected value="SELOPC">Selecciona una opción</option>
+            <option value="ADMIN">Administrador</option>
+            <option value="LEARNER">Aprendiz</option>
+            <option value="OPERATIONS">Operaciones</option>
+          </select>
+          <div *ngIf="formCreateUser.get('role')?.hasError('required') && formCreateUser.pristine === false" style="color: red;">Rol es
+            requerido</div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-dark purple btn-block mb-2" [disabled]="!formCreateUser.valid"
+          (click)="createUser()" data-bs-dismiss="modal">Crear usuario</button>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="modal fade" id="idCreateRadar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear un radar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- <form [formGroup]="formCreateUser">
+          <div class="mb-3">
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="email"
+              placeholder="Correo electrónico" />
+            <div *ngIf="formCreateUser.get('email')?.hasError('required') && formCreateUser.pristine === false"
+              style="color: red;">El email
+              es requerido</div>
+            <div *ngIf="formCreateUser.get('email')?.hasError('email') && formCreateUser.pristine === false"
+              style="color: red;">Ingrese email
+              válido</div>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" aria-describedby="emailHelp" formControlName="password"
+            placeholder="Contraseña" />
+          <div *ngIf="formCreateUser.get('password')?.hasError('required') && formCreateUser.pristine === false"
+            style="color: red;">La contraseña es requerida</div>
+          </div>
+
+          <div class="mb-3">
+            <input type="password" class="form-control" placeholder="Repita contraseña" formControlName="passwordRepeat">
+            <div *ngIf="formCreateUser.get('passwordRepeat')?.hasError('required') && formCreateUser.pristine === false"
+              style="color: red;">Confirmar contraseña es requerido</div>
+            <div *ngIf="formCreateUser?.hasError('passwordMismatchError') && formCreateUser.pristine === false"
+              style="color: red;">Las contraseñas no coinciden</div>
+          </div>
+
+        
+
+
+
+
+
+
+          <select class="form-select m-0" formControlName="role" style="margin-left: 10px;" >
+            <option disabled selected value="SELOPC">Selecciona una opción</option>
+            <option value="ADMIN">Administrador</option>
+            <option value="LEARNER">Aprendiz</option>
+            <option value="OPERATIONS">Operaciones</option>
+          </select>
+          <div *ngIf="formCreateUser.get('role')?.hasError('required') && formCreateUser.pristine === false" style="color: red;">Rol es
+            requerido</div>
+
+        </form> -->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <!-- <button type="button" class="btn btn-dark purple btn-block mb-2" [disabled]="!formCreateUser.valid"
+          (click)="createUser()" data-bs-dismiss="modal">Crear usuario</button> -->
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

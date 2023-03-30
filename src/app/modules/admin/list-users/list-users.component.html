@@ -1,0 +1,21 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Rol</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{user.email}}</td>
+            <td>{{user.role}}</td>
+         
+          </tr>
+        </tbody>
+      </table>
+</div>
+
