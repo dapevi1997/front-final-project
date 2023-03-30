@@ -32,7 +32,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     ListaRadaresComponent,
     RadarEspecificoComponent,
 
-    FormularioRadarComponent
+    FormularioRadarComponent,
 
     HomeAdminComponent,
     AdminComponent,
