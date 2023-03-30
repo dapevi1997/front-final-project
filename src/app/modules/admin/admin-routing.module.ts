@@ -22,6 +22,9 @@ const routes: Routes = [
     },
     {
       path:"list-radars", component: ListaRadaresComponent
+    },
+    {
+      path:"radar-especifico", component: RadarEspecificoComponent
     }
   ]
     
