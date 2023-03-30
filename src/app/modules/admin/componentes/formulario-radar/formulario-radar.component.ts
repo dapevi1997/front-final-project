@@ -43,6 +43,9 @@ export class FormularioRadarComponent {
       metacognitivo:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
     });
   }
+  cerrarModal = () => {
+    this.modalService.dismissAll()
+  }
   agregarArea = () =>{
     this.areaItem.area = this.form.value.area;
     this.areaItem.descriptor = this.form.value.descriptor;
