@@ -3,6 +3,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RadarI } from 'src/app/interfaces/radar.interface';
+import { RadarService } from 'src/app/services/radares.service';
 
 @Component({
   selector: 'app-radar',
@@ -12,29 +13,28 @@ import { RadarI } from 'src/app/interfaces/radar.interface';
 export class RadarComponent {
   constructor(
     private modalService: NgbModal,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private radarService : RadarService
   ){}
    radarItems : RadarI ={
     nombre:"",
-    areas:[
-      {
-        area:"",
-        radarNombre:"",
-        descriptor:"",
-        factual: 0,
-        conceptual: 0,
-        procedimental: 0,
-        metacognitivo: 0,
-        nivel: 0
-      }
-    ]
+    areas:[ ]
   }
 
   crearRadar = () => {
-    this.modalService.dismissAll();
-    this.toastr.success('Radar agregado exitosamente!','Success');  
-     setTimeout(() => {
-     window.location.reload();
-   }, 1000);    
+    this.radarService.crearRadar(this.radarItems).subscribe({
+      next: data => {
+        this.modalService.dismissAll();
+        this.toastr.success('Radar agregado exitosamente!','Success');  
+         setTimeout(() => {
+         window.location.reload();
+       }, 1000);  
+      },
+      error: error =>{
+        console.log(error);
+        this.toastr.error("Algo salio mal","Error")
+        
+      }
+    })
   }
 }

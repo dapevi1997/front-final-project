@@ -36,6 +36,7 @@ export class GraficaComponent implements OnInit{
       this.aprendices = data;
       console.log(this.aprendices);
     });
+
   }
 
   agregarAprendiz(): void {

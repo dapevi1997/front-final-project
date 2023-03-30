@@ -1,0 +1,28 @@
+<div class="formulario">
+    <legend style="color: #C324BC;">Nuevo radar</legend>
+    <div class="mb-3 campo">
+      <label for="disabledTextInput" class="form-label">Area de conocimiento</label>
+      <input [(ngModel)]="areaItem.area" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Descriptor</label>
+        <input [(ngModel)]="areaItem.descriptor" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Factual</label>
+        <input [(ngModel)]="areaItem.factual" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Conceptual</label>
+        <input [(ngModel)]="areaItem.conceptual" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Procedimental</label>
+        <input [(ngModel)]="areaItem.procedimental" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Meta cognitivo</label>
+        <input [(ngModel)]="areaItem.metacognitivo" type="text" id="disabledTextInput" class="form-control" placeholder="Nombre">
+    </div>
+    <button (click)="agregarArea()"  class="btn btn-primary">Crear radar</button>
+</div>

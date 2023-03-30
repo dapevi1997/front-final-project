@@ -1,8 +1,8 @@
 export interface RadarI {
     nombre:string,
-    areas:Area[]
+    areas:AreaI[]
 }
-export interface Area{
+export interface AreaI{
     area:string,
     radarNombre:string,
     descriptor:string,
