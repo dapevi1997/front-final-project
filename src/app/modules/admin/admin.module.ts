@@ -9,7 +9,7 @@ import { PromediosComponent } from './promedios/promedios.component';
 import { ToastrModule } from 'ngx-toastr';
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
 import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.component';
 import { NavbaradminComponent } from './navbaradmin/navbaradmin.component';
@@ -38,6 +38,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
     CommonModule,
     FormsModule,
     NgbModule,
+    ReactiveFormsModule
         
   ]
 })
