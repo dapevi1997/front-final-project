@@ -11,8 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
-
-
+import { LigaComponent } from './liga/liga.component';
 
 
 @NgModule({
@@ -22,14 +21,14 @@ import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
     UsersComponent,
     RadarComponent,
     PromediosComponent,
-    ListaRadaresComponent
-  ],
-  imports: [
+    ListaRadaresComponent,
+    LigaComponent
+
+  ],  imports: [
     AdminRoutingModule,
     CommonModule,
     FormsModule,
-    NgbModule,
-        
+    NgbModule
   ]
 })
 export class AdminModule { }

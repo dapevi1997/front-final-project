@@ -19,6 +19,7 @@ import { GraficaComponent } from './modules/grafica/grafica.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartRadarComponent } from './shared/chart-radar/chart-radar.component';
 import { NgChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -42,7 +43,8 @@ import { NgChartsModule } from 'ng2-charts';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgbModule,
-    NgChartsModule
+    NgChartsModule,
+    FormsModule
 
   ],
   providers: [],

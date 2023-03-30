@@ -1,215 +1,57 @@
-import { Component, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { Color, ScaleType } from '@swimlane/ngx-charts';
+import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/services/auth.service';
+import {RolesService} from 'src/app/services/roles.service';
+import { Aprendiz, LigaI } from 'src/app/interfaces/liga.interface';
+import { LigaService } from 'src/app/services/liga.service';
 
 @Component({
   selector: 'app-grafica',
   templateUrl: './grafica.component.html',
-  styleUrls: ['./grafica.component.css']
+  styleUrls: ['./grafica.component.css'],
+  providers:[MessageService]
 })
-export class GraficaComponent {
-  multi: any[] = [
-    {
-      name: 'Germany',
-      series: [
-        {
-          name: '1990',
-          value: 62000000,
-        },
-        {
-          name: '2010',
-          value: 73000000,
-        },
-        {
-          name: '2011',
-          value: 89400000,
-        },
-        {
-          name: '2012',
-          value: 89400000,
-        },
-      ],
-    },
-  
-    {
-      name: 'USA',
-      series: [
-        {
-          name: '1990',
-          value: 250000000,
-        },
-        {
-          name: '2010',
-          value: 309000000,
-        },
-        {
-          name: '2011',
-          value: 311000000,
-        },
-        {
-          name: '2012',
-          value: 311000000,
-        },
-      ],
-    },
-  
-    {
-      name: 'France',
-      series: [
-        {
-          name: '1990',
-          value: 58000000,
-        },
-        {
-          name: '2010',
-          value: 50000020,
-        },
-        {
-          name: '2011',
-          value: 58000000,
-        },
-        {
-          name: '2012',
-          value: 58000000,
-        },
-      ],
-    },
-    {
-      name: 'UK',
-      series: [
-        {
-          name: '1990',
-          value: 57000000,
-        },
-        {
-          name: '2010',
-          value: 62000000,
-        },
-        {
-          name: '2011',
-          value: 72000000,
-        },
-        {
-          name: '2012',
-          value: 72000000,
-        },
-      ],
-    },
-  ];
-  view: [number,number] = [700, 300];
+export class GraficaComponent implements OnInit{
 
-  // options
-  legend: boolean = true;
-  showLabels: boolean = true;
-  animations: boolean = true;
-  xAxis: boolean = true;
-  yAxis: boolean = true;
-  showYAxisLabel: boolean = true;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Population';
+  aprendices: Aprendiz[] | any;
+  posicion:any[] = [];
+  id!:string;
+  liga!: LigaI;
 
-  // colorScheme = {
-  //   domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
-  // };
-  colorSchemes =  ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
-  colorScheme: Color = {     domain: ['#99CCE5', '#FF7F7F'],     group: ScaleType.Ordinal,     selectable: true,     name: 'Customer Usage',   };
-
-  //  multi = [
-  //   {
-  //     name: 'Germany',
-  //     series: [
-  //       {
-  //         name: '1990',
-  //         value: 62000000,
-  //       },
-  //       {
-  //         name: '2010',
-  //         value: 73000000,
-  //       },
-  //       {
-  //         name: '2011',
-  //         value: 89400000,
-  //       },
-  //       {
-  //         name: '2012',
-  //         value: 89400000,
-  //       },
-  //     ],
-  //   },
-  
-  //   {
-  //     name: 'USA',
-  //     series: [
-  //       {
-  //         name: '1990',
-  //         value: 250000000,
-  //       },
-  //       {
-  //         name: '2010',
-  //         value: 309000000,
-  //       },
-  //       {
-  //         name: '2011',
-  //         value: 311000000,
-  //       },
-  //       {
-  //         name: '2012',
-  //         value: 311000000,
-  //       },
-  //     ],
-  //   },
-  
-  //   {
-  //     name: 'France',
-  //     series: [
-  //       {
-  //         name: '1990',
-  //         value: 58000000,
-  //       },
-  //       {
-  //         name: '2010',
-  //         value: 50000020,
-  //       },
-  //       {
-  //         name: '2011',
-  //         value: 58000000,
-  //       },
-  //       {
-  //         name: '2012',
-  //         value: 58000000,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: 'UK',
-  //     series: [
-  //       {
-  //         name: '1990',
-  //         value: 57000000,
-  //       },
-  //       {
-  //         name: '2010',
-  //         value: 62000000,
-  //       },
-  //       {
-  //         name: '2011',
-  //         value: 72000000,
-  //       },
-  //       {
-  //         name: '2012',
-  //         value: 72000000,
-  //       },
-  //     ],
-  //   },
-  // ]
-  constructor() {
-    Object.assign(this, {multi:this.multi} );
-  }
-  onSelect(event:any) {
-    console.log(event);
+  constructor(
+    private modalService: NgbModal,
+    private messageService: MessageService,
+    private ligaSvr : LigaService
+    ){}
+  ngOnInit(): void {
+    this.traerAprendices();
+    this.traerLiga();
   }
 
+  traerAprendices(): void {
+    this.ligaSvr.traerAprendices().subscribe((data) => {
+      this.aprendices = data;
+      console.log(this.aprendices);
+    });
+  }
+
+  agregarAprendiz(): void {
+    this.ligaSvr.añadirAprendiz(this.liga.nombre, this.aprendices[parseInt(this.posicion[0])]).subscribe((data) => {
+      this.liga = data;
+      console.log(this.liga);
+    });
+  }
+
+  traerLiga(): void {
+      this.id = this.ligaSvr.recibirLiga();
+      this.ligaSvr.traerLiga(this.id).subscribe((data) => {
+        this.liga= data;
+        console.log(this.liga);
+      })
+      localStorage.removeItem('ligaid');
+  }
 
 }
