@@ -69,6 +69,7 @@ export class GraficaComponent implements OnInit{
       this?.ligaSvr?.traerLiga(this.id)?.subscribe((data) => {
         this.liga= data;
         this.radarItems = data.radar;
+        this.promedioLiga();
 
       })
   }
@@ -78,11 +79,15 @@ export class GraficaComponent implements OnInit{
     console.log(sumaAprendices);
     let nota1 = 0;
     let totalNota1 = 0;
-    this.liga.aprendices.forEach(aprendiz => {
+    this?.liga?.aprendices.forEach(aprendiz => {
       nota1 = aprendiz.calificaciones[0];
       totalNota1 += nota1;
     });
     let promedio = totalNota1 / sumaAprendices;
     console.log("este es el promedio "+ promedio);
     };
+
+
+
+
   }
