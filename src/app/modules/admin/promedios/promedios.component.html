@@ -1,5 +1,4 @@
 
-<app-navbaradmin></app-navbaradmin>
 <span  class="btn btn-info mb-3" (click)="openVerticallyCentered(contentLiga)">Crear Liga</span>
 
 <ng-template class="modal" #contentLiga let-modal>
@@ -10,7 +9,7 @@
     <div  class="card-body">
       <h5 class="card-title">
         {{liga.nombre}}</h5>
-      <a href="grafica" class="card-link" (click)="enviarLiga(liga.id)">Ver más</a>
+      <a [routerLink]="['/adm/grafica']" class="card-link" (click)="enviarLiga(liga.id)">Ver más</a>
     </div>
 </div>
 

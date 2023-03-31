@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Aprendiz, LigaI } from '../interfaces/liga.interface';
 import { Observable } from 'rxjs';
+import { RadarI } from '../interfaces/radar.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class LigaService {
   api = 'http://localhost:8080/api';
 
   id!:string;
+  radarNombre!:string;
 
   constructor(private http: HttpClient) { }
 
@@ -39,14 +41,30 @@ export class LigaService {
     return this.http.post<any>(direccion, aprendiz);
   }
 
+  añadirRadar(nombre: string, radar: RadarI):Observable <any> {
+    let direccion= this.api + '/liga/radar/' + nombre;
+    return this.http.post<any>(direccion, radar);
+  }
+
   enviarLiga(id: string){
     this.id = id;
     localStorage.setItem('ligaid', JSON.stringify(this.id));
     console.log(this.id);
   }
 
+  enviarRadar(radarNombre: string){
+    this.radarNombre = radarNombre;
+    localStorage.setItem('radarNombre', JSON.stringify(this.radarNombre));
+    console.log(this.radarNombre);
+  }
+
   recibirLiga(){
     this.id = JSON.parse(localStorage.getItem('ligaid') || '');
     return this.id;
+  }
+
+  recibirRadar(){
+    this.radarNombre = JSON.parse(localStorage.getItem('radarNombre') || '');
+    return this.radarNombre;
   }
 }

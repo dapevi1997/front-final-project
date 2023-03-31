@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import {RolesService} from 'src/app/services/roles.service';
 import { Aprendiz, LigaI } from 'src/app/interfaces/liga.interface';
 import { LigaService } from 'src/app/services/liga.service';
+import { RadarI } from 'src/app/interfaces/radar.interface';
+import { RadarService } from 'src/app/services/radares.service';
 
 @Component({
   selector: 'app-grafica',
@@ -20,15 +22,20 @@ export class GraficaComponent implements OnInit{
   posicion:any[] = [];
   id!:string;
   liga!: LigaI;
+  name!: string;
+  radarItems!:RadarI
 
   constructor(
     private modalService: NgbModal,
     private messageService: MessageService,
-    private ligaSvr : LigaService
+    private ligaSvr : LigaService,
+    private radarSvr : RadarService
     ){}
   ngOnInit(): void {
     this.traerAprendices();
     this.traerLiga();
+    this.definirRadar();
+    this.promedioLiga();
   }
 
   traerAprendices(): void {
@@ -36,7 +43,6 @@ export class GraficaComponent implements OnInit{
       this.aprendices = data;
       console.log(this.aprendices);
     });
-
   }
 
   agregarAprendiz(): void {
@@ -52,7 +58,29 @@ export class GraficaComponent implements OnInit{
         this.liga= data;
         console.log(this.liga);
       })
+
       localStorage.removeItem('ligaid');
   }
 
+  definirRadar(): void{
+    this.name = this.ligaSvr.recibirRadar();
+    localStorage.removeItem('radar');
+    this.radarSvr.getRadarEspecifico(this.name).subscribe((data) => {
+        this.radarItems = data;
+          console.log(this.radarItems);
+    })
+  }
+
+  promedioLiga(): void{
+    let sumaAprendices = this.liga.aprendices.length;
+    console.log(sumaAprendices);
+    let nota1 = 0;
+    let totalNota1 = 0;
+    this.liga.aprendices.forEach(aprendiz => {
+      nota1 = aprendiz.calificaciones[0];
+      totalNota1 += nota1;
+    });
+    let promedio = totalNota1 / sumaAprendices;
+    console.log(promedio);
+  }
 }

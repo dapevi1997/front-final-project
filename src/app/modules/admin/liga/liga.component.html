@@ -16,14 +16,14 @@
         <label for="disabledTextInput" class="form-label">Año</label>
         <input [(ngModel)]="ligaI.anio" type="text" id="disabledTextInput" class="form-control" placeholder="Año">
     </div>
-    <!-- <div class="mb-3 campo">
-      <label for="disabledSelect" class="form-label">Seleccionar rol</label>
-      <select [(ngModel)]="usuarioI.rol" id="disabledSelect" class="form-select">
-        <option>Roles</option>
-        <option>ADMIN</option>
-        <option>LEARNER</option>
-        <option>OPERATIONS</option>
+    <div class="mb-3 campo">
+      <label for="disabledSelect" class="form-label">Seleccionar radar</label>
+      <select [(ngModel)]="radarNombre" id="disabledSelect" class="form-select">
+        <option></option>
+        <option *ngFor="let radar of radares">
+          {{radar.nombre}}
+        </option>
       </select>
-    </div> -->
+    </div>
     <button (click)="crearLiga()"  class="btn btn-primary">Crear Liga</button>
 </div>

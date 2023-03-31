@@ -9,6 +9,8 @@ export interface AreaI{
     factual: number,
     conceptual: number,
     procedimental: number,
+
     metacognitivo: number,
     nivel: number
 }
+

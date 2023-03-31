@@ -1,7 +1,7 @@
 import { RadarI } from "./radar.interface"
 
 export interface LigaI {
-    id: string,
+    id?: string,
     nombre: string,
     periodo: string,
     aprendices: Aprendiz[],
