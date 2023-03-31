@@ -47,6 +47,7 @@ import { GraficaComponent } from './grafica/grafica.component';
     EliminarComponent,
     EditarComponent,
     EditarFormularioAreaComponent,
+    GraficaComponent
 
   ], imports: [
     AdminRoutingModule,

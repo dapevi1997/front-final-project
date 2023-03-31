@@ -18,11 +18,8 @@ import { RadarService } from 'src/app/services/radares.service';
 })
 export class GraficaComponent implements OnInit{
 
-  // aprendices: Aprendiz[]=[{
-  //   nombre : "",
-  //   calificaciones: [] 
-  // }]
-  aprendices!: Aprendiz[] | any
+
+  aprendices: Aprendiz[] | any;
   posicion:any[] = [];
   id!:string;
   liga!: LigaI;
@@ -34,12 +31,14 @@ export class GraficaComponent implements OnInit{
     private messageService: MessageService,
     private ligaSvr : LigaService,
     private radarSvr : RadarService
-    ){   }
+    ){}
+
   ngOnInit(): void {
     this.traerAprendices();
     this.traerLiga();
     this.promedioLiga();
   }
+
 
 
   traerAprendices(): void {
@@ -53,11 +52,13 @@ export class GraficaComponent implements OnInit{
       error: error => console.log(error)      
       
     });
+
   }
 
   agregarAprendiz(): void {
     this.ligaSvr.añadirAprendiz(this.liga.nombre, this.aprendices[parseInt(this.posicion[0])]).subscribe((data) => {
       this.liga = data;
+
     
     });
   }
@@ -76,11 +77,14 @@ export class GraficaComponent implements OnInit{
     
     let nota1 = 0;
     let totalNota1 = 0;
-    this?.liga?.aprendices?.forEach(aprendiz => {
-      nota1 = aprendiz?.calificaciones[0];
-      totalNota1 += nota1;
-    });
     let promedio = totalNota1 / sumaAprendices;
-  
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+
+    });
+
+  }
   }
 }
