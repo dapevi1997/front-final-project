@@ -15,7 +15,7 @@ import { LearnerModule } from './modules/learner/learner.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { GraficaComponent } from './modules/grafica/grafica.component';
+import { GraficaComponent } from './modules/admin/grafica/grafica.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartRadarComponent } from './shared/chart-radar/chart-radar.component';
 import { NgChartsModule } from 'ng2-charts';
@@ -27,7 +27,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    GraficaComponent,
     ChartRadarComponent,
   ],
   imports: [

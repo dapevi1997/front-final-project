@@ -18,7 +18,7 @@ import { RadarService } from 'src/app/services/radares.service';
 })
 export class GraficaComponent implements OnInit{
 
-  aprendices!: Aprendiz[];
+  aprendices: Aprendiz[] | any;
   posicion:any[] = [];
   id!:string;
   liga!: LigaI;
@@ -39,7 +39,7 @@ export class GraficaComponent implements OnInit{
 
   traerAprendices(): void {
     this.ligaSvr.traerAprendices().subscribe((data) => {
-      this.aprendices = [data];
+      this.aprendices = data;
       console.log(this.aprendices);
     });
 
