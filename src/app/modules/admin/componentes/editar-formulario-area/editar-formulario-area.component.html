@@ -1,0 +1,69 @@
+
+<div class="formulario" >
+    <legend style="color: #C324BC;">Nuevo radar</legend>
+      <form [formGroup]="form">
+
+      <div class="mb-3 campo">
+        <label for="disabledTextInput" class="form-label">Area de conocimiento</label>
+        <input formControlName="area"  type="text" id="disabledTextInput" class="form-control" placeholder="Área">
+        <div *ngIf="form.get('area')?.hasError('required') && form.pristine === false" style="color: red;">El área
+          es requerido</div>
+          <div *ngIf="form.get('area')?.hasError('pattern') && form.pristine === false" style="color: red;">El área
+            debe ser alfa númerico</div>
+      </div>
+      <div class="mb-3 campo">
+          <label for="disabledTextInput" class="form-label">Descriptor</label>
+          <input formControlName="descriptor"  type="text" id="disabledTextInput" class="form-control" placeholder="Descriptor">
+          <div *ngIf="form.get('descriptor')?.hasError('required') && form.pristine === false" style="color: red;">El descriptor
+              es requerido</div>
+              <div *ngIf="form.get('descriptor')?.hasError('pattern') && form.pristine === false" style="color: red;">El descriptor
+                debe ser alfa númerico</div>
+      </div>
+      <div class="mb-3 campo">
+          <label for="disabledTextInput" class="form-label">Factual</label>
+          <input formControlName="factual" type="number"  class="form-control" placeholder="0">
+          <div *ngIf="form.get('factual')?.hasError('required') && form.pristine === false" style="color: red;">El factual
+              es requerido</div>
+              <div *ngIf="form.get('factual')?.hasError('max') && form.pristine === false" style="color: red;">El metacognitivo
+                debe ser  de un dígito</div>
+              <div *ngIf="form.get('factual')?.hasError('pattern') && form.pristine === false" style="color: red;">El factual
+                debe ser  númerico</div>
+      </div>
+      <div class="mb-3 campo">
+          <label for="disabledTextInput" class="form-label">Conceptual</label>
+          <input formControlName="conceptual" type="number"  class="form-control" placeholder="0">
+          <div *ngIf="form.get('conceptual')?.hasError('required') && form.pristine === false" style="color: red;">El conceptual
+              es requerido</div>
+              <div *ngIf="form.get('conceptual')?.hasError('max') && form.pristine === false" style="color: red;">El metacognitivo
+                debe ser  de un dígito</div>
+              <div *ngIf="form.get('conceptual')?.hasError('pattern') && form.pristine === false" style="color: red;">El conceptual
+                debe ser  númerico</div>
+      </div>
+      <div class="mb-3 campo">
+          <label for="disabledTextInput" class="form-label">Procedimental</label>
+          <input formControlName="procedimental" type="number"  class="form-control" placeholder="0">
+          <div *ngIf="form.get('procedimental')?.hasError('required') && form.pristine === false" style="color: red;">El procedimental
+              es requerido</div>
+              <div *ngIf="form.get('procedimental')?.hasError('max') && form.pristine === false" style="color: red;">El metacognitivo
+                debe ser  de un dígito</div>
+              <div *ngIf="form.get('procedimental')?.hasError('pattern') && form.pristine === false" style="color: red;">El procedimental
+                debe ser  númerico</div>
+      </div>
+      <div class="mb-3 campo">
+          <label for="disabledTextInput" class="form-label">Meta cognitivo</label>
+          <input  formControlName="metacognitivo" type="number"  class="form-control" placeholder="0">
+          <div *ngIf="form.get('metacognitivo')?.hasError('required') && form.pristine === false" style="color: red;">El metacognitivo
+              es requerido</div>
+              <div *ngIf="form.get('metacognitivo')?.hasError('max') && form.pristine === false" style="color: red;">El metacognitivo
+                  debe ser  de un dígito</div>
+              <div *ngIf="form.get('metacognitivo')?.hasError('pattern') && form.pristine === false" style="color: red;">El metacognitivo
+                debe ser  númerico</div>
+      </div>
+      <div class="contenedor-botones">
+        <button [disabled]="!form.valid" (click)="editar()"  class="btn btn-primary">Actualizar área</button>
+        <button  (click)="cerrarModal()"  class="btn btn-danger">Cerrar</button>
+      </div>
+  </form>
+  </div>
+
+

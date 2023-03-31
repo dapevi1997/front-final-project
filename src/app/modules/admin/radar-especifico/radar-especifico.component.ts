@@ -14,6 +14,9 @@ export class RadarEspecificoComponent implements OnInit {
   valores = window.location.search;
   urlParams = new URLSearchParams(this.valores);
   name :any = this.urlParams.get('name');
+  index: number =0;
+  nombre : string =''
+  areaIn !: AreaI;
   radarItems : RadarI ={
     nombre:this.name,
     areas:[ {

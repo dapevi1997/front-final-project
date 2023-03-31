@@ -23,6 +23,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { EliminarComponent } from './componentes/eliminar/eliminar.component';
 import { EditarComponent } from './componentes/editar/editar.component';
+import { EditarFormularioAreaComponent } from './componentes/editar-formulario-area/editar-formulario-area.component';
 
 
 
@@ -44,6 +45,7 @@ import { EditarComponent } from './componentes/editar/editar.component';
     ListUsersComponent,
     EliminarComponent,
     EditarComponent,
+    EditarFormularioAreaComponent,
 
   ], imports: [
     AdminRoutingModule,

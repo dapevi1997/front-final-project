@@ -35,7 +35,13 @@ export class RadarService {
     let direction = environment.apiRadarUrl+'AgregarArea';
     return this.http.post<any>(direction, area,{
       responseType: 'text' as 'json'
-    })       
+    })           
+  }
+  actualizarArea(area:  AreaI, index:number) : Observable<AreaI>{   
+    let direction = environment.apiRadarUrl+ 'ActualizarArear/' + index;
+    return this.http.post<any>(direction, area,{
+      responseType: 'text' as 'json'
+    })           
   }
 
 }
