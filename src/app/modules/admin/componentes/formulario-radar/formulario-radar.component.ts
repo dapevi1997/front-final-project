@@ -46,20 +46,17 @@ export class FormularioRadarComponent {
   cerrarModal = () => {
     this.modalService.dismissAll()
   }
-  agregarArea = () =>{
-    this.areaItem.area = this.form.value.area;
-    this.areaItem.descriptor = this.form.value.descriptor;
-    this.areaItem.factual = this.form.value.factual;
-    this.areaItem.conceptual = this.form.value.conceptual;
-    this.areaItem.procedimental = this.form.value.procedimental;
-    this.areaItem.metacognitivo = this.form.value.metacognitivo;
-    
+  agregarArea = () =>{        
     this.areaItem.nivel =(
       Number(this.areaItem.factual)+
       Number(this.areaItem.conceptual)+
       Number(this.areaItem.procedimental)+
       Number(this.areaItem.metacognitivo)
       )/4
+      this.areaItem = {
+        ...this.areaItem,
+        ...this.form.value
+      }
     this.radarService.agregarArea(this.areaItem).subscribe({
       next: data=>{
         this.modalService.dismissAll();
