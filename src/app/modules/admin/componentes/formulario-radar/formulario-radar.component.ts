@@ -53,6 +53,7 @@ export class FormularioRadarComponent {
     this.areaItem.conceptual = this.form.value.conceptual;
     this.areaItem.procedimental = this.form.value.procedimental;
     this.areaItem.metacognitivo = this.form.value.metacognitivo;
+    
     this.areaItem.nivel =(
       Number(this.areaItem.factual)+
       Number(this.areaItem.conceptual)+

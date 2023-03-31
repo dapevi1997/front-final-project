@@ -43,5 +43,9 @@ export class RadarService {
       responseType: 'text' as 'json'
     })           
   }
+  eliminarArea(nombre:  string, index:number) : Observable<AreaI>{   
+    let direction = environment.apiRadarUrl+ 'EliminarArea/' + nombre + '/' + index;
+    return this.http.delete<any>(direction);           
+  }
 
 }
