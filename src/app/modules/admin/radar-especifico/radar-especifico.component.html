@@ -1,31 +1,43 @@
-<p>radar-especifico works!: {{radarItems.nombre}}</p>
-<table class="table">
-    <thead>
-      <tr>
-    
-        <th scope="col">Area de conocimiento</th>
-        <th scope="col">Descriptor</th>
-        <th scope="col">Factual</th>
-        <th scope="col">Conceptual</th>
-        <th scope="col">Procedimental</th>
-        <th scope="col">Metacogntivo</th>
-        <th scope="col">Nivel de apropiacion</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let area of radarItems.areas">
-      <tr >
-        <td>{{area.area}}</td>
-        <td>{{area.descriptor}}</td>
-        <td>{{area.factual}}</td>
-        <td>{{area.conceptual}}</td>
-        <td>{{area.procedimental}}</td>
-        <td>{{area.metacognitivo}}</td>
-        <td>{{area.nivel}}</td>     
-      </tr>
+<div class="areas-list">
+  <h1>Radar: {{radarItems.nombre}}</h1>
+  <table class="table tabla">
+      <thead>
+        <tr>      
+          <th scope="col">Area de conocimiento</th>
+          <th scope="col">Descriptor</th>
+          <th scope="col">Factual</th>
+          <th scope="col">Conceptual</th>
+          <th scope="col">Procedimental</th>
+          <th scope="col">Metacogntivo</th>
+          <th scope="col">Nivel de apropiacion</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let area of radarItems.areas ;let index= index">
+        <tr >
+          <td>{{area.area}}</td>
+          <td>{{area.descriptor}}</td>
+          <td>{{area.factual}}</td>
+          <td>{{area.conceptual}}</td>
+          <td>{{area.procedimental}}</td>
+          <td>{{area.metacognitivo}}</td>
+          <td>{{area.nivel}}</td>     
+          <td>
+            <app-editar [areaIn]="area" [nombre]="radarItems.nombre" [index]="index"></app-editar>
+          </td>     
+          <td>
+            <app-eliminar [nombre]="radarItems.nombre" [index]="index"></app-eliminar>
+        </td>     
+        </tr>
+  
+      </tbody>
 
-    </tbody>
-  </table>
-  <span  class="btn btn-info" (click)="openVerticallyCentered(contentRadar)">Agregar área</span>
+    </table>
+    <span  class="btn btn-info" (click)="openVerticallyCentered(contentRadar)">Agregar área</span>
+    
   <ng-template class="modal" #contentRadar let-modal>
-<app-formulario-radar></app-formulario-radar> 
+  <app-formulario-radar></app-formulario-radar> 
   </ng-template>
+
+</div>

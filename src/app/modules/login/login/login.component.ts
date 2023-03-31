@@ -15,9 +15,9 @@ export class LoginComponent {
   form: FormGroup;
   formRecoverPasswordWithEmail: FormGroup;
   role!: Role;
-  roleActualUser!: string|null;
+  roleActualUser!: string | null;
 
-  constructor(private login$: AuthService, private roles$: RolesService, private router$: Router, private toastr$: ToastrService){
+  constructor(private login$: AuthService, private roles$: RolesService, private router$: Router, private toastr$: ToastrService) {
     this.roleActualUser = localStorage.getItem("role");
 
     this.form = new FormGroup({
@@ -34,73 +34,95 @@ export class LoginComponent {
 
 
 
-  async login(){
-   
+  async login() {
     const email = this.form.value.email;
     const password = this.form.value.password;
 
-
-    await this.login$.login(email, password);
-
-    this.roles$.loadRoles().subscribe(
-      role => {
-
+    await this.login$.login(email, password)
+      .then((bool)=>{
+        if(bool==false){
+          this.toastr$.warning("Debe verificar el correo")
+        }
         
+      })
+      .catch(err => {
+        if (err.code == "auth/user-not-found") {
+          this.toastr$.warning("Usuario no registrado, contactarse con el superadmin para el registro y entrega de sus credenciales.")
+        } else if (err.code == "auth/wrong-password") {
+          this.toastr$.warning("Contraseña incorrecta")
+        }
+        else {
+          this.toastr$.error("Ha ocurrido un error con el login de usuario")
+        }
+      });
 
-        let data = Object.values(role)
-      
-        data.forEach(user => {
+      if(this.login$.getIdToken() !== "" && this.login$.getIdToken() !== null ){
+        this.roles$.loadRoles().subscribe(
+          role => {
+    
+            let data = Object.values(role)
+    
+            data.forEach(user => {
+    
+              if (user.email == email) {
+                localStorage.setItem("role", user.role)
+                this.roleActualUser = user.role;
+                if (user.role == "ADMIN") {
+               
+                  this.router$.navigate(['/adm']).then(
+                    () => {
+                    
+                      this.toastr$.success('Bienvenido')
+                    }
+    
+                  );
+                }
+                if (user.role == "OPERATIONS") {
+    
+    
+                  this.router$.navigate(['/operations']).then(
+                    () =>
+                      this.toastr$.success('Bienvenido')
+    
+                  );
+                }
+                if (user.role == "LEARNER") {
+    
+    
+                  this.router$.navigate(['/learner']).then(
+                    () =>
+                      this.toastr$.success('Bienvenido')
+                  );
+                }
+    
+    
+    
+              }
+            });
          
-          if (user.email == email) {
-            localStorage.setItem("role", user.role)
-            this.roleActualUser = user.role;
-            if(user.role == "ADMIN"){
-           
-             
-              this.router$.navigate(['/adm']).then(
-                ()=>
-                this.toastr$.success('Bienvenido')
-              );
-            }
-            if(user.role == "OPERATIONS"){
-        
-             
-              this.router$.navigate(['/operations']).then(
-                ()=>
-                this.toastr$.success('Bienvenido')
-
-              );
-            }
-            if(user.role == "LEARNER"){
-        
-             
-              this.router$.navigate(['/learner']).then(
-                ()=>
-                this.toastr$.success('Bienvenido')
-              );
-            }
-      
-           
-
           }
-        });
-        //window.location.reload();
+        );
       }
-    );
 
-    
-    
+
+
+
+   
+
+
+
   }
 
-  updatePasswordWithEmail(){
-    try{
+  updatePasswordWithEmail() {
+    try {
       this.login$.recoverPasswordWithEmail(this.formRecoverPasswordWithEmail.value.email)?.then(
-        (res)=>{
+        (res) => {
+          this.toastr$.success("Email enviado con éxito")
           console.log("Correo enviado con éxito")
         }
       );
 
-    } catch(error){console.log(error)}
+    } catch (error) { console.log(error) }
 
 
   }

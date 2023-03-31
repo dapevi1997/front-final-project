@@ -21,6 +21,9 @@ import { NavbaradminComponent } from './navbaradmin/navbaradmin.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListUsersComponent } from './list-users/list-users.component';
+import { EliminarComponent } from './componentes/eliminar/eliminar.component';
+import { EditarComponent } from './componentes/editar/editar.component';
+import { EditarFormularioAreaComponent } from './componentes/editar-formulario-area/editar-formulario-area.component';
 
 
 
@@ -40,6 +43,9 @@ import { ListUsersComponent } from './list-users/list-users.component';
     HomeAdminComponent,
     AdminComponent,
     ListUsersComponent,
+    EliminarComponent,
+    EditarComponent,
+    EditarFormularioAreaComponent,
 
   ], imports: [
     AdminRoutingModule,

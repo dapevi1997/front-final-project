@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { MessageService } from 'primeng/api';
@@ -15,6 +16,7 @@ export class FormularioRadarComponent {
   valores = window.location.search;
   urlParams = new URLSearchParams(this.valores);
   name :any = this.urlParams.get('name');
+  form: FormGroup;
   areaItem : AreaI ={
     area:"",
     radarNombre:this.name,
@@ -30,19 +32,35 @@ export class FormularioRadarComponent {
     private modalService: NgbModal,
     private messageService: MessageService,
     private toastr: ToastrService,
-  
-  ){}
-  agregarArea = () =>{
+
+  ){
+    this.form = new FormGroup({
+      area: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-])/)]),
+      descriptor: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-])/)]),
+      factual:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
+      conceptual:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
+      procedimental:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
+      metacognitivo:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
+    });
+  }
+  cerrarModal = () => {
+    this.modalService.dismissAll()
+  }
+  agregarArea = () =>{        
     this.areaItem.nivel =(
-      Number(this.areaItem.factual)+ 
+      Number(this.areaItem.factual)+
       Number(this.areaItem.conceptual)+
       Number(this.areaItem.procedimental)+
       Number(this.areaItem.metacognitivo)
       )/4
+      this.areaItem = {
+        ...this.areaItem,
+        ...this.form.value
+      }
     this.radarService.agregarArea(this.areaItem).subscribe({
       next: data=>{
         this.modalService.dismissAll();
-        this.toastr.success('Area agregada exitosamente!','Success');  
+        this.toastr.success('Area agregada exitosamente!','Success');
          setTimeout(() => {
          window.location.reload();
        }, 1000);
@@ -50,7 +68,7 @@ export class FormularioRadarComponent {
       error : error => {
         console.log(error);
         this.toastr.error('Algun error ocurrio!','Error')
-        
+
       }
     })
   }

@@ -1,3 +1,9 @@
 .formulario{
     padding:10px;
+    text-align: center;
+}
+.contenedor-botones{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
