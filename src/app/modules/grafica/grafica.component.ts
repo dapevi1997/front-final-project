@@ -42,24 +42,34 @@ export class GraficaComponent implements OnInit{
       this.aprendices = data;
       console.log(this.aprendices);
     });
+
   }
 
   agregarAprendiz(): void {
     this.ligaSvr.añadirAprendiz(this.liga.nombre, this.aprendices[parseInt(this.posicion[0])]).subscribe((data) => {
       this.liga = data;
-      console.log(this.liga);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);  
+
     });
+
   }
 
-  traerLiga(): void {
+  traerLiga = () => {
       this.id = this.ligaSvr.recibirLiga();
-      this.ligaSvr.traerLiga(this.id).subscribe((data) => {
-        this.liga= data;
+      this.ligaSvr.traerLiga(this.id).subscribe(   {
+        next: data => {
+          this.liga= data;
         this.radarItems = data.radar;
+        this.promedioLiga();
         console.log(this.liga);
+        }
       })
 
-      localStorage.removeItem('ligaid');
+
+
+
   }
 
   promedioLiga(): void{
@@ -72,6 +82,6 @@ export class GraficaComponent implements OnInit{
       totalNota1 += nota1;
     });
     let promedio = totalNota1 / sumaAprendices;
-    console.log(promedio);
+    console.log("este es el promedio "+promedio);
   }
 }
