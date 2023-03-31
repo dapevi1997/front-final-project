@@ -24,17 +24,17 @@ export class LigaComponent implements OnInit {
     private toastr: ToastrService,
     private ligaSvr: LigaService,
     private radarSvr: RadarService
-  ) {}
+  ) { }
   ngOnInit(): void {
-   this.traerRadares();
+    this.traerRadares();
   }
   nombre!: string;
-  radarCopiado:RadarI ={
-    nombre:'',
-    areas:[ {
-      area:"",
-      radarNombre:'',
-      descriptor:"",
+  radarCopiado: RadarI = {
+    nombre: '',
+    areas: [{
+      area: "",
+      radarNombre: '',
+      descriptor: "",
       factual: 0,
       conceptual: 0,
       procedimental: 0,
@@ -54,9 +54,9 @@ export class LigaComponent implements OnInit {
       areas: []
     }
   };
-  radares!:RadarI[];
+  radares!: RadarI[];
 
-  radarNombre!:string;
+  radarNombre!: string;
 
   crearLiga = () => {
     this.ligaSvr.crearLiga(this.ligaI).subscribe({
@@ -77,12 +77,12 @@ export class LigaComponent implements OnInit {
     this.agregarRadar();
   };
 
-  enviarRadarNombre():void {
+  enviarRadarNombre(): void {
     this.ligaSvr.enviarRadar(this.radarNombre);
   }
 
   traerRadares = () => {
-    this.radarSvr.getRadares().subscribe(radares=>{
+    this.radarSvr.getRadares().subscribe(radares => {
       this.radares = radares;
       console.log(this.radares);
     })
@@ -91,28 +91,30 @@ export class LigaComponent implements OnInit {
   agregarRadar(): void {
     this.enviarRadarNombre();
     this.radarNombre = this.ligaSvr.recibirRadar();
-
+    localStorage.removeItem('radarNombre');
     if (!this.radarNombre) {
-        console.error('Radar name not set');
-        return;
+      console.error('Radar name not set');
+      return;
     }
 
     this.radarSvr.getRadarEspecifico(this.radarNombre).pipe(
-        switchMap(data => {
-            this.radarCopiado = data;
-            this.nombre = this.ligaI.nombre;
-            console.log(this.nombre);
-            console.log(this.radarCopiado);
-            return this.ligaSvr.añadirRadar(this.nombre, this.radarCopiado);
-        })
+      switchMap(data => {
+        this.radarCopiado = data;
+        this.nombre = this.ligaI.nombre;
+        
+        console.log(this.nombre);
+        console.log(this.radarCopiado);
+        return this.ligaSvr.añadirRadar(this.nombre, this.radarCopiado);
+      })
     ).subscribe(
-        () => {
-            this.toastr.success('Radar agregado a la liga');
+      {
+        next: data =>{
+          this.toastr.success("Se agregó radar")
         },
-        (error) => {
-            console.error('Error agregado a la liga', error);
-            this.toastr.error('Error agregado a la liga');
+        error: err =>{
+          this.toastr.error("Ha ocurrido un error")
         }
+      }
     );
-}
+  }
 }
