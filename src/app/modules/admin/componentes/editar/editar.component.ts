@@ -9,16 +9,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class EditarComponent implements OnInit {
   @Input() index : number = 0;
   @Input() nombre : string = '';
-  //  area : AreaI ={
-  //   area:"david2",
-  //   radarNombre:'',
-  //   descriptor:"Ensayo de edicion nuevo",
-  //   factual: 0,
-  //   conceptual: 0,
-  //   procedimental: 0,
-  //   metacognitivo: 0,
-  //   nivel: 0
-  // }
+  @Input() areaIn : AreaI ={
+    area:"david2",
+    radarNombre:'',
+    descriptor:"Ensayo de edicion nuevo",
+    factual: 0,
+    conceptual: 0,
+    procedimental: 0,
+    metacognitivo: 0,
+    nivel: 0
+  }
   constructor(
     private modalService: NgbModal,
   ){}
