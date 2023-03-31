@@ -18,7 +18,11 @@ import { RadarService } from 'src/app/services/radares.service';
 })
 export class GraficaComponent implements OnInit{
 
-  aprendices!: Aprendiz[] | any;
+  // aprendices: Aprendiz[]=[{
+  //   nombre : "",
+  //   calificaciones: [] 
+  // }]
+  aprendices!: Aprendiz[] | any
   posicion:any[] = [];
   id!:string;
   liga!: LigaI;
@@ -30,48 +34,53 @@ export class GraficaComponent implements OnInit{
     private messageService: MessageService,
     private ligaSvr : LigaService,
     private radarSvr : RadarService
-    ){}
+    ){   }
   ngOnInit(): void {
     this.traerAprendices();
     this.traerLiga();
     this.promedioLiga();
   }
 
+
   traerAprendices(): void {
-    this.ligaSvr.traerAprendices().subscribe((data) => {
-      this.aprendices = data;
-      console.log(this.aprendices);
+    this?.ligaSvr?.traerAprendices()?.subscribe({
+      next:data=>{
+        data?.calificaciones?.forEach(element=> console.log("data element"+element))   
+        console.log(this?.aprendices || []); 
+        this.aprendices = data;
+        console.log(this.aprendices);
+      },
+      error: error => console.log(error)      
+      
     });
   }
 
   agregarAprendiz(): void {
     this.ligaSvr.añadirAprendiz(this.liga.nombre, this.aprendices[parseInt(this.posicion[0])]).subscribe((data) => {
       this.liga = data;
-      console.log(this.liga);
+    
     });
   }
 
   traerLiga(): void {
       this.id = this.ligaSvr.recibirLiga();
-      this.ligaSvr.traerLiga(this.id).subscribe((data) => {
+      this?.ligaSvr?.traerLiga(this.id)?.subscribe((data) => {
         this.liga= data;
         this.radarItems = data.radar;
-        console.log(this.liga);
+        
       })
-
-      localStorage.removeItem('ligaid');
   }
 
   promedioLiga(): void{
-    let sumaAprendices = this.liga.aprendices.length;
-    console.log(sumaAprendices);
+    let sumaAprendices = this.liga?.aprendices?.length || 0;
+    
     let nota1 = 0;
     let totalNota1 = 0;
-    this.liga.aprendices.forEach(aprendiz => {
-      nota1 = aprendiz.calificaciones[0];
+    this?.liga?.aprendices?.forEach(aprendiz => {
+      nota1 = aprendiz?.calificaciones[0];
       totalNota1 += nota1;
     });
     let promedio = totalNota1 / sumaAprendices;
-    console.log(promedio);
+  
   }
 }

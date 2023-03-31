@@ -24,7 +24,7 @@
       <th scope="col">Nota3</th>
     </tr>
   </thead>
-  <tbody *ngFor="let aprendiz of liga.aprendices">
+  <tbody *ngFor="let aprendiz of liga?.aprendices">
     <tr >
       <td>{{aprendiz.nombre}}</td>
       <td>{{aprendiz.calificaciones[0]}}</td>
@@ -43,7 +43,7 @@
       <th scope="col">Nivel de apropiación</th>
     </tr>
   </thead>
-  <tbody *ngFor="let area of radarItems.areas">
+  <tbody *ngFor="let area of radarItems?.areas">
     <tr >
       <td>{{area.area}}</td>
       <td>{{area.descriptor}}</td>
