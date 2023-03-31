@@ -1,6 +1,7 @@
 import { Component , Input} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { AreaI } from 'src/app/interfaces/radar.interface';
 import { RadarService } from 'src/app/services/radares.service';
 
@@ -26,6 +27,7 @@ export class EditarFormularioAreaComponent {
   constructor(
     private radarServicio : RadarService,
     private modalService: NgbModal,
+    private toastr: ToastrService
   ){
     this.form = new FormGroup({
       area: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-])/)]),
@@ -58,10 +60,16 @@ export class EditarFormularioAreaComponent {
       )/4   
     this.radarServicio.actualizarArea(this.areaIn, this.index).subscribe({
       next: data =>{
-        alert('Exito') 
-        console.log(data);               
+        this.modalService.dismissAll();
+        this.toastr.success('Area actualizada exitosamente!','Success');
+         setTimeout(() => {
+         window.location.reload();
+       }, 1000);        
       },
-      error: error => console.log(error)      
+      error: error =>{ 
+        this.toastr.error("Algo salio mal","Error")
+        console.log(error)      
+      }
     })
   }
 }
