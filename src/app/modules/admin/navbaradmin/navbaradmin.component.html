@@ -77,6 +77,8 @@
             placeholder="Contraseña" />
           <div *ngIf="formCreateUser.get('password')?.hasError('required') && formCreateUser.pristine === false"
             style="color: red;">La contraseña es requerida</div>
+            <div *ngIf="formCreateUser.get('password')?.hasError('minlength') && formCreateUser.pristine === false"
+            style="color: red;">La contraseña de tener mínimo 6 caracteres</div>
           </div>
 
           <div class="mb-3">
@@ -86,6 +88,7 @@
             <div *ngIf="formCreateUser?.hasError('passwordMismatchError') && formCreateUser.pristine === false"
               style="color: red;">Las contraseñas no coinciden</div>
           </div>
+          
 
         
 
@@ -110,6 +113,10 @@
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-dark purple btn-block mb-2" [disabled]="!formCreateUser.valid"
           (click)="createUser()" data-bs-dismiss="modal">Crear usuario</button>
+
+         
+
+        
 
       </div>
 

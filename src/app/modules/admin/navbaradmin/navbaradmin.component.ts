@@ -22,9 +22,9 @@ export class NavbaradminComponent {
     this.formCreateUser = new FormGroup(
       {
         email: new FormControl(null, [Validators.required, Validators.email]),
-        password: new FormControl(null, [Validators.required]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
         passwordRepeat: new FormControl(null, [Validators.required]),
-        role: new FormControl("SELOPC", [Validators.required])
+        role: new FormControl("LEARNER", [Validators.required])
       },[this.passwordMatch("password","passwordRepeat" )]
     );
 
@@ -65,6 +65,11 @@ export class NavbaradminComponent {
 
 
   }
+
+
+
+
+
 
 
 

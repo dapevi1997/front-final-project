@@ -39,7 +39,12 @@ export class LoginComponent {
     const password = this.form.value.password;
 
     await this.login$.login(email, password)
-      .then()
+      .then((bool)=>{
+        if(bool==false){
+          this.toastr$.warning("Debe verificar el correo")
+        }
+        
+      })
       .catch(err => {
         if (err.code == "auth/user-not-found") {
           this.toastr$.warning("Usuario no registrado, contactarse con el superadmin para el registro y entrega de sus credenciales.")
@@ -112,6 +117,7 @@ export class LoginComponent {
     try {
       this.login$.recoverPasswordWithEmail(this.formRecoverPasswordWithEmail.value.email)?.then(
         (res) => {
+          this.toastr$.success("Email enviado con éxito")
           console.log("Correo enviado con éxito")
         }
       );
