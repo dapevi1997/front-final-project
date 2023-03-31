@@ -18,7 +18,7 @@ import { RadarService } from 'src/app/services/radares.service';
 })
 export class GraficaComponent implements OnInit{
 
-  aprendices: Aprendiz[] | any;
+  aprendices!: Aprendiz[] | any;
   posicion:any[] = [];
   id!:string;
   liga!: LigaI;
@@ -34,7 +34,6 @@ export class GraficaComponent implements OnInit{
   ngOnInit(): void {
     this.traerAprendices();
     this.traerLiga();
-    this.definirRadar();
     this.promedioLiga();
   }
 
@@ -56,19 +55,11 @@ export class GraficaComponent implements OnInit{
       this.id = this.ligaSvr.recibirLiga();
       this.ligaSvr.traerLiga(this.id).subscribe((data) => {
         this.liga= data;
+        this.radarItems = data.radar;
         console.log(this.liga);
       })
 
       localStorage.removeItem('ligaid');
-  }
-
-  definirRadar(): void{
-    this.name = this.ligaSvr.recibirRadar();
-    localStorage.removeItem('radar');
-    this.radarSvr.getRadarEspecifico(this.name).subscribe((data) => {
-        this.radarItems = data;
-          console.log(this.radarItems);
-    })
   }
 
   promedioLiga(): void{
