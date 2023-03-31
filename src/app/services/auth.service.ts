@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { getAuth, createUserWithEmailAndPassword, sendPasswordResetEmail, sendSignInLinkToEmail,sendEmailVerification, User } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendPasswordResetEmail, sendSignInLinkToEmail, sendEmailVerification, User } from "firebase/auth";
 import { environment } from '../../environments/environment';
 
 
@@ -20,28 +20,28 @@ export class AuthService {
 
 
     const auth = getAuth();
-   
 
-   
-      await firebase.auth().signInWithEmailAndPassword(email, password).then(
-        response => {
-          firebase.auth().currentUser?.getIdToken().then(
-            token => {
-              this.token = token;
-            
-              if(auth.currentUser?.emailVerified == true){
-                
-                localStorage.setItem("token", this.token)
-              }else{
-                localStorage.setItem("token", "")
-              }
-              
+
+
+    await firebase.auth().signInWithEmailAndPassword(email, password).then(
+      response => {
+        firebase.auth().currentUser?.getIdToken().then(
+          token => {
+            this.token = token;
+
+            if (auth.currentUser?.emailVerified == true) {
+
+              localStorage.setItem("token", this.token)
+            } else {
+              localStorage.setItem("token", "")
             }
-          );
-        }
-  
-      );
-    
+
+          }
+        );
+      }
+
+    );
+
 
     return auth.currentUser?.emailVerified
 
@@ -81,8 +81,8 @@ export class AuthService {
   async loginRegistre(email: string, password: string) {
     let tokenAux = ""
     const auth = getAuth();
-    
-    
+
+
 
 
     await createUserWithEmailAndPassword(auth, email, password)
@@ -92,7 +92,7 @@ export class AuthService {
         const user = userCredential.user;
         await user.getIdToken().then((token) => {
           //console.log(token)
-          
+
           tokenAux = token;
         })
 
@@ -100,18 +100,24 @@ export class AuthService {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("Error creando usuario, auth.service");
+
+      
+
+        if(error.code == "auth/email-already-in-use"){
+          tokenAux = "auth/email-already-in-use";
+
+        }
+               
+       
+       
       });
 
-
-  
 
     return tokenAux;
 
   }
 
-  
+
 
 
 
