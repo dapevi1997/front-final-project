@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { RolesService } from '../../../services/roles.service';
 import { ToastrService } from 'ngx-toastr';
 import { group } from 'd3';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbaradmin',
@@ -17,7 +18,8 @@ export class NavbaradminComponent {
   constructor(
     private authService : AuthService,
     private rolService: RolesService,
-    private toastr$: ToastrService
+    private toastr$: ToastrService,
+    private modalService: NgbModal,
   ){
     this.formCreateUser = new FormGroup(
       {
@@ -32,6 +34,9 @@ export class NavbaradminComponent {
       {}
     );
 
+  }
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
   }
 
   logout = () => {
