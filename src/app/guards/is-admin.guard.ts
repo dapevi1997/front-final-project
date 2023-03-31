@@ -6,13 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class IsAdminGuard implements CanActivate {
-  role: string | null;
+  role!: string | null;
 
   constructor( private router$: Router){ 
-    this.role = localStorage.getItem("role");
+    //this.role = localStorage.getItem("role");
   }
   canActivate(){
+    this.role = localStorage.getItem("role");
     if(this.role !== "ADMIN") {
+    console.log("guard", this.role)
       alert("Solo un administrador puede ingresar aqui")
       this.router$.navigate(['/login']);
       return false;

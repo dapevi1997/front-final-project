@@ -16,18 +16,20 @@ export class NavbaradminComponent {
   formCreateRadar: FormGroup;
 
   constructor(
-    private authService : AuthService,
+    private authService: AuthService,
     private rolService: RolesService,
+
     private toastr$: ToastrService,
     private modalService: NgbModal,
   ){
+
     this.formCreateUser = new FormGroup(
       {
         email: new FormControl(null, [Validators.required, Validators.email]),
-        password: new FormControl(null, [Validators.required]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
         passwordRepeat: new FormControl(null, [Validators.required]),
-        role: new FormControl("SELOPC", [Validators.required])
-      },[this.passwordMatch("password","passwordRepeat" )]
+        role: new FormControl("LEARNER", [Validators.required])
+      }, [this.passwordMatch("password", "passwordRepeat")]
     );
 
     this.formCreateRadar = new FormGroup(
@@ -43,13 +45,21 @@ export class NavbaradminComponent {
     this.authService.logout();
   }
 
-  createUser(){
+  createUser() {
+
     this.authService.loginRegistre(this.formCreateUser.value.email, this.formCreateUser.value.password)
-    .then(token=>{
-      this.rolService.saveRoles(this.formCreateUser.value.email, this.formCreateUser.value.role, token);
-      this.toastr$.success('Usuario agregado exitosamente!','Success');  
-    })
-  ;
+      .then(token => {
+        console.log(token)
+        if (token == "auth/email-already-in-use") {
+          this.toastr$.error("El email ingresado ya está en uso")
+        }else{
+          this.rolService.saveRoles(this.formCreateUser.value.email, this.formCreateUser.value.role, token);
+
+          this.toastr$.success('Usuario agregado exitosamente!', 'Success');
+        }
+     
+      }).catch(err => console.log(err))
+      ;
   }
 
   passwordMatch(password: string, confirm_password: string) {
@@ -58,15 +68,20 @@ export class NavbaradminComponent {
       const passwordValue = form.get(password)?.value;
       const confirmPassValue = form.get(confirm_password)?.value;
 
-      if(passwordValue === confirmPassValue){
+      if (passwordValue === confirmPassValue) {
         return null;
       }
-      return {passwordMismatchError: true}
+      return { passwordMismatchError: true }
 
-     }
+    }
 
 
   }
+
+
+
+
+
 
 
 

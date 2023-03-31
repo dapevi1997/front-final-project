@@ -11,7 +11,6 @@ export class RolesService {
   constructor(private http$: HttpClient, private auth$: AuthService) { }
 
   loadRoles(){
-
     const token = this.auth$.getIdToken();
     return this.http$.get("https://angular-509fd-default-rtdb.firebaseio.com/roles.json?&auth=" + token);
   }
