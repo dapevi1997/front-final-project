@@ -22,13 +22,15 @@
       <th scope="col">Nota4</th>
     </tr>
   </thead>
-  <tbody *ngFor="let aprendiz of liga.aprendices">
+  <tbody *ngFor="let aprendiz of liga?.aprendices">
+
     <tr >
       <td>{{aprendiz.nombre}}</td>
       <td>{{aprendiz.calificaciones[0]}}</td>
       <td>{{aprendiz.calificaciones[1]}}</td>
       <td>{{aprendiz.calificaciones[2]}}</td>
       <td>{{aprendiz.calificaciones[3]}}</td>
+
     </tr>
   </tbody>
 </table>
@@ -42,7 +44,9 @@
       <th scope="col">Nivel de apropiación</th>
     </tr>
   </thead>
-  <tbody *ngFor="let area of radarItems.areas">
+
+  <tbody *ngFor="let area of radarItems?.areas">
+
     <tr >
       <td>{{area.area}}</td>
       <td>{{area.descriptor}}</td>

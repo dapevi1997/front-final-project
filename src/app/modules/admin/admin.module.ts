@@ -32,7 +32,7 @@ import { GraficaComponent } from './grafica/grafica.component';
 
 @NgModule({
   declarations: [
-
+    GraficaComponent,
     NavbaradminComponent,
     UsersComponent,
     RadarComponent,
