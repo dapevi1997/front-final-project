@@ -47,5 +47,8 @@ export class RadarService {
     let direction = environment.apiRadarUrl+ 'EliminarArea/' + nombre + '/' + index;
     return this.http.delete<any>(direction);           
   }
-
+  eliminarRadar(nombre:  string) : Observable<RadarI>{   
+    let direction = environment.apiRadarUrl+ 'EliminarRadar/' + nombre;
+    return this.http.delete<any>(direction);           
+  }
 }
