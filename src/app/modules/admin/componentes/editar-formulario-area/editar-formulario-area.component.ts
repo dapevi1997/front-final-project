@@ -45,19 +45,18 @@ export class EditarFormularioAreaComponent {
     this.modalService.dismissAll()
   }
   editar = () => {
-    this.areaIn.radarNombre = this.nombre;
-    this.areaIn.area = this.form.value.area;
-    this.areaIn.descriptor = this.form.value.descriptor;
-    this.areaIn.factual = this.form.value.factual;
-    this.areaIn.conceptual = this.form.value.conceptual;
-    this.areaIn.procedimental = this.form.value.procedimental;
-    this.areaIn.metacognitivo = this.form.value.metacognitivo;
+     this.areaIn.radarNombre = this.nombre;
+    this.areaIn = {
+      ...this.areaIn,
+      ...this.form.value
+    }
     this.areaIn.nivel =(
       Number(this.areaIn.factual)+
       Number(this.areaIn.conceptual)+
       Number(this.areaIn.procedimental)+
       Number(this.areaIn.metacognitivo)
-      )/4   
+      )/4       
+      
     this.radarServicio.actualizarArea(this.areaIn, this.index).subscribe({
       next: data =>{
         this.modalService.dismissAll();
