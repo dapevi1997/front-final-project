@@ -1,2 +1,16 @@
 
-<p>promedios works!</p>
+<app-navbaradmin></app-navbaradmin>
+<span  class="btn btn-info mb-3" (click)="openVerticallyCentered(contentLiga)">Crear Liga</span>
+
+<ng-template class="modal" #contentLiga let-modal>
+    <app-liga></app-liga>
+</ng-template>
+
+<div *ngFor="let liga of ligas" class="card mb-3" style="width: 18rem;">
+    <div  class="card-body">
+      <h5 class="card-title">
+        {{liga.nombre}}</h5>
+      <a href="grafica" class="card-link" (click)="enviarLiga(liga.id)">Ver más</a>
+    </div>
+</div>
+

@@ -33,7 +33,7 @@
         </span>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" [routerLink]="['/adm/list-radars']">Ver radares</a></li>
-          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#idCreateRadar">Crear radar</a></li>
+          <li><span class="dropdown-item" data-bs-toggle="modal" (click)="openVerticallyCentered(contentRadar)">Crear radar</span></li>
         </ul>
         </li>
         <li class="nav-item">
@@ -49,7 +49,9 @@
     style="background-color: red; border-color: white;">Logout</button>
   <!-- <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="" style="background-color: #603E85; border-color: white;">Logout</button> -->
 </nav>
-
+  <ng-template class="modal" #contentRadar let-modal>
+    <app-radar></app-radar>
+  </ng-template>
 
 
 <div class="modal fade" id="idCreateUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
