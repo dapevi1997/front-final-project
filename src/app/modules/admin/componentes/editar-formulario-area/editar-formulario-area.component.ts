@@ -14,16 +14,7 @@ export class EditarFormularioAreaComponent {
   form: FormGroup;
   @Input() nombre : string = '';
   @Input() index : number = 0; 
-   areaIn : AreaI ={
-    area:"",
-    radarNombre:this.nombre,
-    descriptor:"",
-    factual: 0,
-    conceptual: 0,
-    procedimental: 0,
-    metacognitivo: 0,
-    nivel: 0
-  }
+   @Input() areaIn !: AreaI ;
   constructor(
     private radarServicio : RadarService,
     private modalService: NgbModal,
