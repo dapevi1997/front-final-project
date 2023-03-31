@@ -1,7 +1,7 @@
 <div class="container principal" style="margin-top: 10%;">
 
   <div class="row">
-    <div class="col-lg-4 col-md-12 mb4">
+    <div class="col-lg-4 col-md-12 mb4 card-first">
       <div class="card-section border rounded p-3">
         <div class="card-header-first rounded pb-5">
           <h1 class="card-header-title text-white pt-3">Usuarios</h1>
@@ -9,9 +9,9 @@
         <div class="card-body text-center">
           <br>
           <a  [routerLink]="['/adm/list-users']" class="card-text" style="font-size: 30px;">Listar usuarios</a>
+          <span  class="btn btn-info" (click)="openVerticallyCentered(content)">Crear usuario</span>
         </div>
-        <!-- <div class="card-footer">
-        </div> -->
+
       </div>
     </div>
 
@@ -23,9 +23,9 @@
         <div class="card-body text-center">
           <br>
           <a [routerLink]="['/adm/list-radars']" class="card-text" style="font-size: 30px;">Ver radares</a>
+          <span  class="btn btn-info" (click)="openVerticallyCentered(contentRadar)">Crear radar</span>
         </div>
-        <!-- <div class="card-footer">
-        </div> -->
+
       </div>
     </div>
 
@@ -37,8 +37,6 @@
         <div class="card-body">
           <a href="">Listar usuarios</a>
         </div>
-        <!-- <div class="card-footer">
-        </div> -->
       </div>
     </div>
 
@@ -62,31 +60,6 @@
 
 <div class="container">
     <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Usuarios</h5>
-          <p class="card-text">Contenido de los usuarios.</p>
-          <div class="contenedor-botones">
-            <span [routerLink]="['/users']" class="btn btn-info">Ir a usuarios</span>
-            <span  class="btn btn-info" (click)="openVerticallyCentered(content)">Crear usuario</span>
-          </div>         
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Radar</h5>
-          <p class="card-text">Contenido de los radares.</p>
-          <div class="contenedor-botones">
-            <span [routerLink]="['/lista-radares']" class="btn btn-info">Ir a radares</span>
-            <span  class="btn btn-info" (click)="openVerticallyCentered(contentRadar)">Crear radar</span>
-          </div>  
-          
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Promedios</h5>
@@ -96,8 +69,6 @@
         </div>
       </div>
   </div>
-
-
   <ng-template class="modal" #content let-modal>
    <app-users></app-users>
   </ng-template>

@@ -1,7 +1,8 @@
 
-  <div class="formulario">
-    <legend style="color: #C324BC;">Nuevo radar</legend>
+<div class="formulario" >
+    <legend style="color: #C324BC;">Editar radar</legend>
       <form [formGroup]="form">
+
       <div class="mb-3 campo">
         <label for="disabledTextInput" class="form-label">Area de conocimiento</label>
         <input formControlName="area"  type="text" id="disabledTextInput" class="form-control" placeholder="Área">
@@ -59,9 +60,10 @@
                 debe ser  númerico</div>
       </div>
       <div class="contenedor-botones">
-        <button [disabled]="!form.valid" (click)="agregarArea()"  class="btn btn-primary">Guardar área</button>
+        <button [disabled]="!form.valid" (click)="editar()"  class="btn btn-primary">Actualizar área</button>
         <button  (click)="cerrarModal()"  class="btn btn-danger">Cerrar</button>
       </div>
   </form>
   </div>
+
 

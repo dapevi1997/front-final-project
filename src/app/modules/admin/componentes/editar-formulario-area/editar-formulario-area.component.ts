@@ -1,25 +1,22 @@
-import { Component } from '@angular/core';
+import { Component , Input} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { MessageService } from 'primeng/api';
 import { AreaI } from 'src/app/interfaces/radar.interface';
 import { RadarService } from 'src/app/services/radares.service';
 
 @Component({
-  selector: 'app-formulario-radar',
-  templateUrl: './formulario-radar.component.html',
-  styleUrls: ['./formulario-radar.component.css'],
-  providers:[MessageService]
+  selector: 'app-editar-formulario-area',
+  templateUrl: './editar-formulario-area.component.html',
+  styleUrls: ['./editar-formulario-area.component.css']
 })
-export class FormularioRadarComponent {
-  valores = window.location.search;
-  urlParams = new URLSearchParams(this.valores);
-  name :any = this.urlParams.get('name');
+export class EditarFormularioAreaComponent {
   form: FormGroup;
-  areaItem : AreaI ={
+  @Input() nombre : string = '';
+  @Input() index : number = 0; 
+   areaIn : AreaI ={
     area:"",
-    radarNombre:this.name,
+    radarNombre:this.nombre,
     descriptor:"",
     factual: 0,
     conceptual: 0,
@@ -28,11 +25,9 @@ export class FormularioRadarComponent {
     nivel: 0
   }
   constructor(
-    private radarService : RadarService,
+    private radarServicio : RadarService,
     private modalService: NgbModal,
-    private messageService: MessageService,
-    private toastr: ToastrService,
-
+    private toastr: ToastrService
   ){
     this.form = new FormGroup({
       area: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-])/)]),
@@ -43,32 +38,36 @@ export class FormularioRadarComponent {
       metacognitivo:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
     });
   }
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
   cerrarModal = () => {
     this.modalService.dismissAll()
   }
-  agregarArea = () =>{        
-    this.areaItem.nivel =(
-      Number(this.areaItem.factual)+
-      Number(this.areaItem.conceptual)+
-      Number(this.areaItem.procedimental)+
-      Number(this.areaItem.metacognitivo)
-      )/4
-      this.areaItem = {
-        ...this.areaItem,
-        ...this.form.value
-      }
-    this.radarService.agregarArea(this.areaItem).subscribe({
-      next: data=>{
+  editar = () => {
+     this.areaIn.radarNombre = this.nombre;
+    this.areaIn = {
+      ...this.areaIn,
+      ...this.form.value
+    }
+    this.areaIn.nivel =(
+      Number(this.areaIn.factual)+
+      Number(this.areaIn.conceptual)+
+      Number(this.areaIn.procedimental)+
+      Number(this.areaIn.metacognitivo)
+      )/4       
+      
+    this.radarServicio.actualizarArea(this.areaIn, this.index).subscribe({
+      next: data =>{
         this.modalService.dismissAll();
-        this.toastr.success('Area agregada exitosamente!','Success');
+        this.toastr.success('Area actualizada exitosamente!','Success');
          setTimeout(() => {
          window.location.reload();
-       }, 1000);
+       }, 1000);        
       },
-      error : error => {
-        console.log(error);
-        this.toastr.error('Algun error ocurrio!','Error')
-
+      error: error =>{ 
+        this.toastr.error("Algo salio mal","Error")
+        console.log(error)      
       }
     })
   }
