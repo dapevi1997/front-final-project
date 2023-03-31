@@ -44,13 +44,13 @@ export class GraficaComponent implements OnInit{
   traerAprendices(): void {
     this?.ligaSvr?.traerAprendices()?.subscribe({
       next:data=>{
-        data?.calificaciones?.forEach(element=> console.log("data element"+element))   
-        console.log(this?.aprendices || []); 
+        data?.calificaciones?.forEach(element=> console.log("data element"+element))
+        console.log(this?.aprendices || []);
         this.aprendices = data;
         console.log(this.aprendices);
       },
-      error: error => console.log(error)      
-      
+      error: error => console.log(error)
+
     });
 
   }
@@ -58,8 +58,9 @@ export class GraficaComponent implements OnInit{
   agregarAprendiz(): void {
     this.ligaSvr.añadirAprendiz(this.liga.nombre, this.aprendices[parseInt(this.posicion[0])]).subscribe((data) => {
       this.liga = data;
-
-    
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     });
   }
 
@@ -68,23 +69,20 @@ export class GraficaComponent implements OnInit{
       this?.ligaSvr?.traerLiga(this.id)?.subscribe((data) => {
         this.liga= data;
         this.radarItems = data.radar;
-        
+
       })
   }
 
   promedioLiga(): void{
     let sumaAprendices = this.liga?.aprendices?.length || 0;
-    
+    console.log(sumaAprendices);
     let nota1 = 0;
     let totalNota1 = 0;
-    let promedio = totalNota1 / sumaAprendices;
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-
+    this.liga.aprendices.forEach(aprendiz => {
+      nota1 = aprendiz.calificaciones[0];
+      totalNota1 += nota1;
     });
-
+    let promedio = totalNota1 / sumaAprendices;
+    console.log("este es el promedio "+ promedio);
+    };
   }
-  }
-}
