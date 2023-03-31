@@ -59,7 +59,7 @@ export class LigaService {
   }
 
   recibirLiga(){
-    this.id = localStorage.getItem('ligaid') ||'';
+    this.id = JSON.parse(localStorage.getItem('ligaid') ||'')
     return this.id;
   }
 
