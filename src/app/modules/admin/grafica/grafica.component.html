@@ -66,8 +66,8 @@
     <tr >
       <td>{{area.area}}</td>
       <td>{{area.descriptor}}</td>
-      <td>{{total[indice]}}</td>
-      <td>{{area.nivel}}</td>
+      <td [ngStyle]="{'background-color':severidadNota(total[indice])}">{{total[indice]}}</td>
+      <td [ngStyle]="{'background-color':severidadNota(area.nivel)}">{{area.nivel}}</td>
     </tr>
   </tbody>
 </table>
