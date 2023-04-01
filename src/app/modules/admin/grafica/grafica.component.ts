@@ -28,6 +28,7 @@ export class GraficaComponent implements OnInit{
   name!: string;
   radarItems!:RadarI
   total!: number[];
+  miAprendiz!: Aprendiz;
 
 
   @ViewChild(ChartRadarComponent) chartRadarComponent!: ChartRadarComponent;
@@ -42,7 +43,7 @@ export class GraficaComponent implements OnInit{
 
   ngOnInit(): void {
     this.traerLiga();
-    console.log("hola")
+  
 
   }
   enviarNota(calif: number[],nombre:string):void {
@@ -55,10 +56,9 @@ export class GraficaComponent implements OnInit{
   traerAprendices(): void {
     this?.ligaSvr?.traerAprendices()?.subscribe({
       next:data=>{
-        data?.calificaciones?.forEach(element=> console.log("data element"+element))
-        console.log(this?.aprendices || []);
-        this.aprendices = data;
-        console.log(this.aprendices);
+        this.aprendices = data;      
+        this.miAprendiz = this?.aprendices?.find((apren: any)=> apren.nombre=='julian')
+       // console.log("mi aprendiz: " + this.miAprendiz.calificaciones);        
       },
       error: error => console.log(error)
 
@@ -90,10 +90,8 @@ export class GraficaComponent implements OnInit{
 
   promedioLiga(): void{
     let sumaAprendices = this.liga?.aprendices?.length || 0;
-    console.log(sumaAprendices);
     let posiciones = this?.liga?.aprendices[0].calificaciones.length;
     let totalNota: number[] = new Array(posiciones).fill(0);
-    console.log(posiciones);
     this?.liga?.aprendices.forEach(aprendiz => {
     aprendiz?.calificaciones?.forEach((nota, index) => {
       totalNota[index] += nota;
@@ -102,7 +100,6 @@ export class GraficaComponent implements OnInit{
     totalNota.forEach((total, index) => {
       totalNota[index] = total/sumaAprendices;
     })
-    console.log("este es el promedio notas "+ totalNota);
     this.total = totalNota;
 
     this.ligaSvr.promedioenviar( this.total);
@@ -114,7 +111,6 @@ export class GraficaComponent implements OnInit{
       let labels: string[] = new Array(longitud).fill("");
       this?.radarItems?.areas.forEach((nombre,index) =>{
         labels[index]=nombre.descriptor
-        console .log(nombre.descriptor)
       })
       this.ligaSvr.labelsRadarEnviar(labels);
     }
@@ -125,7 +121,7 @@ export class GraficaComponent implements OnInit{
       let nivelApropiacion: number[] = new Array(longitud).fill(0);
       this?.radarItems?.areas.forEach((nota,index) =>{
         nivelApropiacion[index]=nota.nivel
-        console .log(nota.nivel)
+     
       })
       this.ligaSvr.nivelApropiacionEnviar(nivelApropiacion);
     }

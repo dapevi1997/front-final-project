@@ -55,13 +55,11 @@ export class LigaService {
   enviarLiga(id: string){
     this.id = id;
     localStorage.setItem('ligaid', JSON.stringify(this.id));
-    console.log(this.id);
   }
 
   enviarRadar(radarNombre: string){
     this.radarNombre = radarNombre;
     localStorage.setItem('radarNombre', JSON.stringify(this.radarNombre));
-    console.log(this.radarNombre);
   }
 
   recibirLiga(){
@@ -76,21 +74,17 @@ export class LigaService {
 
   promedioenviar(promedio: number[]){
     this.calificaciones = promedio;
-    console.log(this.calificaciones);
   }
 
   promedioTraer(){
-    console.log("es el traer" + this.calificaciones);
     return this.calificaciones;
   }
 
   notaEnviar(notas: number[]){
     this.notasAprendiz = notas;
-    console.log(this.notasAprendiz);
   }
 
   notasTraer(){
-    console.log("es el traer notas aprendiz" + this.calificaciones);
     return this.notasAprendiz;
   }
 
