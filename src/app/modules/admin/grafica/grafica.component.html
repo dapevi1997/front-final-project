@@ -45,12 +45,12 @@
     </tr>
   </thead>
 
-  <tbody *ngFor="let area of radarItems?.areas">
+  <tbody *ngFor="let area of radarItems?.areas; let indice = index">
 
     <tr >
       <td>{{area.area}}</td>
       <td>{{area.descriptor}}</td>
-      <td>Aqui iria aprobación aprendiz</td>
+      <td>{{total[indice]}}</td>
       <td>{{area.nivel}}</td>
     </tr>
   </tbody>

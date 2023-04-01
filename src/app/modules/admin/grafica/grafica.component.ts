@@ -25,6 +25,7 @@ export class GraficaComponent implements OnInit{
   liga!: LigaI;
   name!: string;
   radarItems!:RadarI
+  total!: number[];
 
   constructor(
     private modalService: NgbModal,
@@ -77,17 +78,18 @@ export class GraficaComponent implements OnInit{
   promedioLiga(): void{
     let sumaAprendices = this.liga?.aprendices?.length || 0;
     console.log(sumaAprendices);
-    let nota1 = 0;
-    let totalNota1 = 0;
+    let posiciones = this.liga.aprendices[0].calificaciones.length;
+    let totalNota: number[] = new Array(posiciones).fill(0);
+    console.log(posiciones);
     this?.liga?.aprendices.forEach(aprendiz => {
-      nota1 = aprendiz.calificaciones[0];
-      totalNota1 += nota1;
+    aprendiz.calificaciones.forEach((nota, index) => {
+      totalNota[index] += nota;
     });
-    let promedio = totalNota1 / sumaAprendices;
-    console.log("este es el promedio "+ promedio);
+    });
+    totalNota.forEach((total, index) => {
+      totalNota[index] = total/sumaAprendices;
+    })
+    console.log("este es el promedio notas "+ totalNota);
+    this.total = totalNota;
     };
-
-
-
-
   }
