@@ -48,7 +48,22 @@ export class RadarEspecificoComponent implements OnInit {
       }
     })
   }
-
+severidadNota = (nota:number):string =>{
+  let color='#93C47D';
+  if(nota<=2.5){
+    return color = '#F6C499'
+  }
+  if(nota>2.5 && nota<=3){
+    return color = '#FCDA99'
+  }
+  if(nota>3.1 && nota<=3.5){
+    return color = '#FCDA99'
+  }
+  if(nota>3.6 && nota<=4.2){
+    return color='#FCDA99'
+  }
+  return color;
+}
 
 
 }

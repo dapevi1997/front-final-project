@@ -18,11 +18,11 @@
         <tr >
           <td>{{area.area}}</td>
           <td>{{area.descriptor}}</td>
-          <td>{{area.factual}}</td>
-          <td>{{area.conceptual}}</td>
-          <td>{{area.procedimental}}</td>
-          <td>{{area.metacognitivo}}</td>
-          <td>{{area.nivel}}</td>     
+          <td [ngStyle]="{'background-color':severidadNota(area.factual)}">{{area.factual}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(area.conceptual)}">{{area.conceptual}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(area.procedimental)}">{{area.procedimental}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(area.metacognitivo)}">{{area.metacognitivo}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(area.nivel)}">{{area.nivel}}</td>     
           <td>
             <app-editar [areaIn]="area" [nombre]="radarItems.nombre" [index]="index"></app-editar>
           </td>     
