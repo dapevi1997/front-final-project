@@ -31,6 +31,7 @@ import { ChartModule } from '../chart/chart.module';
 
 
 
+
 @NgModule({
   declarations: [
     GraficaComponent,
