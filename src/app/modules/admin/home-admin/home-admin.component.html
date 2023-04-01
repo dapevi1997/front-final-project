@@ -9,9 +9,7 @@
         <div class="card-body text-center">
           <br>
           <a  [routerLink]="['/adm/list-users']" class="card-text" style="font-size: 30px;">Listar usuarios</a>
-          <span  class="btn btn-info" (click)="openVerticallyCentered(content)">Crear usuario</span>
         </div>
-
       </div>
     </div>
 
@@ -24,51 +22,23 @@
           <br>
           <a [routerLink]="['/adm/list-radars']" class="card-text" style="font-size: 30px;">Ver radares</a>
         </div>
-
       </div>
     </div>
 
     <div class="col-lg-4 col-md-12 mb4">
-      <div class="card">
-        <div class="card-header">
-          <h1>Promedios</h1>
+      <div class="card-section border rounded p-3">
+        <div class="card-header-third rounded pb-5">
+          <h1 class="card-header-title text-white pt-3">Promedio</h1>
         </div>
-        <div class="card-body">
-          <a href="">Listar usuarios</a>
+        <div class="card-body text-center">
+          <br>
+          <a [routerLink]="['/adm/promedios']" class="card-text" style="font-size: 30px;">Ver promedios</a>
         </div>
       </div>
     </div>
-
   </div>
-
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-<br><br><br><br><br>
-
-
-<div class="container">
-    <div class="col-sm-6">
-
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Promedios</h5>
-            <p class="card-text">Contenido de los promedios de los estudiantes.</p>
-            <span [routerLink]="['/adm/promedios']" class="btn btn-info">Ir a promedios</span>
-          </div>
-        </div>
-      </div>
-  </div>
   <ng-template class="modal" #content let-modal>
    <app-users></app-users>
   </ng-template>
