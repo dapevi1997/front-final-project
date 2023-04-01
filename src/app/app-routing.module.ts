@@ -6,6 +6,7 @@ import { IsAdminGuard } from './guards/is-admin.guard';
 import { IsOperationsGuard } from './guards/is-operations.guard';
 import { IsLeanerGuard } from './guards/is-leaner.guard';
 import { AdminComponent } from './modules/admin/admin/admin.component';
+import { RadarLeaguesComponent } from './modules/operations/radar-leagues/radar-leagues.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   },
   {
     path: "operations",
+    component:RadarLeaguesComponent,
     canActivate: [IsOperationsGuard],
     loadChildren: () => import("./modules/operations/operations.module").then(module => module.OperationsModule)
   },

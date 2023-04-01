@@ -7,26 +7,7 @@ import { LigaService } from 'src/app/services/liga.service';
   templateUrl: './radar-leagues.component.html',
   styleUrls: ['./radar-leagues.component.css']
 })
-export class RadarLeaguesComponent implements OnInit {
+export class RadarLeaguesComponent {
 
-  ligas: LigaI[] | any;
-  ligas2: LigaI[] | any;
-  id!:string;
-
-  constructor(
-    private ligaSvr : LigaService
-  ){}
-
-  ngOnInit(): void {
-    this.traerLigas();
-  }
-
-  traerLigas(): void {
-    this.ligaSvr.traerTodo().subscribe((data) => {
-      this.ligas = data;
-      this.ligas2=data?.aprendices?.find(nombre => console.log(nombre)
-      )
-    });
-  }
 
 }
