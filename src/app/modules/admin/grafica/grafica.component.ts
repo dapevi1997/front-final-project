@@ -78,11 +78,11 @@ export class GraficaComponent implements OnInit{
   promedioLiga(): void{
     let sumaAprendices = this.liga?.aprendices?.length || 0;
     console.log(sumaAprendices);
-    let posiciones = this.liga.aprendices[0].calificaciones.length;
+    let posiciones = this?.liga?.aprendices[0].calificaciones.length;
     let totalNota: number[] = new Array(posiciones).fill(0);
     console.log(posiciones);
     this?.liga?.aprendices.forEach(aprendiz => {
-    aprendiz.calificaciones.forEach((nota, index) => {
+    aprendiz?.calificaciones?.forEach((nota, index) => {
       totalNota[index] += nota;
     });
     });
