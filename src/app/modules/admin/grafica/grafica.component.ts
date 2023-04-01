@@ -66,7 +66,7 @@ export class GraficaComponent implements OnInit{
       this.liga = data;
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      });
     });
   }
 

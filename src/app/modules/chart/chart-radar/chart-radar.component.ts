@@ -10,38 +10,28 @@ import { LigaService } from 'src/app/services/liga.service';
 export class ChartRadarComponent implements OnInit {
 
   calificaciones: number[] = [];
-
-  ngOnInit(): void {
-    this.calificaciones = this.ligaservice.promedioTraer()
-    this.radarChartOptions
-    this.radarChartLabels
-    this.radarChartData
-    this.radarChartType
-    console.log("este es ngOnInit chart "+this.calificaciones)
-  }
+  radarChartData!: ChartData<'radar'>;
 
   constructor(
     private ligaservice:LigaService,
   )
   {}
 
-  PintarRadar(): void{
-
+  ngOnInit(): void {
+    this.calificaciones = this.ligaservice.promedioTraer()
+    console.log("este es ngOnInit chart "+this.calificaciones)
+    this.radarChartData = {
+      labels: ['jum', 'te', '3', '4'],
+      datasets: [
+        { data: this.calificaciones, label: 'Series A' },
+        { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
+      ]
+    };
   }
+
 
   public radarChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-  };
-
-  public radarChartLabels: string[] = ['jum', 'te', '3', '4'];
-
-  public radarChartData: ChartData<'radar'> = {
-    labels: this.radarChartLabels,
-    datasets: [
-      { data:  this.calificaciones, label: 'Series A' },
-      { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
-
-    ],
   };
 
   public radarChartType: ChartType = 'radar';
