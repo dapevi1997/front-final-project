@@ -27,11 +27,12 @@
   <tbody *ngFor="let aprendiz of liga?.aprendices">
 
     <tr >
-      <td>{{aprendiz.nombre}}</td>
+      <td (click)="enviarNota(aprendiz.calificaciones)">{{aprendiz.nombre}}</td>
       <td>{{aprendiz.calificaciones[0]}}</td>
       <td>{{aprendiz.calificaciones[1]}}</td>
       <td>{{aprendiz.calificaciones[2]}}</td>
       <td>{{aprendiz.calificaciones[3]}}</td>
+      <td></td>
 
     </tr>
   </tbody>
@@ -57,5 +58,6 @@
     </tr>
   </tbody>
 </table>
-
 <app-chart-radar></app-chart-radar>
+<button class="btn btn-dark" (click)="traerLiga()">Ver datos generales</button>
+

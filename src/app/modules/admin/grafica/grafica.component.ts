@@ -44,7 +44,10 @@ export class GraficaComponent implements OnInit{
     console.log("hola")
 
   }
-
+  enviarNota(calif: number[]):void {
+    this.ligaSvr.notaEnviar(calif);
+    this.chartRadarComponent.ngOnChanges();
+  }
 
 
   traerAprendices(): void {
@@ -66,7 +69,7 @@ export class GraficaComponent implements OnInit{
       this.liga = data;
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      });
     });
   }
 
@@ -78,8 +81,6 @@ export class GraficaComponent implements OnInit{
         this.traerAprendices();
         this.promedioLiga();
         this.chartRadarComponent.ngOnInit()
-
-
       })
   }
 
