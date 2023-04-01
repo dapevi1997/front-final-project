@@ -9,6 +9,7 @@ import { Aprendiz, LigaI } from 'src/app/interfaces/liga.interface';
 import { LigaService } from 'src/app/services/liga.service';
 import { RadarI } from 'src/app/interfaces/radar.interface';
 import { RadarService } from 'src/app/services/radares.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grafica',
@@ -31,13 +32,13 @@ export class GraficaComponent implements OnInit{
     private modalService: NgbModal,
     private messageService: MessageService,
     private ligaSvr : LigaService,
-    private radarSvr : RadarService
+    private radarSvr : RadarService,
     ){}
 
   ngOnInit(): void {
     this.traerAprendices();
     this.traerLiga();
-    this.promedioLiga();
+    //this.promedioLiga();
   }
 
 
@@ -61,7 +62,7 @@ export class GraficaComponent implements OnInit{
       this.liga = data;
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 2000);
     });
   }
 
@@ -91,9 +92,10 @@ export class GraficaComponent implements OnInit{
     })
     console.log("este es el promedio notas "+ totalNota);
     this.total = totalNota;
+    localStorage.setItem('total', JSON.stringify(totalNota));
     };
 
 
 
-    
+
   }

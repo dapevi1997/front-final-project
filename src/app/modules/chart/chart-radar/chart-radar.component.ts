@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 
 @Component({
@@ -8,30 +8,25 @@ import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 })
 export class ChartRadarComponent implements OnInit {
 
+  calificaciones: number[] = [];
 
-    @Input() Calificaciones!:number[];
-    Calificaciones2!:number[];
+  ngOnInit(): void {
+  }
 
-    ngOnInit(): void {
+  // Radar
+  public radarChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+  };
+  public radarChartLabels: string[] = ['jum', 'te', '3', '4'];
 
-      this.Calificaciones2=this.Calificaciones;
-      console.log(this.Calificaciones2)
-    }
+  public radarChartData: ChartData<'radar'> = {
+    labels: this.radarChartLabels,
+    datasets: [
+      { data: this.calificaciones = JSON.parse(localStorage.getItem('total') || ''), label: 'Series A' },
+      { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
+    ]
+  };
 
-    // Radar
-    public radarChartOptions: ChartConfiguration['options'] = {
-      responsive: true,
-    };
-    public radarChartLabels: string[] = [ 'jum', 'te', '3', '4' ];
-
-    public radarChartData: ChartData<'radar'> = {
-
-      labels: this.radarChartLabels,
-      datasets: [
-        { data: this.Calificaciones2, label: 'Series A' },
-        { data: [ 4.9, 4.6, 4.1, 4.2], label: 'Series B' }
-      ]
-    };
-    public radarChartType: ChartType = 'radar';
+  public radarChartType: ChartType = 'radar';
 
 }

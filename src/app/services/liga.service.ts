@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Aprendiz, LigaI } from '../interfaces/liga.interface';
 import { Observable } from 'rxjs';
 import { RadarI } from '../interfaces/radar.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LigaService {
 
-  api = 'http://localhost:8080/api';
+  api = environment.apiRadarUrl;
 
   id!:string;
   radarNombre!:string;
