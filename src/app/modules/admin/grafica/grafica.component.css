@@ -1,0 +1,11 @@
+.tabla{
+    border: 1px solid #6DC2EA;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+th,td,tr{
+    text-align: center;
+    padding:10px;
+}
+td{
+    border-left: 1px solid #6DC2EA;
+}
