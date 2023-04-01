@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 
 @Component({
@@ -6,18 +6,30 @@ import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
   templateUrl: './chart-radar.component.html',
   styleUrls: ['./chart-radar.component.css']
 })
-export class ChartRadarComponent {
+export class ChartRadarComponent implements OnInit {
+
+
+    @Input() Calificaciones!:number[];
+    Calificaciones2!:number[];
+
+    ngOnInit(): void {
+
+      this.Calificaciones2=this.Calificaciones;
+      console.log(this.Calificaciones2)
+    }
+
     // Radar
     public radarChartOptions: ChartConfiguration['options'] = {
       responsive: true,
     };
-    public radarChartLabels: string[] = [ 'Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running' ];
-  
+    public radarChartLabels: string[] = [ 'jum', 'te', '3', '4' ];
+
     public radarChartData: ChartData<'radar'> = {
+
       labels: this.radarChartLabels,
       datasets: [
-        { data: [ 65, 59, 90, 81, 56, 55, 40 ], label: 'Series A' },
-        { data: [ 28, 48, 40, 19, 96, 27, 100 ], label: 'Series B' }
+        { data: this.Calificaciones2, label: 'Series A' },
+        { data: [ 4.9, 4.6, 4.1, 4.2], label: 'Series B' }
       ]
     };
     public radarChartType: ChartType = 'radar';

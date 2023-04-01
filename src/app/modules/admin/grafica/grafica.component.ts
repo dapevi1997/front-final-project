@@ -92,4 +92,8 @@ export class GraficaComponent implements OnInit{
     console.log("este es el promedio notas "+ totalNota);
     this.total = totalNota;
     };
+
+
+
+    
   }
