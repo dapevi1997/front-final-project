@@ -16,6 +16,7 @@ import { LigaService } from 'src/app/services/liga.service';
 export class PromediosComponent implements OnInit {
 
   ligas: LigaI[] | any;
+  ligas2: LigaI[] | any;
   id!:string;
 
   constructor(
@@ -31,7 +32,8 @@ export class PromediosComponent implements OnInit {
   traerLigas(): void {
     this.ligaSvr.traerTodo().subscribe((data) => {
       this.ligas = data;
-      console.log(this.ligas);
+      this.ligas2=data?.aprendices?.find(nombre => console.log(nombre)
+      )
     });
   }
 

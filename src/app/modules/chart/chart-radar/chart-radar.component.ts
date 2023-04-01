@@ -24,7 +24,6 @@ export class ChartRadarComponent implements OnInit, OnChanges{
     this.calificaciones = this.ligaservice.notasTraer();
     //this.labelRadar = this.ligaservice.labelsRadarTraer();
     this.nombreEstudiante=this.ligaservice.estudianteNombreTraer();
-    console.log("este es ngOnChanges chart "+this.calificaciones)
     this.radarChartData = {
       labels: this.labelRadar,
       datasets: [
@@ -38,8 +37,6 @@ export class ChartRadarComponent implements OnInit, OnChanges{
     this.calificaciones = this.ligaservice.promedioTraer()
     this.labelRadar = this.ligaservice.labelsRadarTraer();
     this.nivelApropiacion = this.ligaservice.nivelApropiacionTraer();
-
-    console.log("este es ngOnInit chart "+this.labelRadar)
     this.radarChartData = {
       labels: this.labelRadar,
       datasets: [

@@ -118,7 +118,6 @@ export class LoginComponent {
       this.login$.recoverPasswordWithEmail(this.formRecoverPasswordWithEmail.value.email)?.then(
         (res) => {
           this.toastr$.success("Email enviado con éxito")
-          console.log("Correo enviado con éxito")
         }
       );
 

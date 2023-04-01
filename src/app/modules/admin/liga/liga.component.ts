@@ -84,7 +84,6 @@ export class LigaComponent implements OnInit {
   traerRadares = () => {
     this.radarSvr.getRadares().subscribe(radares => {
       this.radares = radares;
-      console.log(this.radares);
     })
   }
 
@@ -101,9 +100,6 @@ export class LigaComponent implements OnInit {
       switchMap(data => {
         this.radarCopiado = data;
         this.nombre = this.ligaI.nombre;
-        
-        console.log(this.nombre);
-        console.log(this.radarCopiado);
         return this.ligaSvr.añadirRadar(this.nombre, this.radarCopiado);
       })
     ).subscribe(

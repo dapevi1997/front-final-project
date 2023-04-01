@@ -49,7 +49,6 @@ export class NavbaradminComponent {
 
     this.authService.loginRegistre(this.formCreateUser.value.email, this.formCreateUser.value.password)
       .then(token => {
-        console.log(token)
         if (token == "auth/email-already-in-use") {
           this.toastr$.error("El email ingresado ya está en uso")
         }else{
