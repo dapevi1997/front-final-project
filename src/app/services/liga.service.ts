@@ -18,32 +18,32 @@ export class LigaService {
   constructor(private http: HttpClient) { }
 
   traerTodo():Observable <LigaI> {
-    let direccion= this.api + '/ligas';
+    let direccion= this.api + 'ligas';
     return this.http.get<LigaI>(direccion);
   }
 
   traerLiga(id: string):Observable <LigaI> {
-    let direccion= this.api + '/liga/' + id;
+    let direccion= this.api + 'liga/' + id;
     return this.http.get<LigaI>(direccion);
   }
 
   crearLiga(liga: LigaI):Observable<any> {
-    let direccion= this.api + '/liga';
+    let direccion= this.api + 'liga';
     return this.http.post<any>(direccion, liga);
   }
 
   traerAprendices():Observable <Aprendiz> {
-    let direccion= this.api + '/aprendices';
+    let direccion= this.api + 'aprendices';
     return this.http.get<Aprendiz>(direccion);
   }
 
   añadirAprendiz(nombre: string, aprendiz: Aprendiz):Observable <any> {
-    let direccion= this.api + '/liga/aprendiz/' + nombre;
+    let direccion= this.api + 'liga/aprendiz/' + nombre;
     return this.http.post<any>(direccion, aprendiz);
   }
 
   añadirRadar(nombre: string, radar: RadarI):Observable <any> {
-    let direccion= this.api + '/liga/radar/' + nombre;
+    let direccion= this.api + 'liga/radar/' + nombre;
     return this.http.post<any>(direccion, radar);
   }
 
