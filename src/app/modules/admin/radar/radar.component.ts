@@ -17,9 +17,9 @@ export class RadarComponent {
     private modalService: NgbModal,
     private toastr: ToastrService,
     private radarService : RadarService
-  ){ 
+  ){
     this.form = new FormGroup({
-    nombre: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,16}$/)]),    
+    nombre: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,50}$/)]),
   });
 }
    radarItems : RadarI ={
@@ -34,15 +34,15 @@ cerrarModal = () => {
     this.radarService.crearRadar(this.radarItems).subscribe({
       next: data => {
         this.modalService.dismissAll();
-        this.toastr.success('Radar agregado exitosamente!','Success');  
+        this.toastr.success('Radar agregado exitosamente!','Success');
          setTimeout(() => {
          window.location.reload();
-       }, 1000);  
+       }, 1000);
       },
       error: error =>{
         console.log(error);
         this.toastr.error("Algo salio mal","Error")
-        
+
       }
     })
   }

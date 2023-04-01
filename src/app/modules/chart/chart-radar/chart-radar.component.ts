@@ -20,10 +20,10 @@ export class ChartRadarComponent implements OnInit, OnChanges{
     this.calificaciones = this.ligaservice.notasTraer()
     console.log("este es ngOnChanges chart "+this.calificaciones)
     this.radarChartData = {
-      labels: ['jum', 'te', '3', '4'],
+      labels: ['Clean Code', 'Clean Code', '	Unit Test (Backend)', 'Principios de Arq','DDD','DDD','Metodologias agiles','Spring Boot','Java','Reactividad (Reactor Core)'],
       datasets: [
         { data: this.calificaciones, label: 'Notas Aprendiz' },
-        { data: [4.9, 4.6, 4.1, 4.2], label: 'Nivel Apropiación' }
+        { data: [4.5, 4, 4.5, 3.5,4, 4.25, 4.25, 4.25, 4.75, 4], label: 'Nivel Apropiación' }
       ]
     };
   }
@@ -32,10 +32,10 @@ export class ChartRadarComponent implements OnInit, OnChanges{
     this.calificaciones = this.ligaservice.promedioTraer()
     console.log("este es ngOnInit chart "+this.calificaciones)
     this.radarChartData = {
-      labels: ['jum', 'te', '3', '4'],
+      labels: ['Clean Code', 'Clean Code', '	Unit Test (Backend)', 'Principios de Arq','DDD','DDD','Metodologias agiles','Spring Boot','Java','Reactividad (Reactor Core)'],
       datasets: [
         { data: this.calificaciones, label: 'Promedio' },
-        { data: [4.9, 4.6, 4.1, 4.2], label: 'Nivel Apropiación' }
+        { data: [4.5, 4, 4.5, 3.5,4, 4.25, 4.25, 4.25, 4.75, 4], label: 'Nivel Apropiación' }
       ]
     };
   }
