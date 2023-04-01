@@ -28,6 +28,7 @@ export class GraficaComponent implements OnInit{
   name!: string;
   radarItems!:RadarI
   total!: number[];
+
   @ViewChild(ChartRadarComponent) chartRadarComponent!: ChartRadarComponent;
 
   constructor(
@@ -76,6 +77,7 @@ export class GraficaComponent implements OnInit{
         this.radarItems = data.radar;
         this.traerAprendices();
         this.promedioLiga();
+        this.chartRadarComponent.ngOnInit()
 
 
       })

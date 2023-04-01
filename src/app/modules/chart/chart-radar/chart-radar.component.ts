@@ -13,7 +13,11 @@ export class ChartRadarComponent implements OnInit {
 
   ngOnInit(): void {
     this.calificaciones = this.ligaservice.promedioTraer()
-    console.log("este es ngOnInit "+this.calificaciones)
+    this.radarChartOptions
+    this.radarChartLabels
+    this.radarChartData
+    this.radarChartType
+    console.log("este es ngOnInit chart "+this.calificaciones)
   }
 
   constructor(
@@ -21,10 +25,14 @@ export class ChartRadarComponent implements OnInit {
   )
   {}
 
-  // Radar
+  PintarRadar(): void{
+
+  }
+
   public radarChartOptions: ChartConfiguration['options'] = {
     responsive: true,
   };
+
   public radarChartLabels: string[] = ['jum', 'te', '3', '4'];
 
   public radarChartData: ChartData<'radar'> = {
@@ -32,11 +40,11 @@ export class ChartRadarComponent implements OnInit {
     datasets: [
       { data:  this.calificaciones, label: 'Series A' },
       { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
-    ],
 
+    ],
   };
 
-
   public radarChartType: ChartType = 'radar';
+
 
 }
