@@ -14,6 +14,7 @@ export class LigaService {
 
   id!:string;
   radarNombre!:string;
+  calificaciones!:number[];
 
   constructor(private http: HttpClient) { }
 
@@ -68,4 +69,15 @@ export class LigaService {
     this.radarNombre = JSON.parse(localStorage.getItem('radarNombre') || '');
     return this.radarNombre;
   }
+
+  promedioenviar(promedio: number[]){
+    this.calificaciones = promedio;
+    console.log(this.calificaciones);
+  }
+
+  promedioTraer(){
+    console.log("es el traer" + this.calificaciones);
+    return this.calificaciones;
+  }
+
 }

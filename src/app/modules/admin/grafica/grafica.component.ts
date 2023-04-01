@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -10,6 +10,7 @@ import { LigaService } from 'src/app/services/liga.service';
 import { RadarI } from 'src/app/interfaces/radar.interface';
 import { RadarService } from 'src/app/services/radares.service';
 import { Router } from '@angular/router';
+import { ChartRadarComponent } from '../../chart/chart-radar/chart-radar.component';
 
 @Component({
   selector: 'app-grafica',
@@ -27,19 +28,20 @@ export class GraficaComponent implements OnInit{
   name!: string;
   radarItems!:RadarI
   total!: number[];
+  @ViewChild(ChartRadarComponent) chartRadarComponent!: ChartRadarComponent;
 
   constructor(
     private modalService: NgbModal,
     private messageService: MessageService,
     private ligaSvr : LigaService,
     private radarSvr : RadarService,
+
     ){}
 
   ngOnInit(): void {
-    this.traerAprendices();
     this.traerLiga();
     console.log("hola")
-    //this.promedioLiga();
+
   }
 
 
@@ -72,7 +74,9 @@ export class GraficaComponent implements OnInit{
       this?.ligaSvr?.traerLiga(this.id)?.subscribe((data) => {
         this.liga= data;
         this.radarItems = data.radar;
+        this.traerAprendices();
         this.promedioLiga();
+
 
       })
   }
@@ -93,7 +97,8 @@ export class GraficaComponent implements OnInit{
     })
     console.log("este es el promedio notas "+ totalNota);
     this.total = totalNota;
-    localStorage.setItem('total', JSON.stringify(totalNota));
+    //localStorage.setItem('total', JSON.stringify(totalNota));
+    this.ligaSvr.promedioenviar( this.total);
     };
 
 

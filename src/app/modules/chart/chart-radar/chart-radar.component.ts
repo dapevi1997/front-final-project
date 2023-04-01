@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { LigaService } from 'src/app/services/liga.service';
 
 @Component({
   selector: 'app-chart-radar',
@@ -11,8 +12,14 @@ export class ChartRadarComponent implements OnInit {
   calificaciones: number[] = [];
 
   ngOnInit(): void {
-    this.radarChartData;
+    this.calificaciones = this.ligaservice.promedioTraer()
+    console.log("este es ngOnInit "+this.calificaciones)
   }
+
+  constructor(
+    private ligaservice:LigaService,
+  )
+  {}
 
   // Radar
   public radarChartOptions: ChartConfiguration['options'] = {
@@ -23,11 +30,12 @@ export class ChartRadarComponent implements OnInit {
   public radarChartData: ChartData<'radar'> = {
     labels: this.radarChartLabels,
     datasets: [
-      { data: this.calificaciones = JSON.parse(localStorage.getItem('total') || '[]'), label: 'Series A' },
+      { data:  this.calificaciones, label: 'Series A' },
       { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
     ],
 
   };
+
 
   public radarChartType: ChartType = 'radar';
 
