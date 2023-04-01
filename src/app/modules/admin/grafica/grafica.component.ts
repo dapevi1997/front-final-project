@@ -45,8 +45,9 @@ export class GraficaComponent implements OnInit{
     console.log("hola")
 
   }
-  enviarNota(calif: number[]):void {
+  enviarNota(calif: number[],nombre:string):void {
     this.ligaSvr.notaEnviar(calif);
+    this.ligaSvr.estudianteNombreEnviar(nombre);
     this.chartRadarComponent.ngOnChanges();
   }
 
@@ -82,6 +83,7 @@ export class GraficaComponent implements OnInit{
         this.traerAprendices();
         this.promedioLiga();
         this.labelsRadar();
+        this.NivelApropiacionRadar();
         this.chartRadarComponent.ngOnInit()
       })
   }
@@ -116,6 +118,18 @@ export class GraficaComponent implements OnInit{
       })
       this.ligaSvr.labelsRadarEnviar(labels);
     }
+
+    NivelApropiacionRadar(): void {
+
+      let longitud = this.radarItems.areas.length
+      let nivelApropiacion: number[] = new Array(longitud).fill(0);
+      this?.radarItems?.areas.forEach((nota,index) =>{
+        nivelApropiacion[index]=nota.nivel
+        console .log(nota.nivel)
+      })
+      this.ligaSvr.nivelApropiacionEnviar(nivelApropiacion);
+    }
+
 
 
 

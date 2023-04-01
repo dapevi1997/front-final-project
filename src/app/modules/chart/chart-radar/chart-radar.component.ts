@@ -11,6 +11,9 @@ export class ChartRadarComponent implements OnInit, OnChanges{
 
   calificaciones: number[] = [];
   labelRadar!: string[];
+  nivelApropiacion!:number[];
+  nombreEstudiante!:string;
+
   radarChartData!: ChartData<'radar'>;
 
   constructor(
@@ -19,12 +22,13 @@ export class ChartRadarComponent implements OnInit, OnChanges{
   {}
   ngOnChanges(): void {
     this.calificaciones = this.ligaservice.notasTraer();
-    this.labelRadar = this.ligaservice.labelsRadarTraer();
+    //this.labelRadar = this.ligaservice.labelsRadarTraer();
+    this.nombreEstudiante=this.ligaservice.estudianteNombreTraer();
     console.log("este es ngOnChanges chart "+this.calificaciones)
     this.radarChartData = {
       labels: this.labelRadar,
       datasets: [
-        { data: this.calificaciones, label: 'Notas Aprendiz' },
+        { data: this.calificaciones, label:  this.nombreEstudiante },
         { data: [4.5, 4, 4.5, 3.5,4, 4.25, 4.25, 4.25, 4.75, 4], label: 'Nivel Apropiación' }
       ]
     };
@@ -33,12 +37,14 @@ export class ChartRadarComponent implements OnInit, OnChanges{
   ngOnInit(): void {
     this.calificaciones = this.ligaservice.promedioTraer()
     this.labelRadar = this.ligaservice.labelsRadarTraer();
+    this.nivelApropiacion = this.ligaservice.nivelApropiacionTraer();
+
     console.log("este es ngOnInit chart "+this.labelRadar)
     this.radarChartData = {
       labels: this.labelRadar,
       datasets: [
-        { data: this.calificaciones, label: 'Promedio' },
-        { data: [4.5, 4, 4.5, 3.5,4, 4.25, 4.25, 4.25, 4.75, 4], label: 'Nivel Apropiación' }
+        { data: this.calificaciones, label: 'Promedio liga' },
+        { data: this.nivelApropiacion, label: 'Nivel Apropiación' }
       ]
     };
   }

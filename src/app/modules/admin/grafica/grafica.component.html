@@ -22,16 +22,29 @@
       <th scope="col">Nota2</th>
       <th scope="col">Nota3</th>
       <th scope="col">Nota4</th>
+      <th scope="col">Nota5</th>
+      <th scope="col">Nota6</th>
+      <th scope="col">Nota7</th>
+      <th scope="col">Nota8</th>
+      <th scope="col">Nota9</th>
+      <th scope="col">Nota10</th>
     </tr>
   </thead>
   <tbody *ngFor="let aprendiz of liga?.aprendices">
 
     <tr >
-      <td (click)="enviarNota(aprendiz.calificaciones)">{{aprendiz.nombre}}</td>
+      <td (click)="enviarNota(aprendiz.calificaciones,aprendiz.nombre)">{{aprendiz.nombre}}</td>
       <td>{{aprendiz.calificaciones[0]}}</td>
       <td>{{aprendiz.calificaciones[1]}}</td>
       <td>{{aprendiz.calificaciones[2]}}</td>
       <td>{{aprendiz.calificaciones[3]}}</td>
+      <td>{{aprendiz.calificaciones[4]}}</td>
+      <td>{{aprendiz.calificaciones[5]}}</td>
+      <td>{{aprendiz.calificaciones[6]}}</td>
+      <td>{{aprendiz.calificaciones[7]}}</td>
+      <td>{{aprendiz.calificaciones[8]}}</td>
+      <td>{{aprendiz.calificaciones[9]}}</td>
+
       <td></td>
 
     </tr>

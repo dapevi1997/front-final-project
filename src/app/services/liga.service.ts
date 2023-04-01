@@ -14,9 +14,11 @@ export class LigaService {
 
   id!:string;
   radarNombre!:string;
+  estudiante!:string;
   calificaciones!:number[];
   notasAprendiz!:number[];
   labelsRadar!:string[];
+  nivelApropiacion!:number[];
 
   constructor(private http: HttpClient) { }
 
@@ -101,5 +103,24 @@ export class LigaService {
 
     return this.labelsRadar;
   }
+  nivelApropiacionEnviar(nivelApropiacion: number[]){
+    this.nivelApropiacion = nivelApropiacion;
+
+  }
+
+  nivelApropiacionTraer(){
+
+    return this.nivelApropiacion;
+  }
+
+  estudianteNombreEnviar(estudiante: string){
+    this.estudiante = estudiante;
+  }
+
+  estudianteNombreTraer(){
+    return this.estudiante;
+  }
+
+
 
 }
