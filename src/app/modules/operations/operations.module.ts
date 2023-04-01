@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RadarLeaguesComponent } from './radar-leagues/radar-leagues.component';
 import { OperationsRoutingModule } from './operations-routing.module';
+import { ChartModule } from '../chart/chart.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { OperationsRoutingModule } from './operations-routing.module';
   ],
   imports: [
     CommonModule,
-    OperationsRoutingModule
+    OperationsRoutingModule,
+    ChartModule
   ]
 })
 export class OperationsModule { }

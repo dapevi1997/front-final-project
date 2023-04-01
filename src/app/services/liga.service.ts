@@ -3,46 +3,48 @@ import { HttpClient } from '@angular/common/http';
 import { Aprendiz, LigaI } from '../interfaces/liga.interface';
 import { Observable } from 'rxjs';
 import { RadarI } from '../interfaces/radar.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LigaService {
 
-  api = 'http://localhost:8080/api';
+  api = environment.apiRadarUrl;
 
   id!:string;
   radarNombre!:string;
+  calificaciones!:number[];
 
   constructor(private http: HttpClient) { }
 
   traerTodo():Observable <LigaI> {
-    let direccion= this.api + '/ligas';
+    let direccion= this.api + 'ligas';
     return this.http.get<LigaI>(direccion);
   }
 
   traerLiga(id: string):Observable <LigaI> {
-    let direccion= this.api + '/liga/' + id;
+    let direccion= this.api + 'liga/' + id;
     return this.http.get<LigaI>(direccion);
   }
 
   crearLiga(liga: LigaI):Observable<any> {
-    let direccion= this.api + '/liga';
+    let direccion= this.api + 'liga';
     return this.http.post<any>(direccion, liga);
   }
 
   traerAprendices():Observable <Aprendiz> {
-    let direccion= this.api + '/aprendices';
+    let direccion= this.api + 'aprendices';
     return this.http.get<Aprendiz>(direccion);
   }
 
   añadirAprendiz(nombre: string, aprendiz: Aprendiz):Observable <any> {
-    let direccion= this.api + '/liga/aprendiz/' + nombre;
+    let direccion= this.api + 'liga/aprendiz/' + nombre;
     return this.http.post<any>(direccion, aprendiz);
   }
 
   añadirRadar(nombre: string, radar: RadarI):Observable <any> {
-    let direccion= this.api + '/liga/radar/' + nombre;
+    let direccion= this.api + 'liga/radar/' + nombre;
     return this.http.post<any>(direccion, radar);
   }
 
@@ -59,7 +61,7 @@ export class LigaService {
   }
 
   recibirLiga(){
-    this.id = JSON.parse(localStorage.getItem('ligaid') || '');
+    this.id = JSON.parse(localStorage.getItem('ligaid') ||'')
     return this.id;
   }
 
@@ -67,4 +69,15 @@ export class LigaService {
     this.radarNombre = JSON.parse(localStorage.getItem('radarNombre') || '');
     return this.radarNombre;
   }
+
+  promedioenviar(promedio: number[]){
+    this.calificaciones = promedio;
+    console.log(this.calificaciones);
+  }
+
+  promedioTraer(){
+    console.log("es el traer" + this.calificaciones);
+    return this.calificaciones;
+  }
+
 }

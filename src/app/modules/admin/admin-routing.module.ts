@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GraficaComponent } from '../grafica/grafica.component';
+import { GraficaComponent } from './grafica/grafica.component';
 import { ListaRadaresComponent } from './lista-radares/lista-radares.component';
 import { PromediosComponent } from './promedios/promedios.component';
 import { RadarEspecificoComponent } from './radar-especifico/radar-especifico.component';

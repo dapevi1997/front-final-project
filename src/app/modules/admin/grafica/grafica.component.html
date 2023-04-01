@@ -1,3 +1,5 @@
+
+
 <div class="card-body">
   <div class="form-floating mb-2">
     <select [(ngModel)]="posicion" class="form-select">
@@ -8,9 +10,6 @@
       </option>
     </select>
     <label for="floatingInput">Aprendiz</label>
-    <div class="invalid-feedback">
-      Please select a valid rol.
-    </div>
   </div>
 </div>
 <span  class="btn btn-info mb-3" (click)="agregarAprendiz()">Añadir aprendiz a la liga</span>
@@ -22,14 +21,18 @@
       <th scope="col">Nota1</th>
       <th scope="col">Nota2</th>
       <th scope="col">Nota3</th>
+      <th scope="col">Nota4</th>
     </tr>
   </thead>
-  <tbody *ngFor="let aprendiz of liga.aprendices">
+  <tbody *ngFor="let aprendiz of liga?.aprendices">
+
     <tr >
       <td>{{aprendiz.nombre}}</td>
       <td>{{aprendiz.calificaciones[0]}}</td>
       <td>{{aprendiz.calificaciones[1]}}</td>
       <td>{{aprendiz.calificaciones[2]}}</td>
+      <td>{{aprendiz.calificaciones[3]}}</td>
+
     </tr>
   </tbody>
 </table>
@@ -39,16 +42,20 @@
     <tr>
       <th scope="col">Area de conocimiento</th>
       <th scope="col">Descriptor</th>
-      <th scope="col">Apropiación</th>
+      <th scope="col">Apropiación liga</th>
       <th scope="col">Nivel de apropiación</th>
     </tr>
   </thead>
-  <tbody *ngFor="let area of radarItems.areas">
+
+  <tbody *ngFor="let area of radarItems?.areas; let indice = index">
+
     <tr >
       <td>{{area.area}}</td>
       <td>{{area.descriptor}}</td>
-      <td>Aqui iria aprobación aprendiz</td>
+      <td>{{total[indice]}}</td>
       <td>{{area.nivel}}</td>
     </tr>
   </tbody>
 </table>
+
+<app-chart-radar></app-chart-radar>
