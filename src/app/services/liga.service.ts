@@ -15,6 +15,7 @@ export class LigaService {
   id!:string;
   radarNombre!:string;
   calificaciones!:number[];
+  notasAprendiz!:number[];
 
   constructor(private http: HttpClient) { }
 
@@ -78,6 +79,16 @@ export class LigaService {
   promedioTraer(){
     console.log("es el traer" + this.calificaciones);
     return this.calificaciones;
+  }
+
+  notaEnviar(notas: number[]){
+    this.notasAprendiz = notas;
+    console.log(this.notasAprendiz);
+  }
+
+  notasTraer(){
+    console.log("es el traer notas aprendiz" + this.calificaciones);
+    return this.notasAprendiz;
   }
 
 }
