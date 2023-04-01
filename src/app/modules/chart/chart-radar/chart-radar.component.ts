@@ -22,8 +22,8 @@ export class ChartRadarComponent implements OnInit, OnChanges{
     this.radarChartData = {
       labels: ['jum', 'te', '3', '4'],
       datasets: [
-        { data: this.calificaciones, label: 'Series A' },
-        { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
+        { data: this.calificaciones, label: 'Notas Aprendiz' },
+        { data: [4.9, 4.6, 4.1, 4.2], label: 'Nivel Apropiación' }
       ]
     };
   }
@@ -34,8 +34,8 @@ export class ChartRadarComponent implements OnInit, OnChanges{
     this.radarChartData = {
       labels: ['jum', 'te', '3', '4'],
       datasets: [
-        { data: this.calificaciones, label: 'Series A' },
-        { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
+        { data: this.calificaciones, label: 'Promedio' },
+        { data: [4.9, 4.6, 4.1, 4.2], label: 'Nivel Apropiación' }
       ]
     };
   }
