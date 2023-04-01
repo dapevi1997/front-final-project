@@ -10,6 +10,7 @@ import { LigaService } from 'src/app/services/liga.service';
 export class ChartRadarComponent implements OnInit, OnChanges{
 
   calificaciones: number[] = [];
+  labelRadar!: string[];
   radarChartData!: ChartData<'radar'>;
 
   constructor(
@@ -17,10 +18,11 @@ export class ChartRadarComponent implements OnInit, OnChanges{
   )
   {}
   ngOnChanges(): void {
-    this.calificaciones = this.ligaservice.notasTraer()
+    this.calificaciones = this.ligaservice.notasTraer();
+    this.labelRadar = this.ligaservice.labelsRadarTraer();
     console.log("este es ngOnChanges chart "+this.calificaciones)
     this.radarChartData = {
-      labels: ['Clean Code', 'Clean Code', '	Unit Test (Backend)', 'Principios de Arq','DDD','DDD','Metodologias agiles','Spring Boot','Java','Reactividad (Reactor Core)'],
+      labels: this.labelRadar,
       datasets: [
         { data: this.calificaciones, label: 'Notas Aprendiz' },
         { data: [4.5, 4, 4.5, 3.5,4, 4.25, 4.25, 4.25, 4.75, 4], label: 'Nivel Apropiación' }
@@ -30,9 +32,10 @@ export class ChartRadarComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.calificaciones = this.ligaservice.promedioTraer()
-    console.log("este es ngOnInit chart "+this.calificaciones)
+    this.labelRadar = this.ligaservice.labelsRadarTraer();
+    console.log("este es ngOnInit chart "+this.labelRadar)
     this.radarChartData = {
-      labels: ['Clean Code', 'Clean Code', '	Unit Test (Backend)', 'Principios de Arq','DDD','DDD','Metodologias agiles','Spring Boot','Java','Reactividad (Reactor Core)'],
+      labels: this.labelRadar,
       datasets: [
         { data: this.calificaciones, label: 'Promedio' },
         { data: [4.5, 4, 4.5, 3.5,4, 4.25, 4.25, 4.25, 4.75, 4], label: 'Nivel Apropiación' }

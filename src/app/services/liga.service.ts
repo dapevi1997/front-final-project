@@ -16,6 +16,7 @@ export class LigaService {
   radarNombre!:string;
   calificaciones!:number[];
   notasAprendiz!:number[];
+  labelsRadar!:string[];
 
   constructor(private http: HttpClient) { }
 
@@ -89,6 +90,16 @@ export class LigaService {
   notasTraer(){
     console.log("es el traer notas aprendiz" + this.calificaciones);
     return this.notasAprendiz;
+  }
+
+  labelsRadarEnviar(labelRadar: string[]){
+    this.labelsRadar = labelRadar;
+
+  }
+
+  labelsRadarTraer(){
+
+    return this.labelsRadar;
   }
 
 }

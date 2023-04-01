@@ -29,6 +29,7 @@ export class GraficaComponent implements OnInit{
   radarItems!:RadarI
   total!: number[];
 
+
   @ViewChild(ChartRadarComponent) chartRadarComponent!: ChartRadarComponent;
 
   constructor(
@@ -80,6 +81,7 @@ export class GraficaComponent implements OnInit{
         this.radarItems = data.radar;
         this.traerAprendices();
         this.promedioLiga();
+        this.labelsRadar();
         this.chartRadarComponent.ngOnInit()
       })
   }
@@ -100,9 +102,20 @@ export class GraficaComponent implements OnInit{
     })
     console.log("este es el promedio notas "+ totalNota);
     this.total = totalNota;
-    //localStorage.setItem('total', JSON.stringify(totalNota));
+
     this.ligaSvr.promedioenviar( this.total);
     };
+
+    labelsRadar(): void {
+
+      let longitud = this.radarItems.areas.length
+      let labels: string[] = new Array(longitud).fill("");
+      this?.radarItems?.areas.forEach((nombre,index) =>{
+        labels[index]=nombre.descriptor
+        console .log(nombre.descriptor)
+      })
+      this.ligaSvr.labelsRadarEnviar(labels);
+    }
 
 
 
