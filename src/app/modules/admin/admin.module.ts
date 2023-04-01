@@ -25,6 +25,7 @@ import { EliminarComponent } from './componentes/eliminar/eliminar.component';
 import { EditarComponent } from './componentes/editar/editar.component';
 import { EditarFormularioAreaComponent } from './componentes/editar-formulario-area/editar-formulario-area.component';
 import { GraficaComponent } from './grafica/grafica.component';
+import { ChartModule } from '../chart/chart.module';
 
 
 
@@ -54,7 +55,8 @@ import { GraficaComponent } from './grafica/grafica.component';
     CommonModule,
     FormsModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartModule
   ]
 })
 export class AdminModule { }

@@ -17,9 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GraficaComponent } from './modules/admin/grafica/grafica.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { ChartRadarComponent } from './shared/chart-radar/chart-radar.component';
+import { ChartRadarComponent } from './modules/chart/chart-radar/chart-radar.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
+import { ChartModule } from './modules/chart/chart.module';
 
 
 
@@ -27,7 +28,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    ChartRadarComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     NgbModule,
     NgChartsModule,
-    FormsModule
+    FormsModule,
+    ChartModule
 
   ],
   providers: [],
