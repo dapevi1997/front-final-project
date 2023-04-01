@@ -11,6 +11,7 @@ export class ChartRadarComponent implements OnInit {
   calificaciones: number[] = [];
 
   ngOnInit(): void {
+    this.radarChartData;
   }
 
   // Radar
@@ -22,9 +23,10 @@ export class ChartRadarComponent implements OnInit {
   public radarChartData: ChartData<'radar'> = {
     labels: this.radarChartLabels,
     datasets: [
-      { data: this.calificaciones = JSON.parse(localStorage.getItem('total') || ''), label: 'Series A' },
+      { data: this.calificaciones = JSON.parse(localStorage.getItem('total') || '[]'), label: 'Series A' },
       { data: [4.9, 4.6, 4.1, 4.2], label: 'Series B' }
-    ]
+    ],
+
   };
 
   public radarChartType: ChartType = 'radar';

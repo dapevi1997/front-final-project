@@ -38,6 +38,7 @@ export class GraficaComponent implements OnInit{
   ngOnInit(): void {
     this.traerAprendices();
     this.traerLiga();
+    console.log("hola")
     //this.promedioLiga();
   }
 
