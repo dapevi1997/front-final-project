@@ -10,6 +10,7 @@ import { LigaService } from 'src/app/services/liga.service';
 import { RadarI } from 'src/app/interfaces/radar.interface';
 import { RadarService } from 'src/app/services/radares.service';
 import { switchMap } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-liga',
@@ -18,13 +19,22 @@ import { switchMap } from 'rxjs';
   providers: [MessageService],
 })
 export class LigaComponent implements OnInit {
+  form: FormGroup;
   constructor(
     private modalService: NgbModal,
     private messageService: MessageService,
     private toastr: ToastrService,
     private ligaSvr: LigaService,
     private radarSvr: RadarService
-  ) { }
+  ) {
+    this.form = new FormGroup({
+      nombre: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-\s]){1,50}$/)]),
+      ciclo: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-\s]){1,50}$/)]),
+      coach: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z ]){2,254}$/)]),
+      anio: new FormControl(null, [Validators.required]),
+      radar: new FormControl(null, [Validators.required]),
+    });
+  }
   ngOnInit(): void {
     this.traerRadares();
   }
@@ -57,6 +67,10 @@ export class LigaComponent implements OnInit {
   radares!: RadarI[];
 
   radarNombre!: string;
+
+  cerrarModal = () => {
+    this.modalService.dismissAll();
+  }
 
   crearLiga = () => {
     this.ligaSvr.crearLiga(this.ligaI).subscribe({

@@ -47,7 +47,7 @@ import { ChartModule } from './modules/chart/chart.module';
     NgbModule,
     NgChartsModule,
     FormsModule,
-    ChartModule
+    ChartModule,
 
   ],
   providers: [],

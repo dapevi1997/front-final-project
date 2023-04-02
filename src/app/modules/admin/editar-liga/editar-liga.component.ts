@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { MessageService } from 'primeng/api';
@@ -11,12 +12,18 @@ import { LigaService } from 'src/app/services/liga.service';
   styleUrls: ['./editar-liga.component.css']
 })
 export class EditarLigaComponent {
+  form: FormGroup;
   constructor(
     private modalService: NgbModal,
     private messageService: MessageService,
     private ligaSvr : LigaService,
     private toastr: ToastrService,
-  ){}
+  ){
+    this.form = new FormGroup({
+      coach: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z ]){2,254}$/)]),
+      anio: new FormControl(null, [Validators.required])
+    });
+  }
 
   ligaI: LigaI = {
     nombre: '',
@@ -45,5 +52,9 @@ export class EditarLigaComponent {
         console.log(this.ligaI);
       },
     });
+  }
+
+  cerrarModal = () => {
+    this.modalService.dismissAll();
   }
 }
