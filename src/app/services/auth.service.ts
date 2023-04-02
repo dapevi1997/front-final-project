@@ -4,6 +4,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { getAuth, createUserWithEmailAndPassword, sendPasswordResetEmail, sendSignInLinkToEmail, sendEmailVerification, User } from "firebase/auth";
 import { environment } from '../../environments/environment';
+import jwt_decode from 'jwt-decode';
+import { DecodedI } from '../interfaces/DecodeI';
 
 
 
@@ -55,6 +57,10 @@ export class AuthService {
 
     return localStorage.getItem("token");
   }
+
+  DecodeToken(token: string): DecodedI {
+    return jwt_decode(token) as DecodedI;
+    }
 
   logout() {
     firebase.auth().signOut().then(() => {
