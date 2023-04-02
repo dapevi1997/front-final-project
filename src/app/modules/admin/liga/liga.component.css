@@ -9,3 +9,12 @@
 .campo{
     width: 50%;
 }
+
+.container{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mb-3, label {
+  width: 250px;
+}
