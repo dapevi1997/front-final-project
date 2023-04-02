@@ -34,7 +34,7 @@ export class UsersComponent {
     this.modalService.dismissAll();   
     this.authService.loginRegistre(this.usuarioI.correo, this.usuarioI.contrasena)
       .then(token=>{
-        this.rolService.saveRoles(this.usuarioI.correo, this.usuarioI.rol, token);
+        this.rolService.saveRoles(this.usuarioI.nombre,this.usuarioI.apellido,this.usuarioI.correo, this.usuarioI.rol, token);
         this.toastr.success('Usuario agregado exitosamente!','Success');  
       })
     ;

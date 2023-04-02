@@ -15,7 +15,7 @@ export class IsAdminGuard implements CanActivate {
     this.role = localStorage.getItem("role");
     if(this.role !== "ADMIN") {
       alert("Solo un administrador puede ingresar aqui")
-      this.router$.navigate(['/login']);
+      this.router$.navigate(['login']);
       return false;
     }
     return true;

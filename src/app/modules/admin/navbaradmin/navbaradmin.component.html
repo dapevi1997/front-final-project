@@ -37,7 +37,7 @@
         </ul>
         </li>
         <li class="nav-item">
-          <span class="nav-link" [routerLink]="['/adm']" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <span class="nav-link" [routerLink]="['/adm/promedios']" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
             Promedios
           </span>
@@ -45,7 +45,7 @@
       </ul>
     </div>
   </div>
-  <button (click)="logout()" class="btn btn-primary btnP" [routerLink]="['/login']"
+  <button (click)="logout()" class="btn btn-primary btnP" 
     style="background-color: red; border-color: white;">Logout</button>
   <!-- <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="" style="background-color: #603E85; border-color: white;">Logout</button> -->
 </nav>
@@ -65,6 +65,27 @@
 
         <form [formGroup]="formCreateUser">
           <div class="mb-3">
+            <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="name"
+              placeholder="Nombre" />
+            <div *ngIf="formCreateUser.get('name')?.hasError('required') && formCreateUser.pristine === false"
+              style="color: red;">El nombre
+              es requerido</div>
+              <div *ngIf="formCreateUser.get('name')?.hasError('pattern') && formCreateUser.pristine === false"
+              style="color: red;">Solo valores alfanuméricos</div>
+          </div>
+          
+
+          <div class="mb-3">
+            <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="lastname"
+              placeholder="Apellido" />
+            <div *ngIf="formCreateUser.get('lastname')?.hasError('required') && formCreateUser.pristine === false"
+              style="color: red;">El apellido
+              es requerido</div>
+              <div *ngIf="formCreateUser.get('lastname')?.hasError('pattern') && formCreateUser.pristine === false"
+              style="color: red;">Solo valores alfanuméricos</div>
+          </div>
+
+          <div class="mb-3">
             <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="email"
               placeholder="Correo electrónico" />
             <div *ngIf="formCreateUser.get('email')?.hasError('required') && formCreateUser.pristine === false"
@@ -80,7 +101,9 @@
           <div *ngIf="formCreateUser.get('password')?.hasError('required') && formCreateUser.pristine === false"
             style="color: red;">La contraseña es requerida</div>
             <div *ngIf="formCreateUser.get('password')?.hasError('minlength') && formCreateUser.pristine === false"
-            style="color: red;">La contraseña de tener mínimo 6 caracteres</div>
+            style="color: red;">La contraseña de tener mínimo 8 caracteres</div>
+            <div *ngIf="formCreateUser.get('password')?.hasError('pattern') && formCreateUser.pristine === false"
+            style="color: red;">Solo valores alfanuméricos</div>
           </div>
 
           <div class="mb-3">
@@ -115,6 +138,7 @@
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-dark purple btn-block mb-2" [disabled]="!formCreateUser.valid"
           (click)="createUser()" data-bs-dismiss="modal">Crear usuario</button>
+        
 
          
 

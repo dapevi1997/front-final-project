@@ -27,7 +27,9 @@ export class NavBarEstudianteComponent {
         email: new FormControl(null, [Validators.required, Validators.email]),
         password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
         passwordRepeat: new FormControl(null, [Validators.required]),
-        role: new FormControl("LEARNER", [Validators.required])
+        role: new FormControl("LEARNER", [Validators.required]),
+        name: new FormControl(null, [Validators.required]),
+        lastname: new FormControl(null, [Validators.required])
       }, [this.passwordMatch("password", "passwordRepeat")]
     );
 
@@ -51,7 +53,7 @@ export class NavBarEstudianteComponent {
         if (token == "auth/email-already-in-use") {
           this.toastr$.error("El email ingresado ya está en uso")
         }else{
-          this.rolService.saveRoles(this.formCreateUser.value.email, this.formCreateUser.value.role, token);
+          this.rolService.saveRoles(this.formCreateUser.value.name,this.formCreateUser.value.lastname,this.formCreateUser.value.email, this.formCreateUser.value.role, token);
 
           this.toastr$.success('Usuario agregado exitosamente!', 'Success');
         }

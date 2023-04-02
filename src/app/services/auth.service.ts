@@ -68,7 +68,7 @@ export class AuthService {
       localStorage.setItem("token", this.token);
       localStorage.setItem("role", "");
       localStorage.clear();
-      window.location.reload();
+      //window.location.reload();
     });
   }
 

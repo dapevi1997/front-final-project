@@ -5,6 +5,8 @@ import { RolesService } from '../../../services/roles.service';
 import { ToastrService } from 'ngx-toastr';
 import { group } from 'd3';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbaradmin',
@@ -21,14 +23,17 @@ export class NavbaradminComponent {
 
     private toastr$: ToastrService,
     private modalService: NgbModal,
+    private roter$: Router
   ){
 
     this.formCreateUser = new FormGroup(
       {
         email: new FormControl(null, [Validators.required, Validators.email]),
-        password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.pattern(/([^\u00C0-\u00FF\W]|[a-zA-Z0-9])+/g)]),
         passwordRepeat: new FormControl(null, [Validators.required]),
-        role: new FormControl("LEARNER", [Validators.required])
+        role: new FormControl("LEARNER", [Validators.required]),
+        name: new FormControl(null,[Validators.required, Validators.pattern(/([^\u00C0-\u00FF\W]|[a-zA-Z0-9])+/g)]),
+        lastname: new FormControl(null,[Validators.required, Validators.pattern(/([^\u00C0-\u00FF\W]|[a-zA-Z0-9])+/g)])
       }, [this.passwordMatch("password", "passwordRepeat")]
     );
 
@@ -42,7 +47,25 @@ export class NavbaradminComponent {
   }
 
   logout = () => {
-    this.authService.logout();
+
+    Swal.fire({
+      title: '¿Seguro que desea cerrar sesión?',
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonText: 'Cerrar sesión',
+      //denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.authService.logout();
+        Swal.fire('Sesion cerrada', '', 'success').then(()=>this.roter$.navigate(["login"]));
+       
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+
+   
   }
 
   createUser() {
@@ -52,7 +75,7 @@ export class NavbaradminComponent {
         if (token == "auth/email-already-in-use") {
           this.toastr$.error("El email ingresado ya está en uso")
         }else{
-          this.rolService.saveRoles(this.formCreateUser.value.email, this.formCreateUser.value.role, token);
+          this.rolService.saveRoles(this.formCreateUser.value.name,this.formCreateUser.value.lastname,this.formCreateUser.value.email, this.formCreateUser.value.role, token);
 
           this.toastr$.success('Usuario agregado exitosamente!', 'Success');
         }

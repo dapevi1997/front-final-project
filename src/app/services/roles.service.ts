@@ -15,10 +15,12 @@ export class RolesService {
     return this.http$.get("https://angular-509fd-default-rtdb.firebaseio.com/roles.json?&auth=" + token);
   }
 
-  saveRoles(email: string, role: string, token: string){
+  saveRoles(name: string,lastname: string,email: string, role: string, token: string){
 
 
     let body: Role = {
+      name: name,
+      lastname: lastname,
       email: email,
       role: role
     }

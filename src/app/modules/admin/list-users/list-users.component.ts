@@ -25,6 +25,8 @@ export class ListUsersComponent {
 
         data.forEach(user => {
           let userAux: Role = {
+            name: user.name,
+            lastname: user.lastname,
             email: user.email,
             role: user.role
           }
