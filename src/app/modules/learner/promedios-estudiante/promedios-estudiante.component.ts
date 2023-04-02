@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { MessageService } from 'primeng/api';
 import { LigaI } from 'src/app/interfaces/liga.interface';
 import { AuthService } from 'src/app/services/auth.service';
@@ -20,6 +21,7 @@ export class PromediosEstudianteComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private messageService: MessageService,
+    private toastr: ToastrService,
     private ligaSvr : LigaService,
     private auth : AuthService
   ){}
@@ -44,11 +46,8 @@ export class PromediosEstudianteComponent implements OnInit {
     });
   }
 
-  openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
-  }
-
   enviarLiga(id: string): void{
     this.ligaSvr.enviarLiga(id)
   }
+
 }

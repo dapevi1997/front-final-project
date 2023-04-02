@@ -20,13 +20,13 @@ export class GraficaEstudianteComponent implements OnInit{
   aprendices: Aprendiz[] | any;
   posicion:any[] = [];
   id!:string;
-  liga!: LigaI;
-  liga2!: Aprendiz[];
+   liga!: LigaI;
+  ligaAprendiz!: Aprendiz[];
   name!: string;
   radarItems!:RadarI
   total!: number[];
   miAprendiz!: Aprendiz;
- correo!:string
+  correo!:string
 
   @ViewChild(ChartRadarComponent) chartRadarComponent!: ChartRadarComponent;
 
@@ -36,13 +36,15 @@ export class GraficaEstudianteComponent implements OnInit{
     private ligaSvr : LigaService,
     private radarSvr : RadarService,
     private auth : AuthService
+
     ){}
 
   ngOnInit(): void {
     this.traerLiga();
     const token =this.auth.DecodeToken(localStorage.getItem('token')||'')
     this.correo= token.firebase.identities.email[0]
-    
+  
+
   }
   enviarNota(calif: number[],nombre:string):void {
     this.ligaSvr.notaEnviar(calif);
@@ -54,11 +56,9 @@ export class GraficaEstudianteComponent implements OnInit{
   traerAprendices(): void {
     this?.ligaSvr?.traerAprendices()?.subscribe({
       next:data=>{
-        // this.aprendices = data;
-        if(data.nombre == 'valentina'){
-          this.aprendices=data;
-        }
-     
+        this.aprendices = data;      
+        this.miAprendiz = this?.aprendices?.find((apren: any)=> apren.nombre=='julian')
+       // console.log("mi aprendiz: " + this.miAprendiz.calificaciones);        
       },
       error: error => console.log(error)
 
@@ -78,8 +78,8 @@ export class GraficaEstudianteComponent implements OnInit{
   traerLiga(): void {
       this.id = this.ligaSvr.recibirLiga();
       this?.ligaSvr?.traerLiga(this.id)?.subscribe((data) => {
-        this.liga2= data?.aprendices?.filter(estudiante => estudiante.correo== this.correo);
-        
+        // this.liga= data;
+        this.ligaAprendiz= data?.aprendices?.filter(estudiante => estudiante.correo== this.correo);
         this.radarItems = data.radar;
         this.traerAprendices();
         this.promedioLiga();
@@ -91,7 +91,7 @@ export class GraficaEstudianteComponent implements OnInit{
 
   promedioLiga(): void{
 
-    this.liga2.forEach(element => {
+    this.ligaAprendiz.forEach(element => {
       this.total = element.calificaciones
     });
 
@@ -137,4 +137,3 @@ export class GraficaEstudianteComponent implements OnInit{
     }
 
   }
-
