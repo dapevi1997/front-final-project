@@ -46,11 +46,6 @@ export class PromediosEstudianteComponent implements OnInit {
     });
   }
 
-
-  openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
-  }
-
   enviarLiga(id: string): void{
     this.ligaSvr.enviarLiga(id)
   }
