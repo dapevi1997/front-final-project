@@ -4,6 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { RolesService } from 'src/app/services/roles.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar-estudiante',
@@ -20,6 +22,7 @@ export class NavBarEstudianteComponent {
 
     private toastr$: ToastrService,
     private modalService: NgbModal,
+    private router$: Router
   ){
 
     this.formCreateUser = new FormGroup(
@@ -42,8 +45,24 @@ export class NavBarEstudianteComponent {
     this.modalService.open(content, { centered: true });
   }
 
-  logout = () => {
-    this.authService.logout();
+  logout() {
+    Swal.fire({
+      title: '¿Está seguro que desea cerrar sesión?',
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: "No"
+      //denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.authService.logout();
+        Swal.fire('Sesion cerrada', '', 'success').then(()=>this.router$.navigate(["login"]));
+       
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
   }
 
   createUser() {
