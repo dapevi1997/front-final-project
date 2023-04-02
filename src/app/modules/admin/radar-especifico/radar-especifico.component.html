@@ -34,6 +34,39 @@
       </tbody>
 
     </table>
+    <table class="table tabla ">
+      <thead class="tabla-informativa">
+        <tr>      
+          <th class="negrita" scope="col">Condicion</th>
+          <th class="negrita" scope="col">Nivel</th>
+          <th class="negrita" scope="col">Observación</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr >
+          <td>2.5 - 3.0</td>
+          <td class="negrita">Preocupante</td>
+          <td>Se hace plan de mejora por una semana	</td>
+        </tr>
+        <tr >
+          <td>3.1 - 3.5</td>
+          <td class="negrita">Seguimiento</td>
+          <td>Se entega pero se da recomendaciones para que se pueda observar en operación</td>
+        </tr>
+        <tr >
+          <td>3.5 - 4.2</td>
+          <td class="negrita">Auto-gestionado</td>
+          <td>Se entrega y se entrega recomendaciones</td>
+        </tr>
+        <tr >
+          <td>>4.3</td>
+          <td class="negrita">My Auto-gestionado</td>
+          <td>Se entrega y no hay recomendaciones</td>
+        </tr>
+  
+      </tbody>
+
+    </table>
     <span  class="btn btn-info" (click)="openVerticallyCentered(contentRadar)">Agregar área</span>
     
   <ng-template class="modal" #contentRadar let-modal>
