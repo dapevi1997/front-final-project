@@ -25,10 +25,12 @@ import { ChartModule } from './modules/chart/chart.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-   
+
+
   ],
   imports: [
     BrowserModule,

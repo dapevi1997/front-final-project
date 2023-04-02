@@ -31,6 +31,10 @@ export class LigaService {
     let direccion= this.api + 'liga/' + id;
     return this.http.get<LigaI>(direccion);
   }
+  traerLigaEstudiante(correo: string):Observable <LigaI> {
+    let direccion= this.api + 'LigaAprendiz/' + correo;
+    return this.http.get<LigaI>(direccion);
+  }
 
   crearLiga(liga: LigaI):Observable<any> {
     let direccion= this.api + 'liga';
