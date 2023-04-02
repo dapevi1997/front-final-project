@@ -10,6 +10,10 @@ import { LigaService } from 'src/app/services/liga.service';
 export class ChartRadarComponent implements OnInit, OnChanges{
 
   calificaciones: number[] = [];
+  labelRadar!: string[];
+  nivelApropiacion!:number[];
+  nombreEstudiante!:string;
+
   radarChartData!: ChartData<'radar'>;
 
   constructor(
@@ -17,25 +21,27 @@ export class ChartRadarComponent implements OnInit, OnChanges{
   )
   {}
   ngOnChanges(): void {
-    this.calificaciones = this.ligaservice.notasTraer()
-    console.log("este es ngOnChanges chart "+this.calificaciones)
+    this.calificaciones = this.ligaservice.notasTraer();
+    //this.labelRadar = this.ligaservice.labelsRadarTraer();
+    this.nombreEstudiante=this.ligaservice.estudianteNombreTraer();
     this.radarChartData = {
-      labels: ['jum', 'te', '3', '4'],
+      labels: this.labelRadar,
       datasets: [
-        { data: this.calificaciones, label: 'Notas Aprendiz' },
-        { data: [4.9, 4.6, 4.1, 4.2], label: 'Nivel Apropiación' }
+        { data: this.calificaciones, label:  this.nombreEstudiante },
+        { data: [4.5, 4, 4.5, 3.5,4, 4.25, 4.25, 4.25, 4.75, 4], label: 'Nivel Apropiación' }
       ]
     };
   }
 
   ngOnInit(): void {
     this.calificaciones = this.ligaservice.promedioTraer()
-    console.log("este es ngOnInit chart "+this.calificaciones)
+    this.labelRadar = this.ligaservice.labelsRadarTraer();
+    this.nivelApropiacion = this.ligaservice.nivelApropiacionTraer();
     this.radarChartData = {
-      labels: ['jum', 'te', '3', '4'],
+      labels: this.labelRadar,
       datasets: [
-        { data: this.calificaciones, label: 'Promedio' },
-        { data: [4.9, 4.6, 4.1, 4.2], label: 'Nivel Apropiación' }
+        { data: this.calificaciones, label: 'Promedio liga' },
+        { data: this.nivelApropiacion, label: 'Nivel Apropiación' }
       ]
     };
   }

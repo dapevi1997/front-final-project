@@ -16,13 +16,14 @@ import { LigaService } from 'src/app/services/liga.service';
 export class PromediosComponent implements OnInit {
 
   ligas: LigaI[] | any;
+  ligas2: LigaI[] | any;
   id!:string;
 
   constructor(
     private modalService: NgbModal,
     private messageService: MessageService,
-    private ligaSvr : LigaService
-    //  private toastr: ToastrService,
+    private ligaSvr : LigaService,
+    private toastr: ToastrService,
   ){}
   ngOnInit(): void {
     this.traerLigas();
@@ -31,7 +32,8 @@ export class PromediosComponent implements OnInit {
   traerLigas(): void {
     this.ligaSvr.traerTodo().subscribe((data) => {
       this.ligas = data;
-      console.log(this.ligas);
+      this.ligas2=data?.aprendices?.find(nombre => console.log(nombre)
+      )
     });
   }
 
@@ -41,5 +43,16 @@ export class PromediosComponent implements OnInit {
 
   enviarLiga(id: string): void{
     this.ligaSvr.enviarLiga(id)
+  }
+
+  eliminar = (id:string) =>{
+    this.ligaSvr.eliminarLiga(id).subscribe({
+      next: data=>{
+        this.toastr.success('Liga eliminado exitosamente!','Success');
+        setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      }
+    })
   }
 }

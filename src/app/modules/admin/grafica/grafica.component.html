@@ -1,8 +1,28 @@
-
-
 <div class="card-body">
-  <div class="form-floating mb-2">
-    <select [(ngModel)]="posicion" class="form-select">
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let aprendiz of liga?.aprendices">
+        <tr>
+          <td (click)="enviarNota(aprendiz.calificaciones,aprendiz.nombre)" style="cursor: pointer;">{{aprendiz.nombre}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <app-chart-radar></app-chart-radar>
+  </div>
+  <div>
+    <button class="btn btn-dark" (click)="traerLiga()">Ver datos generales</button>
+  </div>
+</div>
+<div class="card-body3">
+  <div class="form-floating">
+    <select [(ngModel)]="posicion" class="form-select mb-2">
       <option>Seleccionar</option>
       <option *ngFor="let aprendiz of aprendices; let indice = index">
         {{ indice }}
@@ -10,54 +30,29 @@
       </option>
     </select>
     <label for="floatingInput">Aprendiz</label>
+    <span class="btn btn-info mb-2" (click)="agregarAprendiz()">Añadir aprendiz a la liga</span>
+  </div>
+  <div class="card-body2">
+    <table class="table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Area de conocimiento</th>
+          <th scope="col">Descriptor</th>
+          <th scope="col">Apropiación liga</th>
+          <th scope="col">Nivel de apropiación</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let area of radarItems?.areas; let indice = index">
+        <tr >
+          <td>{{area.area}}</td>
+          <td>{{area.descriptor}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(total[indice])}">{{total[indice]}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(area.nivel)}">{{area.nivel}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-<span  class="btn btn-info mb-3" (click)="agregarAprendiz()">Añadir aprendiz a la liga</span>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Nota1</th>
-      <th scope="col">Nota2</th>
-      <th scope="col">Nota3</th>
-      <th scope="col">Nota4</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let aprendiz of liga?.aprendices">
 
-    <tr >
-      <td (click)="enviarNota(aprendiz.calificaciones)">{{aprendiz.nombre}}</td>
-      <td>{{aprendiz.calificaciones[0]}}</td>
-      <td>{{aprendiz.calificaciones[1]}}</td>
-      <td>{{aprendiz.calificaciones[2]}}</td>
-      <td>{{aprendiz.calificaciones[3]}}</td>
-      <td></td>
-
-    </tr>
-  </tbody>
-</table>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Area de conocimiento</th>
-      <th scope="col">Descriptor</th>
-      <th scope="col">Apropiación liga</th>
-      <th scope="col">Nivel de apropiación</th>
-    </tr>
-  </thead>
-
-  <tbody *ngFor="let area of radarItems?.areas; let indice = index">
-
-    <tr >
-      <td>{{area.area}}</td>
-      <td>{{area.descriptor}}</td>
-      <td>{{total[indice]}}</td>
-      <td>{{area.nivel}}</td>
-    </tr>
-  </tbody>
-</table>
-<app-chart-radar></app-chart-radar>
-<button class="btn btn-dark" (click)="traerLiga()">Ver datos generales</button>
 

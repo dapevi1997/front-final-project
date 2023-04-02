@@ -26,6 +26,8 @@ import { EditarComponent } from './componentes/editar/editar.component';
 import { EditarFormularioAreaComponent } from './componentes/editar-formulario-area/editar-formulario-area.component';
 import { GraficaComponent } from './grafica/grafica.component';
 import { ChartModule } from '../chart/chart.module';
+import { EditarLigaComponent } from './editar-liga/editar-liga.component';
+
 
 
 
@@ -48,7 +50,8 @@ import { ChartModule } from '../chart/chart.module';
     EliminarComponent,
     EditarComponent,
     EditarFormularioAreaComponent,
-    GraficaComponent
+    GraficaComponent,
+    EditarLigaComponent
 
   ], imports: [
     AdminRoutingModule,

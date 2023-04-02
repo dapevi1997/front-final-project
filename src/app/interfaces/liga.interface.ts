@@ -12,5 +12,6 @@ export interface LigaI {
 
 export interface Aprendiz{
     nombre: string,
+    correo:string,
     calificaciones: number[]
 }

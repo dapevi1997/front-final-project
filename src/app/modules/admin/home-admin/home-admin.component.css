@@ -1,5 +1,5 @@
 body{
-    background: #f8f9fa; 
+    background: #f8f9fa;
 }
 .principal{
 	margin-top:50px;
@@ -10,9 +10,9 @@ body{
 
 /*tarjeta 1*/
 .card-header-first{
-	margin-top:-40px;
-    height: 120px;
-	background: linear-gradient(-90deg, #BF019F, #F28A57); 
+  margin:-25px -25px 0px -25px;
+  height: 120px;
+	background: linear-gradient(-90deg, #F28A57, #6DC2EA);
 	box-shadow:1px 5px 15px #a2a2a2;
 }
 
@@ -22,15 +22,15 @@ body{
 	box-shadow:1px 7px 15px #a2a2a2;
     margin:-25px -25px 0px -25px;
     height: 120px;
-	background: linear-gradient(-90deg, #8E2DE2, #4A00E0); 
+	background: linear-gradient(-90deg, #4A00E0, #6DC2EA);
 }
 
 /*tarjeta 3*/
 .card-header-third{
-    margin-top:-25px;
+  margin:-25px -25px 0px -25px;
     height: 120px;
 	box-shadow:1px 5px 15px #a2a2a2;
-    background: linear-gradient(-90deg, #11998e, #38ef7d); 
+    background: linear-gradient(-90deg, #FAF2A1, #6DC2EA);
 }
 
 .card-section-third span i{
@@ -40,7 +40,7 @@ body{
 	height:50px;
 	width:50px;
 	box-shadow:1px 6px 24px #d2d2d2;
-	background: linear-gradient(-90deg, #11998e, #38ef7d); 
+	background: linear-gradient(-90deg, #11998e, #38ef7d);
 }
 
 .card-header-third span i:hover,.card-section-third span i:hover{

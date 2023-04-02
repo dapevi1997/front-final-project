@@ -1,0 +1,43 @@
+<app-nav-bar-estudiante></app-nav-bar-estudiante>
+<div class="card-body">
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let aprendiz of ligaAprendiz">
+        <tr>
+          <td >{{aprendiz.nombre}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <app-chart-radar></app-chart-radar>
+  </div>
+
+</div>
+<div class="card-body3">
+  <div class="card-body2">
+    <table class="table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Area de conocimiento</th>
+          <th scope="col">Descriptor</th>
+          <th scope="col">Apropiación liga</th>
+          <th scope="col">Nivel de apropiación</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let area of radarItems?.areas; let indice = index">
+        <tr >
+          <td>{{area.area}}</td>
+          <td>{{area.descriptor}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(total[indice])}">{{total[indice]}}</td>
+          <td [ngStyle]="{'background-color':severidadNota(area.nivel)}">{{area.nivel}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

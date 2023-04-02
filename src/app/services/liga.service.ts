@@ -14,8 +14,11 @@ export class LigaService {
 
   id!:string;
   radarNombre!:string;
+  estudiante!:string;
   calificaciones!:number[];
   notasAprendiz!:number[];
+  labelsRadar!:string[];
+  nivelApropiacion!:number[];
 
   constructor(private http: HttpClient) { }
 
@@ -28,10 +31,25 @@ export class LigaService {
     let direccion= this.api + 'liga/' + id;
     return this.http.get<LigaI>(direccion);
   }
+  traerLigaEstudiante(correo: string):Observable <LigaI> {
+    let direccion= this.api + 'LigaAprendiz/' + correo;
+    return this.http.get<LigaI>(direccion);
+  }
 
   crearLiga(liga: LigaI):Observable<any> {
     let direccion= this.api + 'liga';
     return this.http.post<any>(direccion, liga);
+  }
+
+  editarLiga(liga: LigaI):Observable<any> {
+    this.id = this.recibirLiga();
+    let direccion= this.api + 'liga/' + this.id;
+    return this.http.put<any>(direccion, liga);
+  }
+
+  eliminarLiga(id:  string) : Observable<RadarI>{
+    let direction = this.api + 'liga/' + id;
+    return this.http.delete<any>(direction);
   }
 
   traerAprendices():Observable <Aprendiz> {
@@ -52,13 +70,11 @@ export class LigaService {
   enviarLiga(id: string){
     this.id = id;
     localStorage.setItem('ligaid', JSON.stringify(this.id));
-    console.log(this.id);
   }
 
   enviarRadar(radarNombre: string){
     this.radarNombre = radarNombre;
     localStorage.setItem('radarNombre', JSON.stringify(this.radarNombre));
-    console.log(this.radarNombre);
   }
 
   recibirLiga(){
@@ -73,22 +89,47 @@ export class LigaService {
 
   promedioenviar(promedio: number[]){
     this.calificaciones = promedio;
-    console.log(this.calificaciones);
   }
 
   promedioTraer(){
-    console.log("es el traer" + this.calificaciones);
     return this.calificaciones;
   }
 
   notaEnviar(notas: number[]){
     this.notasAprendiz = notas;
-    console.log(this.notasAprendiz);
   }
 
   notasTraer(){
-    console.log("es el traer notas aprendiz" + this.calificaciones);
     return this.notasAprendiz;
   }
+
+  labelsRadarEnviar(labelRadar: string[]){
+    this.labelsRadar = labelRadar;
+
+  }
+
+  labelsRadarTraer(){
+
+    return this.labelsRadar;
+  }
+  nivelApropiacionEnviar(nivelApropiacion: number[]){
+    this.nivelApropiacion = nivelApropiacion;
+
+  }
+
+  nivelApropiacionTraer(){
+
+    return this.nivelApropiacion;
+  }
+
+  estudianteNombreEnviar(estudiante: string){
+    this.estudiante = estudiante;
+  }
+
+  estudianteNombreTraer(){
+    return this.estudiante;
+  }
+
+
 
 }
