@@ -5,6 +5,7 @@ import { LearnerRoutingModule } from './learner-routing.module';
 import { ChartModule } from '../chart/chart.module';
 import { PromediosEstudianteComponent } from './promedios-estudiante/promedios-estudiante.component';
 import { GraficaEstudianteComponent } from './grafica-estudiante/grafica-estudiante.component';
+import { NavBarEstudianteComponent } from './nav-bar-estudiante/nav-bar-estudiante.component';
 
 
 
@@ -12,7 +13,8 @@ import { GraficaEstudianteComponent } from './grafica-estudiante/grafica-estudia
   declarations: [
     RadarLearnerComponent,
     PromediosEstudianteComponent,
-    GraficaEstudianteComponent
+    GraficaEstudianteComponent,
+    NavBarEstudianteComponent
   ],
   imports: [
     CommonModule,
