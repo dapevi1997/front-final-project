@@ -1,6 +1,6 @@
-<div class="card-body" style="display:flex; flex-direction: row; padding: 10px;">
+<div class="card-body">
   <div>
-    <table class="table table-striped" style="background-color: #FAF2A1;">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th scope="col">Nombre</th>
@@ -13,15 +13,15 @@
       </tbody>
     </table>
   </div>
-  <div class="card-body">
+  <div>
     <app-chart-radar></app-chart-radar>
   </div>
-  <div class="form-floating">
-    <button class="btn btn-dark" style="width: 200px;" (click)="traerLiga()">Ver datos generales</button>
+  <div>
+    <button class="btn btn-dark" (click)="traerLiga()">Ver datos generales</button>
   </div>
 </div>
-<div class="form-floating" style="display:flex; padding: 10px; width: 100%; justify-content: space-around; gap: 10px;">
-  <div class="form-floating" style="flex: 1; padding: 10px; justify-content: center;">
+<div class="card-body3">
+  <div class="form-floating">
     <select [(ngModel)]="posicion" class="form-select mb-2">
       <option>Seleccionar</option>
       <option *ngFor="let aprendiz of aprendices; let indice = index">
@@ -32,8 +32,8 @@
     <label for="floatingInput">Aprendiz</label>
     <span class="btn btn-info mb-2" (click)="agregarAprendiz()">Añadir aprendiz a la liga</span>
   </div>
-  <div style="flex: 3; padding: 10px;">
-    <table class="table-responsive" style="width: 100%;">
+  <div class="card-body2">
+    <table class="table-responsive">
       <thead>
         <tr>
           <th scope="col">Area de conocimiento</th>
