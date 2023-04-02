@@ -67,6 +67,7 @@ export class AuthService {
       this.token = "";
       localStorage.setItem("token", this.token);
       localStorage.setItem("role", "");
+      localStorage.clear();
       window.location.reload();
     });
   }
@@ -94,7 +95,7 @@ export class AuthService {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         sendEmailVerification(auth.currentUser!);
-        // Signed in 
+        // Signed in
         const user = userCredential.user;
         await user.getIdToken().then((token) => {
           //console.log(token)
@@ -107,15 +108,15 @@ export class AuthService {
       .catch((error) => {
         const errorCode = error.code;
 
-      
+
 
         if(error.code == "auth/email-already-in-use"){
           tokenAux = "auth/email-already-in-use";
 
         }
-               
-       
-       
+
+
+
       });
 
 
