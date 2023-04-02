@@ -49,10 +49,11 @@ export class NavbaradminComponent {
   logout = () => {
 
     Swal.fire({
-      title: '¿Seguro que desea cerrar sesión?',
+      title: '¿Está seguro que desea cerrar sesión?',
       showDenyButton: false,
       showCancelButton: true,
-      confirmButtonText: 'Cerrar sesión',
+      confirmButtonText: 'Si',
+      cancelButtonText: "No"
       //denyButtonText: `Don't save`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
