@@ -15,6 +15,14 @@
   align-items: center;
 }
 
-.crearLiga{
-  margin-left: 20px;
+.ligaCrear{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
+}
+.btn-info{
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

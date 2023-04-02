@@ -1,12 +1,27 @@
 <div class="formulario">
   <legend style="color: #C324BC;">Editar Liga</legend>
+  <form [formGroup]="form">
   <div class="mb-3 campo">
     <label for="disabledTextInput" class="form-label">Coach</label>
-    <input [(ngModel)]="ligaI.coach" type="text" id="disabledTextInput" class="form-control" placeholder="Coach">
+    <input formControlName="coach" [(ngModel)]="ligaI.coach" type="text" id="disabledTextInput" class="form-control" placeholder="Coach">
+    <div *ngIf="form.get('coach')?.hasError('required') && form.pristine === false" style="color: red;">El nombre del coach
+    es requerido</div>
+    <div *ngIf="form.get('coach')?.hasError('pattern') && form.pristine === false" style="color: red;">El nombre del coach debe contener letras</div>
   </div>
   <div class="mb-3 campo">
-      <label for="disabledTextInput" class="form-label">Año</label>
-      <input [(ngModel)]="ligaI.anio" type="text" id="disabledTextInput" class="form-control" placeholder="Año">
+    <label for="disabledTextInput" class="form-label">Año</label>
+    <input formControlName="anio" [(ngModel)]="ligaI.anio" type="number" id="disabledTextInput" class="form-control" placeholder="Año">
+    <div *ngIf="form.get('anio')?.hasError('required') && form.pristine === false" style="color: red;">El año es requerido</div>
   </div>
-  <button (click)="editarLiga()"  class="btn btn-primary">Editar Liga</button>
+  </form>
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-center">
+        <button [disabled]="!form.valid" (click)="editarLiga()"  class="btn btn-primary">Editar Liga</button>
+      </div>
+      <div class="col align-self-center">
+        <button  (click)="cerrarModal()"  class="btn btn-danger">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

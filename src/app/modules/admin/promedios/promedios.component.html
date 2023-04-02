@@ -1,10 +1,11 @@
-<span  class="btn btn-info mb-3 crearLiga" (click)="openVerticallyCentered(contentLiga)">Crear Liga</span>
-
+<div class="ligaCrear">
+<span  class="btn btn-info" (click)="openVerticallyCentered(contentLiga)">Crear Liga</span>
+</div>
 <ng-template class="modal" #contentLiga let-modal>
     <app-liga></app-liga>
 </ng-template>
 
-<div class="container py-4">
+<div class="container">
   <div class="row row-cols-4">
     <div class="col" *ngFor="let liga of ligas">
       <div class="card" style="margin-top: 20px;">

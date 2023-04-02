@@ -37,7 +37,7 @@
         </ul>
         </li>
         <li class="nav-item">
-          <span class="nav-link" [routerLink]="['/adm']" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <span class="nav-link" [routerLink]="['/adm/promedios']" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
             Promedios
           </span>
@@ -90,9 +90,9 @@
             <div *ngIf="formCreateUser?.hasError('passwordMismatchError') && formCreateUser.pristine === false"
               style="color: red;">Las contraseñas no coinciden</div>
           </div>
-          
 
-        
+
+
 
 
 
@@ -116,9 +116,9 @@
         <button type="button" class="btn btn-dark purple btn-block mb-2" [disabled]="!formCreateUser.valid"
           (click)="createUser()" data-bs-dismiss="modal">Crear usuario</button>
 
-         
 
-        
+
+
 
       </div>
 
@@ -164,7 +164,7 @@
               style="color: red;">Las contraseñas no coinciden</div>
           </div>
 
-        
+
 
 
 

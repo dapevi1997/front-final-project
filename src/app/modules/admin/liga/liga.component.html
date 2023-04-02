@@ -19,9 +19,9 @@
     <div class="mb-3 campo">
       <label for="disabledTextInput" class="form-label">Coach</label>
       <input formControlName="coach" [(ngModel)]="ligaI.coach" type="text" id="disabledTextInput" class="form-control" placeholder="Coach">
-      <div *ngIf="form.get('ciclo')?.hasError('required') && form.pristine === false" style="color: red;">El nombre del coach
+      <div *ngIf="form.get('coach')?.hasError('required') && form.pristine === false" style="color: red;">El nombre del coach
         es requerido</div>
-        <div *ngIf="form.get('ciclo')?.hasError('pattern') && form.pristine === false" style="color: red;">El nombre del coach debe contener letras</div>
+        <div *ngIf="form.get('coach')?.hasError('pattern') && form.pristine === false" style="color: red;">El nombre del coach debe contener letras</div>
     </div>
     <div class="mb-3 campo">
         <label for="disabledTextInput" class="form-label">Año</label>
