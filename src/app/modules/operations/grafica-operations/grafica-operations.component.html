@@ -1,0 +1,74 @@
+<div class="card-body">
+  <div class="form-floating mb-2">
+    <select [(ngModel)]="posicion" class="form-select">
+      <option>Seleccionar</option>
+      <option *ngFor="let aprendiz of aprendices; let indice = index">
+        {{ indice }}
+        {{ aprendiz.nombre }}
+      </option>
+    </select>
+    <label for="floatingInput">Aprendiz</label>
+  </div>
+</div>
+<span  class="btn btn-info mb-3" (click)="agregarAprendiz()">Añadir aprendiz a la liga</span>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Nota1</th>
+      <th scope="col">Nota2</th>
+      <th scope="col">Nota3</th>
+      <th scope="col">Nota4</th>
+      <th scope="col">Nota5</th>
+      <th scope="col">Nota6</th>
+      <th scope="col">Nota7</th>
+      <th scope="col">Nota8</th>
+      <th scope="col">Nota9</th>
+      <th scope="col">Nota10</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let aprendiz of liga?.aprendices">
+
+    <tr >
+      <td (click)="enviarNota(aprendiz.calificaciones,aprendiz.nombre)">{{aprendiz.nombre}}</td>
+      <td>{{aprendiz.calificaciones[0]}}</td>
+      <td>{{aprendiz.calificaciones[1]}}</td>
+      <td>{{aprendiz.calificaciones[2]}}</td>
+      <td>{{aprendiz.calificaciones[3]}}</td>
+      <td>{{aprendiz.calificaciones[4]}}</td>
+      <td>{{aprendiz.calificaciones[5]}}</td>
+      <td>{{aprendiz.calificaciones[6]}}</td>
+      <td>{{aprendiz.calificaciones[7]}}</td>
+      <td>{{aprendiz.calificaciones[8]}}</td>
+      <td>{{aprendiz.calificaciones[9]}}</td>
+
+      <td></td>
+
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Area de conocimiento</th>
+      <th scope="col">Descriptor</th>
+      <th scope="col">Apropiación liga</th>
+      <th scope="col">Nivel de apropiación</th>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let area of radarItems?.areas; let indice = index">
+
+    <tr >
+      <td>{{area.area}}</td>
+      <td>{{area.descriptor}}</td>
+      <td [ngStyle]="{'background-color':severidadNota(total[indice])}">{{total[indice]}}</td>
+      <td [ngStyle]="{'background-color':severidadNota(area.nivel)}">{{area.nivel}}</td>
+    </tr>
+  </tbody>
+</table>
+<app-chart-radar></app-chart-radar>
+<button class="btn btn-dark" (click)="traerLiga()">Ver datos generales</button>
+
