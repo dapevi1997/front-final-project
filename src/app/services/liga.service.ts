@@ -41,6 +41,17 @@ export class LigaService {
     return this.http.post<any>(direccion, liga);
   }
 
+  editarLiga(liga: LigaI):Observable<any> {
+    this.id = this.recibirLiga();
+    let direccion= this.api + 'liga/' + this.id;
+    return this.http.put<any>(direccion, liga);
+  }
+
+  eliminarLiga(id:  string) : Observable<RadarI>{
+    let direction = this.api + 'liga/' + id;
+    return this.http.delete<any>(direction);
+  }
+
   traerAprendices():Observable <Aprendiz> {
     let direccion= this.api + 'aprendices';
     return this.http.get<Aprendiz>(direccion);

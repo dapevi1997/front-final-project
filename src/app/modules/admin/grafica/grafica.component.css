@@ -9,3 +9,12 @@ th,td,tr{
 td{
     border-left: 1px solid #6DC2EA;
 }
+.table-responsive{
+  border: 1px solid #6DC2EA;
+  width: 200px;
+}
+
+.table-striped{
+  border: 1px solid #6DC2EA;
+  width: 200px;
+}
