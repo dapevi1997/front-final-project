@@ -1,0 +1,12 @@
+<div class="formulario">
+  <legend style="color: #C324BC;">Editar Liga</legend>
+  <div class="mb-3 campo">
+    <label for="disabledTextInput" class="form-label">Coach</label>
+    <input [(ngModel)]="ligaI.coach" type="text" id="disabledTextInput" class="form-control" placeholder="Coach">
+  </div>
+  <div class="mb-3 campo">
+      <label for="disabledTextInput" class="form-label">Año</label>
+      <input [(ngModel)]="ligaI.anio" type="text" id="disabledTextInput" class="form-control" placeholder="Año">
+  </div>
+  <button (click)="editarLiga()"  class="btn btn-primary">Editar Liga</button>
+</div>

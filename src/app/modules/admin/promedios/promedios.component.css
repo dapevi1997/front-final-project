@@ -1,3 +1,16 @@
-/*.card-body{
-margin-bottom: 3px;
-}*/
+.title{
+  background-color: #6DC2EA;
+  text-align: center;
+}
+.body-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.name{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

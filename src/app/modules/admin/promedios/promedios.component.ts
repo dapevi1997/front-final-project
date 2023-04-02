@@ -22,8 +22,8 @@ export class PromediosComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private messageService: MessageService,
-    private ligaSvr : LigaService
-    //  private toastr: ToastrService,
+    private ligaSvr : LigaService,
+    private toastr: ToastrService,
   ){}
   ngOnInit(): void {
     this.traerLigas();
@@ -43,5 +43,16 @@ export class PromediosComponent implements OnInit {
 
   enviarLiga(id: string): void{
     this.ligaSvr.enviarLiga(id)
+  }
+
+  eliminar = (id:string) =>{
+    this.ligaSvr.eliminarLiga(id).subscribe({
+      next: data=>{
+        this.toastr.success('Liga eliminado exitosamente!','Success');
+        setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      }
+    })
   }
 }

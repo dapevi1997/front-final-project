@@ -1,7 +1,25 @@
-<div *ngFor="let liga of ligas" class="card mb-3" style="width: 18rem;">
-  <div  class="card-body">
-    <h5 class="card-title">
-      {{liga.nombre}}</h5>
-    <a [routerLink]="['/operations/graficaOperation']" class="card-link" (click)="enviarLiga(liga.id)">Ver más</a>
+<div class="container py-4">
+  <div class="row row-cols-4">
+    <div class="col" *ngFor="let liga of ligas">
+      <div class="card" style="margin-top: 20px;">
+        <div class="card text-bg-light mb-3">
+          <div class="card-header title">Liga</div>
+          <div class="card-body name">
+            <h5 class="card-title">{{liga.nombre}}</h5>
+            <img src="../../../../assets/SofkaU-2.png" width="100" height="100"/>
+            <div class="card-body body-content" style="gap: 20px">
+            <svg style="cursor:pointer;" [routerLink]="['/operations/graficaOperation']" (click)="enviarLiga(liga.id)" fill="#000000" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.92,11.6C19.9,6.91,16.1,4,12,4S4.1,6.91,2.08,11.6a1,1,0,0,0,0,.8C4.1,17.09,7.9,20,12,20s7.9-2.91,9.92-7.6A1,1,0,0,0,21.92,11.6ZM12,18c-3.17,0-6.17-2.29-7.9-6C5.83,8.29,8.83,6,12,6s6.17,2.29,7.9,6C18.17,15.71,15.17,18,12,18ZM12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,12,14Z"/></svg>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<ng-template class="modal" #contentEditarLiga let-modal>
+
+</ng-template>
