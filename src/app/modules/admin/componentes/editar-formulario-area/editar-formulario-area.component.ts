@@ -21,8 +21,8 @@ export class EditarFormularioAreaComponent {
     private toastr: ToastrService
   ){
     this.form = new FormGroup({
-      area: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-])/)]),
-      descriptor: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-])/)]),
+      area: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,50}$/)]),
+      descriptor: new FormControl(null, [Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,50}$/)]),
       factual:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
       conceptual:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
       procedimental:  new FormControl(null, [Validators.required,Validators.max(5), Validators.pattern(/^([0-5])/)]),
