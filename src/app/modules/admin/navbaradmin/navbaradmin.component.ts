@@ -29,11 +29,11 @@ export class NavbaradminComponent {
     this.formCreateUser = new FormGroup(
       {
         email: new FormControl(null, [Validators.required, Validators.email]),
-        password: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.pattern(/([^\u00C0-\u00FF\W]|[a-zA-Z0-9])+/g)]),
+        password: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.pattern(/^([a-zA-Z0-9_-]){1,50}$/)]),
         passwordRepeat: new FormControl(null, [Validators.required]),
         role: new FormControl("LEARNER", [Validators.required]),
-        name: new FormControl(null,[Validators.required, Validators.pattern(/([^\u00C0-\u00FF\W]|[a-zA-Z0-9])+/g)]),
-        lastname: new FormControl(null,[Validators.required, Validators.pattern(/([^\u00C0-\u00FF\W]|[a-zA-Z0-9])+/g)])
+        name: new FormControl(null,[Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,50}$/)]),
+        lastname: new FormControl(null,[Validators.required, Validators.pattern(/^([a-zA-Z0-9_-]){1,50}$/)])
       }, [this.passwordMatch("password", "passwordRepeat")]
     );
 
