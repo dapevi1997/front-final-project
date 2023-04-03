@@ -184,8 +184,8 @@ Solo tiene acceso a ver las ligas que aparece inscrito
 
 ## Autores
 
-* **Julian Mazo Arroyave**
-* **Andrés Felipe Castro Manzano**
-* **David Santiago Benjumea Perez**
-* **Daniel Perez Vitola**
-* **Valentina Santa Muñoz** 
+* [Julian Mazo Arroyave](https://github.com/BERTOTEM)
+* [Andrés Castro](https://github.com/Nirsch95) :wolf:
+* [David Santiago Benjumea Perez](https://github.com/dsbpajedrez)
+* [Daniel Perez Vitola](https://github.com/dapevi1997)
+* [Valentina Santa Muñoz](https://github.com/Valen2605)
