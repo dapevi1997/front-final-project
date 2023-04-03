@@ -180,3 +180,12 @@ Solo tiene acceso a ver las ligas que aparece inscrito
 
 ![image](https://user-images.githubusercontent.com/37886668/229584731-a0097c55-33ed-4e8d-8a1e-9bd1a913c1b6.png)
 ![image](https://user-images.githubusercontent.com/37886668/229584762-57289284-1b7c-492d-861f-fe6f28139331.png)
+
+
+## Autores
+
+* **Julian Mazo Arroyave**
+* **Andrés Felipe Castro Manzano**
+* **David Santiago Benjumea Perez**
+* **Daniel Perez Vitola**
+* **Valentina Santa Muñoz** 
