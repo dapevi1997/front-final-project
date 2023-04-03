@@ -1,0 +1,47 @@
+<div class="container principal" style="margin-top: 10%;">
+
+  <div class="row">
+    <div class="col-lg-4 col-md-12 mb4 card-first">
+      <div class="card-section border rounded p-3">
+        <div class="card-header-first rounded pb-5">
+          <h1 class="card-header-title text-white pt-3">Usuarios</h1>
+        </div>
+        <div class="card-body text-center">
+          <br>
+          <a  [routerLink]="['/adm/list-users']" class="card-text" style="font-size: 30px;">Listar usuarios</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12 mb4">
+      <div class="card-section border rounded p-3">
+        <div class="card-header-second rounded pb-5">
+          <h1 class="card-header-title text-white pt-3">Radar</h1>
+        </div>
+        <div class="card-body text-center">
+          <br>
+          <a [routerLink]="['/adm/list-radars']" class="card-text" style="font-size: 30px;">Ver radares</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12 mb4">
+      <div class="card-section border rounded p-3">
+        <div class="card-header-third rounded pb-5">
+          <h1 class="card-header-title text-white pt-3">Promedio</h1>
+        </div>
+        <div class="card-body text-center">
+          <br>
+          <a [routerLink]="['/adm/promedios']" class="card-text" style="font-size: 30px;">Ver promedios</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <ng-template class="modal" #content let-modal>
+   <app-users></app-users>
+  </ng-template>
+  <ng-template class="modal" #contentRadar let-modal>
+    <app-radar></app-radar>
+  </ng-template>

@@ -1,0 +1,46 @@
+.tabla{
+  border: 1px solid #6DC2EA;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+th,td,tr{
+  text-align: center;
+  padding:10px;
+}
+td{
+  border-left: 1px solid #6DC2EA;
+}
+.table-responsive{
+border: 1px solid #6DC2EA;
+width: 100%;
+}
+
+.table-striped{
+border: 1px solid #6DC2EA;
+width: 200px;
+background-color: #FAF2A1;
+}
+.card-body{
+display:flex;
+flex-direction: row;
+padding: 10px;
+justify-content: flex;
+}
+
+.card-body2{
+flex: 3;
+padding: 10px;
+}
+
+.card-body3{
+display:flex;
+padding: 10px;
+width: 100%;
+justify-content: space-around;
+gap: 10px;
+}
+
+.form-floating{
+flex: 1;
+padding: 10px;
+justify-content: center;
+}
